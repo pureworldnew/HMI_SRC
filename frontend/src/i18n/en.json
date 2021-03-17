@@ -1,0 +1,45 @@
+{
+  "header": {
+    "hello": "Hello",
+    "edit_profile": "Edit Profile",
+    "logout": "Logout",
+    "get_started": "Get Started"
+  },
+  "footer": {
+    "copyright": "Copyright",
+    "insight": "ZenView",
+    "all_rights_reserved": " All rights reserved."
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "revenue": "Revenue",
+    "account": "Account",
+    "product": "Product",
+    "presentations": "Presentations",
+    "documnents": "Documnents",
+    "metrics": "Metrics",
+    "connections": "Connections",
+    "workflows": "Workflows",
+    "slides": "Slides",
+    "sheets": "Sheets",
+    "settings": "Settings",
+    "revenueManagement": "Revenue Management",
+    "accountManagement": "Account Management",
+    "files": "Files",
+    "admin": "Admin",
+    "productEngagement": "Product Engagement",
+    "alerts": "Alerts & Reports"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard"
+  },
+  "revenue": {
+    "revenue": "Revenue"
+  },
+  "account": {
+    "account": "Account"
+  },
+  "product": {
+    "product": "Product"
+  }
+}

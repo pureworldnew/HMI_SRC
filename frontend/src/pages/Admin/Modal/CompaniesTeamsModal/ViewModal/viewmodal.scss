@@ -1,0 +1,343 @@
+.TeamsViewModalCustomCss {
+    top: 15.3%;
+
+    .modal-header {
+        height: 77px;
+        padding-left: 0;
+        padding-right: 0;
+
+        .modal-title {
+            width: 232px;
+            height: 32px;
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 32px;
+            align-items: center;
+
+            color: #000000;
+
+            Label {
+                font-family: Open Sans;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 12px;
+                line-height: 16px;
+                align-items: center;
+                letter-spacing: 0.01em;
+
+                color: #000000;
+            }
+        }
+
+        span {
+            font-size: 30px;
+        }
+    }
+
+    .modal-content {
+        padding: 31px;
+        width: 684px;
+        height: 625px;
+
+        @media (max-width: 576px) {
+            width: 100% !important;
+        }
+
+        .modal-body {
+            padding-left: 0;
+            padding-right: 0;
+
+            .viewTeamNameInput {
+                margin-top: 3%;
+
+                Label {
+                    width: 277px;
+                    height: 28px;
+                    font-family: Open Sans;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 20px;
+                    line-height: 28px;
+                    align-items: center;
+
+                    color: #000000;
+                }
+
+                .addmemberDiv {
+                    display: flex;
+
+                    input {
+                        width: 384px;
+                        height: 56px;
+                        background: #FFFFFF;
+                        border: 1px solid #C4C4C4;
+                        box-sizing: border-box;
+                        border-radius: 4px;
+
+                        font-family: Open Sans;
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 20px;
+
+                        align-items: center;
+
+                        color: #000000;
+                        padding-left: 20px;
+                    }
+                }
+            }
+
+            .teamMemberSearchResults {
+                width: 100%;
+                max-height: 70%;
+                top: 36%;
+                max-height: 64%;
+                // border: 1px solid #C4C4C4;
+                box-sizing: border-box;
+                border-radius: 4px;
+                position: absolute;
+                overflow-y: scroll;
+                z-index: 1000;
+
+                @media (max-width:576px) {
+                    max-height: 312%;
+                }
+
+                .teamMemberResultItem {
+                    flex-direction: row;
+                    padding: 4px 12px;
+                    // background: #C4C4C4;
+                    // border-radius: 8px;
+                    background: none;
+                    // margin: 20px;
+                    margin-top: 14px;
+
+                    width: auto;
+                    height: 44px;
+
+                    font-family: Open Sans;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 14px;
+                    line-height: 35px;
+                    color: #000000;
+
+                    display: flex;
+
+                    .teamMemberAvatar {
+                        width: 36px;
+                        height: 36px;
+                        background: #000000;
+                        border-radius: 50%;
+                        border: 1px solid #FFFFFF;
+                        margin-right: 12px;
+                    }
+                }
+
+                .teamMemberResultItem_result {
+                    display: flex;
+                    background: #C4C4C4;
+                    border-radius: 8px;
+
+                    .teamMemberAvatar {
+                        width: 36px;
+                        height: 36px;
+                        background: #000000;
+                        border-radius: 50%;
+                        border: 1px solid #FFFFFF;
+                        margin-right: 12px;
+                    }
+
+                    .userNameDiv {
+                        overflow: overlay;
+                        max-width: 80%;
+                    }
+
+                    .removeBtn {
+                        position: absolute;
+                        font-size: 20px;
+                        right: 8%;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .viewTeamMemebersDiv {
+                // border: 1px solid #C4C4C4;
+                margin-top: 5%;
+                margin-left: -30px;
+                height: 64%;
+                position: absolute;
+                width: 105%;
+                top: 29%;
+
+                overflow-y: scroll;
+
+                .teamMemberResultItem {
+                    flex-direction: row;
+                    padding: 4px 12px;
+                    // background: #C4C4C4;
+                    // border-radius: 8px;
+                    background: none;
+                    margin: 20px;
+
+                    width: auto;
+                    height: 44px;
+
+                    font-family: Open Sans;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 14px;
+                    line-height: 35px;
+                    color: #000000;
+
+                    display: flex;
+
+                    .teamMemberAvatar {
+                        width: 36px;
+                        height: 36px;
+                        background: #000000;
+                        border-radius: 50%;
+                        border: 1px solid #FFFFFF;
+                        margin-right: 12px;
+                    }
+                }
+
+                .teamMemberResultItem_result {
+                    display: flex;
+                    // background: #C4C4C4;
+                    border-radius: 8px;
+
+                    padding-top: 2px;
+                    margin-top: 0;
+
+                    .teamMemberAvatar {
+                        width: 36px;
+                        height: 36px;
+                        background: #000000;
+                        border-radius: 50%;
+                        border: 1px solid #FFFFFF;
+                        margin-right: 12px;
+                        margin-top: 5px;
+                    }
+
+                    .userNameDiv {
+                        // overflow: overlay;
+                        max-width: 80%;
+                        width: 50%;
+                        padding-top: 14px;
+
+                        font-family: Open Sans;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 20px;
+                        align-items: center;
+
+                        color: #000000;
+                    }
+
+                    .memberRole {
+                        position: relative;
+                        width: 35%;
+                        left: -1%;
+                        // margin-top: -5px;
+
+                        .css-1okebmr-indicatorSeparator {
+                            display: none;
+                        }
+
+                        .css-yk16xz-control {
+                            border: none;
+                        }
+
+                        .css-yk16xz-control:hover {
+                            border: none;
+                            border-color: none;
+                        }
+
+                        .css-1wa3eu0-placeholder {
+                            font-family: Open Sans;
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 14px;
+                            line-height: 20px;
+                            align-items: center;
+                            text-align: right;
+
+                            color: #000000;
+                        }
+
+                        .css-1uccc91-singleValue {
+                            font-family: Open Sans;
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 14px;
+                            line-height: 20px;
+                            align-items: center;
+                            text-align: right;
+
+                            color: #000000;
+                        }
+
+                        .css-2613qy-menu {
+                            z-index: -1000;
+                        }
+
+                        .css-5duvv3-control {
+                            border: none;
+                        }
+                    }
+
+                    .removeBtn {
+                        position: relative;
+                        font-family: Open Sans;
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 12px;
+                        line-height: 16px;
+                        align-items: center;
+                        text-align: right;
+                        letter-spacing: 0.01em;
+
+                        color: #000000;
+                        right: -4%;
+                        padding-top: 15px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .modal-footer {
+        height: 28px;
+        justify-content: space-between;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .HR {
+        margin-top: 5%;
+    }
+
+}
+
+.viewButton {
+    width: 65px;
+    height: 25px;
+    padding-top: 7px;
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    align-items: center;
+    letter-spacing: 0.01em;
+
+    color: #000000;
+}

@@ -1,0 +1,52 @@
+.header {
+  font-size: 1.5rem;
+  padding: 1rem;
+  background-color: $bg;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+
+  &__reverse-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  &__name-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  &__welcome-message {
+    font-size: 2rem;
+    font-weight: bolder;
+  }
+  &__user-name {
+    /* 14px - Inputs */
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+  }
+
+  &__image-container {
+    height: 36px;
+    width: 36px;
+    border-radius: 2rem;
+    background-color: #333;
+    margin: 0 2rem;
+  }
+ 
+  &__dropdown {
+    align-self: flex-end;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,92 @@
+.mockIcon {
+    width: 1rem;
+    height: 1rem;
+    background-color: currentColor;
+    border-radius: 0.5rem;
+}
+
+.sideBar {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 236px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $bg;
+    height: 100vh;
+    overflow-y: auto;
+    &__logo {
+        font-size: 2rem;
+        font-weight: bolder;
+        margin: 2rem 0;
+        text-align: center;
+    }
+}
+
+.sideBar-collapse {
+    width: 56px;
+    .sideNav {
+        li {
+            a {
+                min-height: 44px;
+                padding: 0.5rem 1rem;
+                font-size: 14px;
+                justify-content: center;
+                line-height: 20px;
+            }
+        }
+    }
+
+}
+
+.sideNav {
+    margin-top: 4rem;
+    width: 100%;
+    li {
+        list-style: none;
+        color: #333;
+        padding: 1rem 0;
+        .sideNav__dropdown {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 8px;
+            a {
+                min-height: 44px;
+                padding-left: 5rem;
+                align-self: stretch;
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+        .active {
+            background-color: #000000;
+            color: #fff;
+        }
+        a {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            color: #000000;
+            text-decoration: none;
+            padding: 0.5rem 1.60rem;
+            min-height: 44px;
+            line-height: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            span {
+                margin-left: 1rem;
+                color: currentColor;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 600;
+            }
+            div {
+                margin: 1rem;
+            }
+        }
+    }
+}

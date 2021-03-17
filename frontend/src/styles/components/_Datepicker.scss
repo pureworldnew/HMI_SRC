@@ -1,0 +1,250 @@
+.content-toolbar-datepicker {
+  .MuiInputBase-root {
+    width: 132px;
+    height: 28px;
+    border: 1px solid $headings;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    color: $headings;
+    padding: 6px 12px;
+    cursor: pointer;
+
+    input {
+      cursor: pointer;
+      padding: 7px 0 7px;
+    }
+    &:hover {
+      border: 1px solid $headings;
+    }
+  }
+  .MuiInput-underline:before,
+  .MuiInput-underline:after {
+    border-bottom: none;
+  }
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: none;
+  }
+}
+
+.MuiPickersBasePicker-container {
+  padding: 12px 20px 0;
+  background: #ffffff;
+  border-radius: 8px;
+  .MuiIconButton-root {
+    .MuiTypography-body2 {
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      flex-wrap: wrap;
+      letter-spacing: 0.01em;
+      color: $headings;
+    }
+  }
+  &__toolbar-control {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    h5 {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      color: $headings;
+      margin-bottom: 0;
+      text-align: center;
+      width: calc(100% - 100px);
+    }
+    button {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 600;
+      width: auto;
+      border-radius: 0;
+      line-height: 20px;
+      /* identical to box height, or 143% */
+      text-transform: capitalize;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid transparent;
+      outline: none !important;
+      .MuiSvgIcon-root {
+        font-size: 22px;
+      }
+      .MuiButton-label {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      &.dt-btn-active {
+        border-color: $primary;
+        .MuiButton-label {
+          color: $headings;
+        }
+      }
+      &.dt-btn {
+        .MuiButton-label {
+          color: $icongraphy;
+        }
+      }
+    }
+  }
+}
+.MuiButtonBase-root.MuiIconButton-root.datepicker-menu-root__button.MuiIconButton-colorPrimary {
+  width: 111px;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  height: 28px;
+  padding: 3px 12px;
+  color: #495660;
+  font-weight: 600;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+}
+.MuiPickersCalendarHeader-daysHeader {
+  display: none !important;
+}
+
+.datepicker-menu-root {
+  .MuiPopover-paper {
+    border-radius: 0 0 4px 4px;
+  }
+  .MuiMenu-list {
+    width: 132px;
+    background: $white;
+    padding-top: 0 !important;
+    .datepicker-menu-root__header {
+      text-transform: capitalize;
+      border-bottom: 1px solid $elements1;
+      display: flex;
+      justify-content: space-between;
+    }
+    .MuiMenuItem-root {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      color: $paragraphs;
+      padding: 6px 12px !important;
+    }
+  }
+}
+.content-toolbar-datepicker {
+  .picker-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    .picker-control--right {
+      width: 100%;
+      justify-content: center;
+    }
+    &--left {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      color: $headings;
+    }
+    &--right {
+      width: 50%;
+      display: flex;
+      .MuiIconButton-root {
+        padding: 5px;
+      }
+    }
+    &__current {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.01em;
+      color: $headings;
+      margin: 4px 7px;
+    }
+    .MuiSvgIcon-root {
+      font-size: 2rem;
+    }
+  }
+  .picker-body {
+    display: flex;
+    flex-wrap: wrap;
+    .picker-item {
+      &.MuiButton-root {
+        flex: 1 0 25%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: $paragraphs;
+        width: 100%;
+        max-width: 80px;
+        height: 80px;
+        .MuiButton-label {
+          font-weight: bold;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0.01em;
+          text-transform: capitalize;
+        }
+      }
+      &.in-range {
+        &.MuiButton-root {
+          background: $hover-selected;
+          color: $paragraphs;
+        }
+      }
+      &.active {
+        &.MuiButton-root {
+          background: $primary;
+          border-radius: 8px;
+          color: $white;
+        }
+      }
+    }
+  }
+  .picker-footer {
+    border-top: 1px solid #c4c4c4;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .btn-text {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      color: $paragraphs;
+      text-transform: capitalize;
+      font-family: 'Open Sans';
+    }
+    .btn-block {
+      width: 106px;
+      height: 28px;
+      background: $primary;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.01em;
+      color: #ffffff;
+      text-transform: capitalize;
+      font-family: 'Open Sans';
+      .MuiButton-label {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+  }
+}

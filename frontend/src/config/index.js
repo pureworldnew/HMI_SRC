@@ -1,0 +1,10 @@
+const config = {
+  NODE_ENV: process.env.NODE_ENV,
+  PUBLIC_URL: process.env.PUBLIC_URL,
+  API_URL: process.env.REACT_APP_API_URL,
+  INSIGHTS_API_HOSTNAME: process.env.REACT_APP_INSIGHTS_API_HOSTNAME,
+  INSIGHTS_API_PORT: process.env.REACT_APP_INSIGHTS_API_PORT,
+  INSIGHTS_API_PROTOCOL: process.env.REACT_APP_INSIGHTS_API_PROTOCOL
+};
+
+export default config;

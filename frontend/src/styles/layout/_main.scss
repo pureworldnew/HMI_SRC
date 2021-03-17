@@ -1,0 +1,43 @@
+.main {
+  // display: flex;
+  &__headerwithcontent {
+    flex: 1;
+    margin-left: 5rem;
+  }
+  &__headerForPresentation {
+    flex: 1;
+    margin-left: 142px;
+
+    button.button.exit-button {
+        background-color: #fff;
+        border: 1px solid #1C5DE1;
+        color: #1C5DE1;
+        padding: 9px 10px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+  }
+  &__headerForPresentationPlay {
+    flex: 1;
+    margin-left: 0rem;
+  }
+  &__content {
+    min-height: calc(100vh - 72px);
+    transition: width 0.2s;
+  }
+  &__sidebar-container {
+    width: 236px;
+    overflow: hidden;
+    transition: width 0.2s;
+    @media (max-width: 768px) {
+      width: 5rem;
+    }
+  }
+
+  &__sidebar-container-collapse {
+    width: 5rem;
+  }
+}

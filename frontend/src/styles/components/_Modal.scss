@@ -1,0 +1,56 @@
+.dialog-wrapper {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 32px 32px 16px;
+  width: 100%;
+  max-width: 684px;
+  height: auto;
+  max-height: 617px;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  font-family: 'Open Sans';
+  font-style: normal;
+  position: absolute;
+  hr {
+    border-top: 1px solid #c4c4c4;
+    margin-bottom: 16px;
+  }
+  .dialog-close-btn {
+    color: #000000;
+    position: absolute;
+    right: 19px;
+    top: 24px;
+    svg {
+      font-size: 32px;
+    }
+  }
+  .dialog-header {
+    margin-bottom: 32px;
+    h3 {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+  .dialog-body {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 32px;
+    margin-top: 32px;
+    color: #000000;
+    display: block;
+    max-height: 378px;
+    p {
+      color: #000000;
+    }
+  }
+  .dialog-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

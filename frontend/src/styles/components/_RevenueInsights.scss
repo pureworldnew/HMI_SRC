@@ -1,0 +1,125 @@
+.revenue-insights {
+  // .net-revenue-retention {
+  // }
+
+  &__statsGrid {
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: "card-1 card-2""card-3 card-4";
+    }
+
+    @media (max-width: 620px) {
+      grid-template-columns: 1fr;
+      grid-template-areas: "card-1""card-2""card-3""card-4";
+    }
+
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 24px;
+    grid-template-areas: "card-1 card-2 card-3 card-4";
+
+  }
+
+  .adminTeams {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "card-1 card-2 card-3""card-4 card-5 card-6""card-7 card-8 card-9";
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: "card-1 card-2""card-3 card-4""card-5 card-6""card-7 card-8";
+    }
+
+    @media (max-width: 620px) {
+      grid-template-columns: 1fr;
+      grid-template-areas: "card-1""card-2""card-3""card-4""card-5""card-6""card-7""card-8""card-9";
+    }
+
+    .statcard {
+      height: 175px;
+      z-index: 1;
+    }
+  }
+
+  &__statsGrid5 {
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-areas: "card-1 card-1 card-2"
+        "card-3 card-4 card-5";
+    }
+
+    @media (max-width: 620px) {
+      grid-template-columns: 1fr;
+      grid-template-areas: "card-1""card-2""card-3""card-4""card-5";
+    }
+
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+    grid-template-areas: "card-1 card-2 card-3 card-4 card-5";
+  }
+}
+
+.recharts-legend-wrapper {
+  ul {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bolder;
+  }
+}
+
+.active {
+  background-color: rgb(3, 3, 3);
+}
+
+.inactive {
+  background-color: rgb(87, 87, 87);
+}
+
+.contracts-water-fall {
+  border-radius: 4px;
+  background: #C4C4C4;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-bottom: 10px;
+  margin-top: 24px;
+
+  .table-header {
+    .table-name {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      line-height: 24px;
+    }
+  }
+}
+
+.contracts-table {
+  border-radius: 4px;
+  background: #C4C4C4;
+  // padding-top: 24px;
+  padding-left: 24px;
+  padding-bottom: 19px;
+  padding-right: 24px;
+  // margin-top: 24px; // For full table view
+
+  .table-header {
+    .table-name {
+      padding-top: 20px;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      line-height: 24px;
+    }
+  }
+}
+
+
+
+.expiring-contracts {
+    .table-freeze .MuiPaper-root .MuiTableCell-head {
+        width: 25%;
+    }
+}

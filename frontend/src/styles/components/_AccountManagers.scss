@@ -1,0 +1,226 @@
+.dashboard.managers {
+  font-family: 'Open Sans';
+
+  .dashboard__buttons {
+    width: 397px;
+    flex: none;
+  }
+
+  .managers {
+    &-container {
+      width: 100%;
+      height: 684px;
+      margin-top: 20px;
+      background-color: $white;
+      border-radius: 4px;
+      padding: 20px 24px;
+      box-shadow: $content-block-shadow;
+      .table-header {
+        .table-name {
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+
+      &-toggle {
+          cursor: pointer;
+          width: fit-content;
+          display: flex;
+          align-items: center;
+
+          .custom-chevron-icon {
+              margin-left: 8px;
+              cursor: pointer;
+          }
+      }
+
+      .dropdown {
+          position: inherit;
+
+          &-menu * {
+              color: #ffffff;
+              font-family: 'Open Sans';
+              font-style: normal;
+          }
+          &-menu {
+              width: 235px;
+              background-color: #1E2C36;
+              border-radius: 8px;
+              padding: 10px 24px;
+
+              &-title {
+                  margin-top: 14px;
+                  padding-bottom: 16px;
+                  border-bottom: 1px solid #868E9A;
+
+                  h4, p {
+                      font-size: 16px;
+                      line-height: 24px;
+                      font-weight: bold;
+                  }
+                  h4 {margin-bottom: 6px}
+                  p {margin-bottom: 0}
+              }
+
+
+              .list-unstyled {
+                  width: 202px;
+                  height: 250px;
+                  overflow-y: auto;
+                  overflow-x: hidden;
+              }
+              // custom scroll
+              .list-unstyled::-webkit-scrollbar-track {
+                  border-radius: 10px;
+              }
+              .list-unstyled::-webkit-scrollbar {
+                  background-color: transparent;
+                  width: 4px;
+              }
+              .list-unstyled::-webkit-scrollbar-thumb {
+                  background-color: #495660;
+                  border-radius: 10px;
+              }
+
+              input.form-control {
+                  width: 100%;
+                  margin: 16px 0;
+                  background-color: #1E2C36;
+                  border: 1px solid #868E9A;
+                  border-radius: 4px;
+                  padding: 6px 6px 6px 38px;
+                  font-size: 12px;
+                  font-weight: 600;
+              }
+              .dropdown-item {
+                  padding: 8px 0;
+
+                  label {
+                      margin-left: 0;
+                  }
+                  span {
+                      font-size: 14px !important;
+                      line-height: 20px;
+                      font-weight: bold !important;
+                  }
+                  span.MuiFormControlLabel-label {
+                      margin-left: 8px;
+                  }
+                  .MuiIconButton-label input {
+                      border: 2px solid #868E9A;
+                  }
+                  .MuiSvgIcon-root {
+                    width: 24px;
+                    height: 24px;
+                  }
+                  .MuiIconButton-root.Mui-checked .MuiSvgIcon-root {
+                      fill: #1C5DE1;
+                  }
+              }
+              .dropdown-item:hover {
+                  background-color: transparent;
+              }
+
+              &-searchIcon {
+                  height: 28px;
+                  background-repeat: no-repeat;
+                  background-position: 14px 6px;
+                  background-image: url('assets/svg/AccountManagers/searchIcon.svg');
+              }
+          }
+      }
+
+      .table-container {
+        .MuiPaper-root {
+          background-color: transparent !important;
+        }
+        .MuiTableCell-root {
+          border-bottom: 1px solid $border-color;
+        }
+        table {
+          thead .MuiTableCell-root:nth-child(1) {
+            width: 31.33%;
+          }
+          thead .MuiTableCell-root:nth-child(2) {
+            width: 31.33%;
+          }
+          thead .MuiTableCell-root:nth-child(3) {
+            width: 31.33%;
+          }
+          thead .MuiTableCell-root:nth-child(4) {
+            width: 6%;
+          }
+          .acm-options {
+            text-align: center;
+
+            .MuiSvgIcon-root {
+              height: 1.5em;
+              width: 1.5em;
+            }
+          }
+        }
+
+        .custom-search {
+          float: right;
+        }
+        .table-footer {
+          margin-top: 8px;
+
+          .table-footer-right {
+            position: relative;
+            bottom: -12px;
+          }
+        }
+
+
+        .account-manager {
+
+
+            &-display, &-container {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-size: 14px;
+                line-height: 20px;
+            }
+            &-name {
+                font-weight: bold;
+            }
+
+
+            &-container {
+              display: flex;
+              align-items: center;
+
+              .manager-icon {
+                width: 36px;
+                height: 36px;
+                margin-right: 12px;
+              }
+            }
+        }
+
+
+      }
+    }
+  }
+
+  .MuiDialog-root {
+    .MuiPaper-root {
+      background-color: #fff !important;
+    }
+  }
+
+  .MuiIconButton-root {
+    padding: 0;
+  }
+}
+
+
+
+.custom-chevron-icon {
+  width: 15px;
+  height: 8px;
+  background-repeat: no-repeat;
+  background-image: url('assets/svg/AccountManagers/chevronIcon.svg');
+}

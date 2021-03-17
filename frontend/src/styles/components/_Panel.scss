@@ -1,0 +1,116 @@
+.panel {
+  border-radius: 4px;
+  background: $white;
+  padding: 0px 24px 15px;
+  // margin-top: 24px; // For full table view
+  min-height: inherit;
+  box-shadow: $box-shadow;
+  &.terminology {
+    padding: 40px 40px 15px;
+  }
+  &-header {
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    padding-top: 18px;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 18px;
+    &.terminology {
+      padding-top: 0px;
+      border-bottom: none;
+      height: 28px;
+    }
+  }
+  &-name {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    &.terminology {
+      font-size: 20px;
+      line-height: 28px;
+      color: $headings;
+    }
+  }
+  &-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    label {
+      position: relative;
+    }
+    label:before {
+      content: '';
+      position: absolute;
+      left: 12.24px;
+      top: 0;
+      bottom: 0;
+      width: 14px;
+      background-color: $placeholder-color;
+      background: url('data:image/svg+xml, <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.447293 12.7518L3.77931 9.28631C2.92259 8.26788 2.45319 6.98648 2.45319 5.65249C2.45319 2.53576 4.98895 0 8.10568 0C11.2224 0 13.7582 2.53576 13.7582 5.65249C13.7582 8.76923 11.2224 11.305 8.10568 11.305C6.93562 11.305 5.8206 10.9521 4.8673 10.2821L1.50996 13.7739C1.36963 13.9196 1.18089 14 0.978627 14C0.78718 14 0.605563 13.927 0.467691 13.7943C0.174745 13.5124 0.165405 13.045 0.447293 12.7518ZM8.10568 1.47456C5.80193 1.47456 3.92775 3.34873 3.92775 5.65249C3.92775 7.95625 5.80193 9.83043 8.10568 9.83043C10.4094 9.83043 12.2836 7.95625 12.2836 5.65249C12.2836 3.34873 10.4094 1.47456 8.10568 1.47456Z" fill="currentColor"/></svg>')
+        center no-repeat;
+    }
+    input {
+      padding: 6px 10px 6px 38px;
+      border: $border;
+      border-radius: 4px;
+      background: white;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.01em;
+      width: 90px;
+      height: 28px;
+      &::placeholder {
+        font-weight: 600;
+        color: $placeholder-color;
+      }
+    }
+    &-more-menu {
+      margin-left: 12px;
+      .MuiIconButton-root {
+        padding: 10px 12px;
+      }
+      svg {
+        font-size: 2.25rem;
+        color: $placeholder-color;
+      }
+    }
+  }
+  &-body {
+    overflow-x: auto;
+    margin-bottom: 18px;
+    &.terminology {
+      margin-top: 34px;
+      min-height: 502px;
+      label {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 8px;
+        color: $headings;
+      }
+      &.--select {
+        &__container {
+          height: 100px;
+          width: 498px;
+        }
+      }
+      input {
+        font-family: 'Open Sans';
+        padding: 0.5rem;
+        border: 1px solid $elements1;
+        font-size: 14px;
+        font-weight: 600;
+        height: 56px;
+        line-height: 20px;
+        border-radius: 4px;
+        width: 498px;
+        background: $white;
+        ::placeholder {
+          color: #b7b7b7;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+/*
+* Global style variables
+*/
+
+/*
+* Color Styles
+*/
+$headings: #1E2C36;
+$paragraphs: #495660;
+$primary: #1C5DE1;
+$icongraphy: #868E9A;
+$elements1: #E4E4E4;
+$elements2: #E6E6E6;
+$background: #F9FAFC;
+$purple: #7747E3;
+$green: #3CD278;
+$red: #EB367E;
+$yellow: #F7D68A;
+$white: #FFFFFF;
+$hover-selected: #EAF8FB;
+// font styles
+$placeholder-color: #868E9A;
+
+/*
+* Text Styles
+*/
+$inputs: 14px;
+$body-text: 14px;
+$buttons: 14px;
+$body-text: 14px;
+$title-sm: 16px;
+$title-md: 20px;
+$title-bg: 24px;
+$title-lg: 32px;
+
+// backgroud color
+$black-color: #000000;
+$login-background-color: #c4c4c4;
+
+// font-size
+$font-14: 14px;
+$font-12: 12px;
+
+// line-height
+$line-h16: 16px;
+$line-h20: 20px;
+$line-h24: 24px;
+$line-h26: 26px;
+$line-h44: 44px;
+
+// button height
+$btn-h56: 56px;
+$btn-h28: 28px;
+
+// letter spacing
+$btn-letter-spacing1: 0.01em;
+$lbl-letter-spacing1: 0.01em;
+
+// input text style
+$input-font-style: "Open Sans";
+$input-font-w: 600;
+$input-line-h: 20px;
+$input-txt-font-size: 14px;
+
+// global backgroud style
+//$bg: #C4C4C4;
+$bg: #FFFFFF;
+$box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
+$content-block-shadow: $box-shadow;
+
+$border: 1px solid #E4E4E4;
+$border-color: #E4E4E4;
+$border-radius: 4px;
+
+
+// table var
+$table-border-color: #E4E4E4;
+$table-background-color: #FFFFFF;
+$table-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
+$table-border-radius: 4px;
+
+
+html {
+    font-size: 10px;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+button,
+select,
+input,
+textarea {
+    outline: none;
+}

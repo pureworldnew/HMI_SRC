@@ -1,0 +1,305 @@
+.button {
+  border: none;
+  padding: 1rem;
+  font-size: $font-14;
+  color: #fff;
+  font-family: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 4px;
+  letter-spacing: $btn-letter-spacing1;
+  font-weight: bold;
+  line-height: $line-h20;
+
+  &-primary {
+    background: $primary;
+    color: $white;
+  }
+  &.full-table-view {
+    padding: 6px 12px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    //justify-content: space-between;
+    letter-spacing: 0.01em;
+    min-width: 140px;
+    background: #FFFFFF;
+    color: #1C5DE1;
+    border: 1px solid #1C5DE1;
+    border-radius: 4px;
+  }
+  &.button-mr {
+    margin-right: 24px;
+  }
+  &--disabled {
+    background-color: #f1f1f1 !important;
+    color: #868E9A !important;
+  }
+  &--block {
+    width: 100%;
+    height: $btn-h56;
+    font-weight: 600;
+    padding-left: 20px;
+    padding-right: 20px;
+    outline: none;
+    background-color: $primary;
+    &.icon-between {
+      width: auto;
+      .MuiSvgIcon-root {
+        font-size: 2rem;
+        transform: rotateX(180deg);
+      }
+      justify-content: space-between;
+    }
+    &-outline {
+      display: flex;
+      align-items: center;
+      color: #868E9A;
+      padding-left: 20px;
+      padding-right: 20px;
+      background: #FFFFFF;
+      box-shadow: $content-block-shadow;
+      border-radius: 4px;
+    }
+    &-admin {
+      padding: 18px 20px;
+      font-weight: 600;
+      height: 56px;
+      &-teamcreate {
+        width: 312px;
+        height: 56px;
+        @media (max-width: 576px) {
+          width: 100% !important;
+        }
+      }
+      &-teamcreatecancel {
+        width: 112px;
+        height: 56px;
+        background: #ffffff;
+        border: 1px solid #c4c4c4;
+        color: #c4c4c4;
+        @media (max-width: 576px) {
+          width: 100% !important;
+        }
+      }
+      &-teamcreatecancel {
+        width: 112px;
+        height: 56px;
+        background: #ffffff;
+        border: 1px solid #c4c4c4;
+        color: #c4c4c4;
+        @media (max-width: 576px) {
+          width: 100% !important;
+        }
+      }
+      &-teamviewcancel {
+        width: 106px;
+        height: 28px;
+        background: #ffffff;
+        border: 1px solid #b6b6b6;
+        box-sizing: border-box;
+        border-radius: 4px;
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.01em;
+        color: #b6b6b6;
+        margin-top: 1% !important;
+        padding-top: 1%;
+      }
+      &-teamsave {
+        width: 132px;
+        height: 28px;
+        background: #000000;
+        border-radius: 4px;
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.01em;
+        color: #ffffff;
+        margin-top: 1% !important;
+        padding-top: 1%;
+      }
+      &-addmember {
+        width: 212px;
+        height: 56px;
+        background: #000000;
+        border-radius: 4px;
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.01em;
+        color: #ffffff;
+        margin-left: 34px;
+      }
+      &-terminology {
+        margin-top: 20px;
+        width: 498px;
+        height: 56px;
+        background: $primary;
+        opacity: 0.3;
+        &.active {
+          opacity: 1;
+        }
+      }
+      &-connections {
+        margin-top: 20px;
+        width: 498px;
+        height: 56px;
+      }
+      &-connections1 {
+        margin-top: 20px;
+        width: 239px;
+        height: 56px;
+        margin-right: 20px;
+        &.button-outlined {
+          background: white;
+          color: $icongraphy;
+          border: 1px solid $elements1;
+        }
+      }
+      &-bulk {
+        &-next {
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 0.01em;
+          height: 28px;
+          width: 132px;
+          padding: 0;
+        }
+        &-cancel {
+          height: 28px;
+          width: 106px;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 16px;
+          border: 1px solid #b6b6b6;
+          letter-spacing: 0.01em;
+          background: #ffffff;
+          color: #b6b6b6;
+          padding: 0;
+        }
+      }
+    }
+    &-tasklist {
+        max-width: 164px;
+        height: 56px;
+        padding: 18px 16px;
+        font-weight: bold;
+    }
+  }
+  p {
+    font-size: 14px;
+  }
+  &-terminology {
+    margin-top: 20px;
+    width: 498px;
+    height: 56px;
+  }
+  &-connections {
+    margin-top: 20px;
+    width: 498px;
+    height: 56px;
+  }
+  &.presentation_btn {
+    background-color: $primary;
+    font-size: $font-12;
+    line-height: $line-h16;
+  }
+  &__svg {
+    padding-right: 12px;
+  }
+  &--sm {
+    height: 30px;
+    padding: 0 12px;
+  }
+}
+
+.dots-btn {
+  &.MuiSvgIcon-root {
+    font-size: 2.25rem;
+    color: #868E9A;
+  }
+}
+
+.header_buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.header_buttons > div {
+  display: flex;
+}
+
+.select_button {
+  width: 129px;
+  margin-left: 24px;
+  margin-right: 24px;
+  text-align: center;
+  line-height: 35px;
+}
+
+.button_connect {
+  width: 143px;
+  height: $btn-h56;
+  padding: 20px;
+}
+
+.generate_password {
+  float: right;
+  padding-right: 1rem;
+  margin-right: 2rem;
+  background: none;
+  border: none;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-top: 8px;
+}
+
+#logout-popover {
+  background: none;
+  border: none;
+}
+
+.logout-popover-wrapper {
+  margin-top: 0px;
+  ._editProfile {
+    margin-bottom: 5px;
+  }
+  button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    line-height: 12px;
+    font-weight: 600;
+  }
+}
+
+.btn-dots-more {
+  .MuiSvgIcon-root {
+    font-size: 2.5rem;
+    color: #000000;
+  }
+}

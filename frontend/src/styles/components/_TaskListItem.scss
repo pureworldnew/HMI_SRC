@@ -1,0 +1,256 @@
+.taskls {
+
+
+    &-header {
+        display: flex;
+        height: 43px;
+        align-items: center;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 16px;
+    }
+
+    &-container {
+        margin: 0;
+    }
+
+    &-item-row {
+        max-height: 64px;
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        padding: 13px 0;
+        background: $white;
+        box-shadow: $content-block-shadow;
+    }
+
+
+    // &-item-row :first-child {
+    //     flex: 0;
+    //     padding-left: 20px;
+    // }
+
+    // &-item-row :last-child {
+    //     flex: 0;
+    //     margin-right: 20px;
+    //     margin-right: 5px;
+    // }
+
+    &-item {
+        font-size: 14px;
+        font-weight: 600;
+        font-family: 'Open Sans';
+        font-weight: bold;
+
+        .progress-date {
+            background: $elements1;
+            color: white;
+            border-radius: 12px;
+            height: 16px;
+            width: 173px;
+            overflow: hidden;
+            position: relative;
+
+            div {
+                background-color: $primary;
+                height: 28px;
+            }
+        }
+
+
+        &.active {
+            display: flex;
+            align-items: center;
+            background: none !important;
+
+            div {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                margin-right: 8px;
+
+                &.active {
+                    width: 16px;
+                    height: 16px;
+                    background-repeat: no-repeat;
+                    background: $green;
+                    //background-image: url('assets/svg/task-active.svg');
+                }
+            }
+
+            div {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                margin-right: 8px;
+
+                &.inactive {
+                    width: 16px;
+                    height: 16px;
+                    background-repeat: no-repeat;
+                    background: $icongraphy;
+                }
+            }
+        }
+
+        img {
+            width: 45px;
+            height: 20px;
+        }
+    }
+
+
+    .t-state {
+        width: 4%;
+    }
+    .t-name {
+        width: 20%
+    }
+    .t-company {
+        width: 15%;
+    }
+    .t-timeremain {
+        width: 18%;
+    }
+    .t-assignees {
+        width: 16%;
+        display: flex;
+
+        .assign-container {
+            display: flex;
+            margin-left: 4px;
+        }
+        .assign-container div:nth-child(1){
+            position: relative;
+        }
+        .assign-container div:not(:first-child) {
+            position: relative;
+            left: -10px;
+        }
+
+        .assign-icon {
+            width: 36px;
+            height: 36px;
+            background-repeat: no-repeat;
+
+            &-main {
+
+            }
+            &-child {
+                background-image: url('assets/svg/assignees.svg');
+            }
+            &-label {
+                color: #fff;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                justify-content: center;
+            }
+        }
+    }
+    .t-comments {
+        width: 12%;
+        display: flex;
+
+        div {
+            margin-right: 8px;
+            width: 25px;
+            height: 25px;
+            background-repeat: no-repeat;
+            background-color: $icongraphy;
+            mask: url('assets/svg/comments.svg');
+        }
+    }
+    .t-status {
+        width: 10%;
+    }
+    .t-options {
+        width: 5%;
+        padding-left: 2px;
+    }
+
+
+
+    .radio {
+        margin-left: 10px;
+
+        &.selected{
+            background-color: black;
+        }
+    }
+
+    .status {
+        border-radius: 50%;
+        cursor: pointer;
+
+        &.completed {
+            position: relative;
+            display: inline-block;
+            background-color: black;
+        }
+        &.completed::before {
+            position: absolute;
+            left: -3px;
+            top: 45%;
+            height: 30%;
+            width: 2px;
+            background-color: white;
+            content: "";
+            transform: translateX(10px) rotate(-45deg);
+            transform-origin: left bottom;
+        }
+        &.completed::after {
+            position: absolute;
+            left: -2px;
+            bottom: 5px;
+            height: 2px;
+            width: 50%;
+            background-color: white;
+            content: "";
+            transform: translateX(10px) rotate(-45deg);
+            transform-origin: left bottom;
+        }
+    }
+
+}
+
+
+.date .progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: black;
+    color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+    &.full{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 20px;
+    }
+}
+
+.date .date-text {
+    color: #000000;
+    width: 100%;
+    position: relative;
+    top: 3px;
+}
+
+.tasklsMoreIcon {
+
+    .t-options {
+        width: 5%;
+    }
+}
