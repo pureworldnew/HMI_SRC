@@ -10,4 +10,9 @@ module.exports = function (app) {
     [authJwt.verifyToken],
     settingsController.limitSet
   );
+  app.get(
+    "/admin/settings/getLimit",
+    [authJwt.verifyToken],
+    settingsController.limitGet
+  );
 };

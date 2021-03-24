@@ -38,19 +38,29 @@ module.exports = {
       });
   },
 
-  companyCreate(req, res) {
-    return company
-      .create({
-        companyName: req.body.companyName,
-      })
-      .then((company) => {})
+  limitGet(req, res) {
+    return settingModel
+      .all()
+      .then((limitVal) =>
+        res
+          .status(200)
+          .json(
+            ResponseFormat.build(
+              limitVal,
+              "Settings Information Reterive successfully",
+              200,
+              "success"
+            )
+          )
+      )
       .catch((error) =>
         res
           .status(400)
-          .json(
-            ResponseFormat.error(
+          .send(
+            ResponseFormat.build(
               error,
-              "Something went wrong when create Company",
+              "Somthing went wrong when Reterieve Information",
+              400,
               "error"
             )
           )
