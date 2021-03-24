@@ -20,4 +20,9 @@ module.exports = function (app) {
     [authJwt.verifyToken],
     settingsController.logUrlGet
   );
+  app.delete(
+    "/admin/settings/removeLogUrl",
+    [authJwt.verifyToken],
+    settingsController.logUrlRemove
+  );
 };

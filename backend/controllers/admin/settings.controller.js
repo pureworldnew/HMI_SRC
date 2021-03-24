@@ -94,4 +94,19 @@ module.exports = {
           )
       );
   },
+  logUrlRemove(req, res) {
+    return settingModel
+      .update(
+        { logUrl: null },
+        {
+          where: { logUrl: req.body.logUrl },
+        }
+      )
+      .then(() => {
+        console.log("successfully updated company id with null");
+      })
+      .catch((err) => {
+        console.log("update company id err", err);
+      });
+  },
 };

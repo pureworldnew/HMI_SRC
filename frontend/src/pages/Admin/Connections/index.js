@@ -7,6 +7,7 @@ import loadingGif from '../../../assets/gif/loading.gif';
 const Connections = (props) => {
   const [googleApi, setGoogleApi] = useState('');
   const [url, setUrl] = useState('');
+  const [logUrl, setLogUrl] = useState('');
   const [database_googleApi, setDatabase_googleApi] = useState('');
   const [database_url, setDatabase_url] = useState('');
   const [companyId, setCompanyId] = useState(null);
@@ -16,7 +17,7 @@ const Connections = (props) => {
     AdminService.getLogUrl()
       .then((res) => {
         console.log('res is ', res);
-        setUrl(res.data[0].logUrl);
+        setLogUrl(res.data[0].logUrl);
       })
       .catch((err) => {
         console.log('Error:', err);
@@ -34,34 +35,13 @@ const Connections = (props) => {
   };
 
   const updateApi = (type) => {
-    console.log('this is reducer', props.set_connection_company);
-    if (googleApi || type === 'remove') {
-      if (companyId) {
-        if (type === 'add')
-          var data = {
-            companyId: companyId,
-            googleApi: googleApi
-          };
-        else if (type === 'remove')
-          var data = {
-            companyId: companyId,
-            googleApi: null
-          };
-        ConnectionsService.updateGoogleApi(data)
-          .then((res) => {
-            setDatabase_googleApi(res.data.googleApi);
-            setGoogleApi(res.data.googleApi ? res.data.googleApi : '');
-            alert('successfully updated');
-            // console.log(res.data);
-          })
-          .catch((err) => {
-            console.log('Error:', err);
-            alert('Failed');
-          });
-      } else alert('please select company');
-    } else {
-      alert('please input API');
-    }
+    AdminService.removeLogUrl(logUrl)
+      .then((res) => {
+        console.log('res is ', res);
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+      });
   };
 
   const insertGoogleSheet = () => {
@@ -141,7 +121,9 @@ const Connections = (props) => {
   return (
     <div className="panel terminology">
       <div className="panel-header terminology">
-        <div className="panel-name terminology">Sensor Log URL</div>
+        <div className="panel-name terminology">
+          Sensor Log URL Set / Import
+        </div>
       </div>
       {pageLoading ? (
         <div className="panel-body terminology d-flex justify-content-center align-items-center">
@@ -153,12 +135,12 @@ const Connections = (props) => {
             <label>Enter the sensor log URL</label>
             <input
               type="text"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
+              value={logUrl}
+              onChange={(e) => setLogUrl(e.target.value)}
             />
           </div>
 
-          {database_googleApi ? (
+          {logUrl ? (
             <div className="d-flex">
               <button
                 className="button button--block-admin-connections1 mb-5 button-outlined"
@@ -180,16 +162,11 @@ const Connections = (props) => {
           )}
 
           <div className="input-control" style={{ display: 'grid' }}>
-            <label></label>
-            <input
-              type="text"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://"
-            />
+            <label>Import Logs from link into Database</label>
+            <input type="text" value={logUrl} readOnly placeholder="" />
           </div>
 
-          {database_url ? (
+          {logUrl ? (
             <div className="d-flex">
               <button
                 className="button button--block-admin-connections1 button-outlined"

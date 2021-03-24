@@ -47,5 +47,17 @@ class AdminService {
       .then((res) => res.data)
       .catch((error) => handleErrorResponseObject(error));
   };
+  removeLogUrl = (url) => {
+    console.log('url', url);
+    const api = getInsightBackendAPI();
+    const token = window.localStorage.getItem('access_token');
+    return axios
+      .delete(`${api}/admin/settings/removeLogUrl`, {
+        headers: { Authorization: `Bearer ${token}` },
+        data: { logUrl: url }
+      })
+      .then((res) => res.data)
+      .catch((error) => handleErrorResponseObject(error));
+  };
 }
 export default new AdminService();
