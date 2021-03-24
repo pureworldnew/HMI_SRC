@@ -6,6 +6,7 @@ import { sheets } from './models/_sheets';
 import { presentation } from './models/_presentation';
 import { presentations } from './models/_presentations';
 import { company } from './models/_company';
+import { sensor } from './models/_sensor';
 import { dashboard_header } from './models/_dashboard_header';
 import { table } from './models/_table';
 import { alerts } from './models/_alerts';
@@ -21,6 +22,7 @@ const store = init({
     sheets,
     presentation,
     company,
+    sensor,
     dashboard_header,
     presentations,
     table,

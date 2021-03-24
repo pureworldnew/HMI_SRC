@@ -29,6 +29,8 @@ app.use(function (req, res, next) {
 
 require("./routes").authRoute(app); // auth - signin, signup
 require("./routes").adminRoute(app); // admin
+require("./routes").adminUserRoute(app);
+require("./routes").adminSensorRoute(app);
 require("./routes").revenueRoute(app);
 require("./routes").presentationRoute(app);
 require("./routes").alertsRoute(app);

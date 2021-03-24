@@ -152,11 +152,7 @@ const companyOptions = [
 ];
 
 const Header = (props) => {
-  const {
-      presentationNames,
-      onSelectChange,
-      createTask
-  } = props;
+  const { presentationNames, onSelectChange, createTask } = props;
   const {
     date,
     setDate,
@@ -283,15 +279,15 @@ const Header = (props) => {
             className="revenue_companies"
             options={companies_options}
             placeholder="Companies: All"
-          // onChange={select_revenucompany}
-          // value={revenue_company}
+            // onChange={select_revenucompany}
+            // value={revenue_company}
           />
           <Select
             classNamePrefix="select-react"
             className="revenue_segments"
             options={segments_options}
             placeholder="Segments: All"
-          // onChange={select_segment}
+            // onChange={select_segment}
           />
           <Select
             classNamePrefix="select-react"
@@ -345,7 +341,11 @@ const Header = (props) => {
             placeholder="Viewing by: Period"
             onChange={(val) => sethorizontaltab(val.value)}
           />
-          <Select options={options_monthly} placeholder="Monthly" onChange={(val) => setTimeBase(val.value)} />
+          <Select
+            options={options_monthly}
+            placeholder="Monthly"
+            onChange={(val) => setTimeBase(val.value)}
+          />
           <Button variant="contained" color="black" className={classes.button}>
             More filters
           </Button>
@@ -394,7 +394,9 @@ const Header = (props) => {
         <div className="revenue__buttons">
           {activetab === 'Contracts' ? (
             <div style={{ display: 'flex' }}>
-              <UnAvailableToolTip style={{ display: 'flex' }} title="Not available in beta!">
+              <UnAvailableToolTip
+                style={{ display: 'flex' }}
+                title="Not available in beta!">
                 <button
                   className="button button--block-outline button-mr button--disabled"
                   aria-controls="simple-menu"
@@ -407,7 +409,9 @@ const Header = (props) => {
                   />
                 </button>
               </UnAvailableToolTip>
-              <UnAvailableToolTip style={{ display: 'flex' }} title="Not available in beta!">
+              <UnAvailableToolTip
+                style={{ display: 'flex' }}
+                title="Not available in beta!">
                 <button className="button button--block icon-between button--disabled">
                   Import
                   <SystemUpdateAltIcon style={{ marginLeft: '2.5rem' }} />
@@ -455,40 +459,40 @@ const Header = (props) => {
               />
             </>
           ) : (
-                <>
-                  {/* <SelectSearch
+            <>
+              {/* <SelectSearch
                     dataOptions={revenueCompanies}
                     width="180px"
                   /> */}
-                  <Select
-                    classNamePrefix="select-react"
-                    className="revenue_companies"
-                    options={revenueCompanies}
-                    placeholder="Companies: All"
-                    onChange={select_revenucompany}
-                    value={revenue_company}
-                  />
-                  <Select
-                    classNamePrefix="select-react"
-                    className="revenue_segments"
-                    options={segments_options}
-                    placeholder="Segments: All"
-                    onChange={select_segment}
-                  />
-                  <Select
-                    classNamePrefix="select-react"
-                    className="revenue_top"
-                    options={top_options}
-                    placeholder="Top: All"
-                  />
-                  <Select
-                    classNamePrefix="select-react"
-                    className="revenue_monthly"
-                    options={monthly_options}
-                    placeholder="Monthly"
-                  />
-                </>
-              )}
+              <Select
+                classNamePrefix="select-react"
+                className="revenue_companies"
+                options={revenueCompanies}
+                placeholder="Companies: All"
+                onChange={select_revenucompany}
+                value={revenue_company}
+              />
+              <Select
+                classNamePrefix="select-react"
+                className="revenue_segments"
+                options={segments_options}
+                placeholder="Segments: All"
+                onChange={select_segment}
+              />
+              <Select
+                classNamePrefix="select-react"
+                className="revenue_top"
+                options={top_options}
+                placeholder="Top: All"
+              />
+              <Select
+                classNamePrefix="select-react"
+                className="revenue_monthly"
+                options={monthly_options}
+                placeholder="Monthly"
+              />
+            </>
+          )}
         </div>
       </div>
     );
@@ -586,8 +590,7 @@ const Header = (props) => {
 
           <button
             onClick={createTask}
-            className="button button--block-tasklist button-primary"
-          >
+            className="button button--block-tasklist button-primary">
             <p>+ Create New Task</p>
           </button>
 
@@ -645,6 +648,21 @@ const Header = (props) => {
     );
   } else if (title === 'Admin') {
     if (type === 'AdminCompanies') {
+      return (
+        <div className="dashboard__header">
+          <div className="dashboard__welcomeMessage welcomeMessage">
+            <h3 className="welcomeMessage__title">{title}</h3>
+          </div>
+          <div className="revenue__buttons">
+            <TeamsCreateModal
+              buttonLabel="+ Add New Company"
+              className="TeamsCreateModalCustomCss"
+              type="companies"
+            />
+          </div>
+        </div>
+      );
+    } else if (type === 'AdminSensors') {
       return (
         <div className="dashboard__header">
           <div className="dashboard__welcomeMessage welcomeMessage">

@@ -18,8 +18,8 @@ export const presentations = {
 	},
 	effects: (dispatch) => ({
         async getPresentations() {
-            let presentations = await PresentationService.getPresentations();
-           this.updateState(presentations, 'archived');
+          //   let presentations = await PresentationService.getPresentations();
+          //  this.updateState(presentations, 'archived');
         }
 	})
 };
