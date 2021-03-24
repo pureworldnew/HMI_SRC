@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Setting extends Model {
+  class SensorLog extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,13 +13,17 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  Setting.init({
-    lowLimitVol: DataTypes.DOUBLE,
-    cautionLimitVol: DataTypes.DOUBLE,
-    logUrl: DataTypes.STRING
+  SensorLog.init({
+    includeDate: DataTypes.DATE,
+    includeTime: DataTypes.TIME,
+    deviceName: DataTypes.STRING,
+    macAddress: DataTypes.STRING,
+    temp1: DataTypes.STRING,
+    temp2: DataTypes.STRING,
+    voltage: DataTypes.DOUBLE
   }, {
     sequelize,
-    modelName: 'Setting',
+    modelName: 'SensorLog',
   });
-  return Setting;
+  return SensorLog;
 };

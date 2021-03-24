@@ -14,6 +14,9 @@ module.exports = {
       cautionLimitVol: {
         type: Sequelize.DOUBLE
       },
+      logUrl: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

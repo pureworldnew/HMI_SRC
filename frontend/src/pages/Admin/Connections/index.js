@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ConnectionsService from './../../../services/ConnectionsService';
-import ComapanyService from '../../../services/CompanyService';
+import AdminService from '../../../services/AdminService';
 import { connect } from 'react-redux';
 import loadingGif from '../../../assets/gif/loading.gif';
 
@@ -13,28 +13,15 @@ const Connections = (props) => {
   const [pageLoading, setPageLoading] = useState(false);
 
   useEffect(() => {
-    console.log(props.set_connection_company);
-    let company = setCompany();
-    console.log(company);
-    if (company) {
-      setDatabase_googleApi('');
-      setUrl('');
-      ComapanyService.getCompanyUsers(company)
-        .then((res) => {
-          // console.log('state change:', set_create_company);
-          console.log(res.data.data);
-          setDatabase_googleApi(res.data.data.googleApi);
-          if (res.data.data.googleApi) setGoogleApi(res.data.data.googleApi);
-          else setGoogleApi('');
-          setDatabase_url(res.data.data.googleSheet);
-          if (res.data.data.googleSheet) setUrl(res.data.data.googleSheet);
-          else setUrl('');
-        })
-        .catch((err) => {
-          console.log('Error:', err);
-        });
-    }
-  }, [props.set_connection_company]);
+    AdminService.getLogUrl()
+      .then((res) => {
+        console.log('res is ', res);
+        setUrl(res.data[0].logUrl);
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+      });
+  }, []);
 
   const setCompany = () => {
     let company = null;
@@ -154,7 +141,7 @@ const Connections = (props) => {
   return (
     <div className="panel terminology">
       <div className="panel-header terminology">
-        <div className="panel-name terminology">Google Sheet</div>
+        <div className="panel-name terminology">Sensor Log URL</div>
       </div>
       {pageLoading ? (
         <div className="panel-body terminology d-flex justify-content-center align-items-center">
@@ -163,11 +150,11 @@ const Connections = (props) => {
       ) : (
         <div className="panel-body terminology">
           <div className="input-control" style={{ display: 'grid' }}>
-            <label>Google API</label>
+            <label>Enter the sensor log URL</label>
             <input
               type="text"
-              value={googleApi}
-              onChange={(e) => setGoogleApi(e.target.value)}
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
             />
           </div>
 
@@ -193,7 +180,7 @@ const Connections = (props) => {
           )}
 
           <div className="input-control" style={{ display: 'grid' }}>
-            <label>Google Sheet URL</label>
+            <label></label>
             <input
               type="text"
               value={url}

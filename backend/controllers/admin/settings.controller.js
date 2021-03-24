@@ -66,4 +66,32 @@ module.exports = {
           )
       );
   },
+  logUrlGet(req, res) {
+    return settingModel
+      .findAll({ attributes: ["logUrl"] })
+      .then((logUrlVal) =>
+        res
+          .status(200)
+          .json(
+            ResponseFormat.build(
+              logUrlVal,
+              "Settings Information Reterive successfully",
+              200,
+              "success"
+            )
+          )
+      )
+      .catch((error) =>
+        res
+          .status(400)
+          .send(
+            ResponseFormat.build(
+              error,
+              "Somthing went wrong when Reterieve Information",
+              400,
+              "error"
+            )
+          )
+      );
+  },
 };

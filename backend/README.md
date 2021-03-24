@@ -47,13 +47,13 @@ this command will create the model file with migration file at `db` folder.those
 
 ## Sequelize Command for development
 
-sequelize model:create --name RawData --attributes includeDate:date,includeTime:time,deviceName:string,macAddress:string,temp1:string,temp2:string,voltage:double
+sequelize model:create --name SensorLog --attributes includeDate:date,includeTime:time,deviceName:string,macAddress:string,temp1:string,temp2:string,voltage:double
 
 sequelize model:create --name User --attributes userId:string,fullName:string,emailAddress:string,password:string,roleId:integer,lastLogin:string,avatarUrl:string
 
 sequelize model:create --name Role --attributes roleName:string
 
-sequelize model:create --name Setting --attributes lowLimitVol:double,cautionLimitVol:double
+sequelize model:create --name Setting --attributes lowLimitVol:double,cautionLimitVol:double,logUrl:string
 
 sequelize model:generate --name UserRole --attributes userId:INTEGER,roleId:INTEGER
 

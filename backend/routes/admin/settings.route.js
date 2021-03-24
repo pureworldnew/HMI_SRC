@@ -15,4 +15,9 @@ module.exports = function (app) {
     [authJwt.verifyToken],
     settingsController.limitGet
   );
+  app.get(
+    "/admin/settings/getLogUrl",
+    [authJwt.verifyToken],
+    settingsController.logUrlGet
+  );
 };

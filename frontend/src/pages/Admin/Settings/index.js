@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Input } from 'reactstrap';
 import './terminology.scss';
 import AdminService from '../../../services/AdminService';
-// selection option
 
 const Terminology = () => {
   const [lowLimitVol, setLowLimitVol] = useState('1.5');

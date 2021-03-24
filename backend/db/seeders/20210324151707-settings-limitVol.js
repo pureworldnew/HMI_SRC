@@ -17,6 +17,7 @@ module.exports = {
         {
           lowLimitVol: "1.5",
           cautionLimitVol: "2.0",
+          logUrl: "https://www.tronicszone.com/wmts/logs.txt",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

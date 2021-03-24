@@ -37,5 +37,15 @@ class AdminService {
       .then((res) => res.data)
       .catch((error) => handleErrorResponseObject(error));
   };
+  getLogUrl = () => {
+    const api = getInsightBackendAPI();
+    const token = window.localStorage.getItem('access_token');
+    return axios
+      .get(`${api}/admin/settings/getLogUrl`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((res) => res.data)
+      .catch((error) => handleErrorResponseObject(error));
+  };
 }
 export default new AdminService();
