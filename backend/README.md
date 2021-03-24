@@ -53,6 +53,8 @@ sequelize model:create --name User --attributes userId:string,fullName:string,em
 
 sequelize model:create --name Role --attributes roleName:string
 
+sequelize model:create --name Setting --attributes lowLimitVol:double,cautionLimitVol:double
+
 sequelize model:generate --name UserRole --attributes userId:INTEGER,roleId:INTEGER
 
 sequelize model:create --name Company --attributes companyName:string,googleApi:string,googleSheet:string

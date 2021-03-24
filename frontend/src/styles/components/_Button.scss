@@ -29,9 +29,9 @@
     //justify-content: space-between;
     letter-spacing: 0.01em;
     min-width: 140px;
-    background: #FFFFFF;
-    color: #1C5DE1;
-    border: 1px solid #1C5DE1;
+    background: #ffffff;
+    color: #1c5de1;
+    border: 1px solid #1c5de1;
     border-radius: 4px;
   }
   &.button-mr {
@@ -39,7 +39,7 @@
   }
   &--disabled {
     background-color: #f1f1f1 !important;
-    color: #868E9A !important;
+    color: #868e9a !important;
   }
   &--block {
     width: 100%;
@@ -60,10 +60,10 @@
     &-outline {
       display: flex;
       align-items: center;
-      color: #868E9A;
+      color: #868e9a;
       padding-left: 20px;
       padding-right: 20px;
-      background: #FFFFFF;
+      background: #ffffff;
       box-shadow: $content-block-shadow;
       border-radius: 4px;
     }
@@ -155,7 +155,7 @@
         width: 498px;
         height: 56px;
         background: $primary;
-        opacity: 0.3;
+        opacity: 0.8;
         &.active {
           opacity: 1;
         }
@@ -201,10 +201,10 @@
       }
     }
     &-tasklist {
-        max-width: 164px;
-        height: 56px;
-        padding: 18px 16px;
-        font-weight: bold;
+      max-width: 164px;
+      height: 56px;
+      padding: 18px 16px;
+      font-weight: bold;
     }
   }
   p {
@@ -237,7 +237,7 @@
 .dots-btn {
   &.MuiSvgIcon-root {
     font-size: 2.25rem;
-    color: #868E9A;
+    color: #868e9a;
   }
 }
 

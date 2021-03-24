@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
+import { Input } from 'reactstrap';
 import './terminology.scss';
-
+import AdminService from '../../../services/AdminService';
 // selection option
 const options = [
   { value: '1', label: 'Account Managers (AMs)' },
@@ -11,7 +12,7 @@ const options = [
 const contractOptions = [
   { value: 'TCV', label: 'TCV' },
   { value: 'ACV', label: 'ACV' }
-]
+];
 
 const customeStyle = {
   container: (styles) => ({
@@ -22,7 +23,7 @@ const customeStyle = {
   }),
   dropdownIndicator: (styles) => ({
     ...styles,
-    color: '#1E2C36',
+    color: '#1E2C36'
   }),
   placeholder: (styles) => ({
     ...styles,
@@ -53,74 +54,66 @@ const Terminology = () => {
   const [selectContract, setselectContract] = useState('ACV');
   const [contractStatus, setcontractStatus] = useState(true);
 
-  // const handleChange = (selectedOption) => {
-  //   setSelectedOption({selectedOption});
-  // }
+  const [lowLimitVol, setLowLimitVol] = useState('1.5');
+  const [cautionLimitVol, setCautionLimitVol] = useState('2.0');
 
-  const saveContract = () => {
-    // console.log('save contract');
+  const saveSettings = () => {
     setcontractStatus(!contractStatus);
     localStorage.setItem('contractStatus', selectContract);
-    alert(`Set Contract Value as ${selectContract} Successfully!`);
-  }
-
-  const contractHandleChange = (value) => {
-    // console.log('contract value: ', value);
-    setselectContract(value);
-  }
+    AdminService.setLimitVoltage(lowLimitVol, cautionLimitVol)
+      .then((res) => {
+        console.log('result of updating limit', res);
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+      });
+    alert(`Set Limit Value as Successfully!`);
+  };
 
   useEffect(() => {
     console.log('contract status: ', localStorage.getItem('contractStatus'));
-  }, [contractStatus])
+  }, [contractStatus]);
 
   return (
     <div>
       <div className="panel terminology">
         <div className="panel-header terminology">
-          <div className="panel-name terminology">Naming</div>
+          <div className="panel-name terminology">Low Limit Voltage</div>
         </div>
 
         <div className="panel-body terminology setting">
-          <label>Preferred name</label>
-          <Select
-            // value={selectedOption}
-            // onChange={handleChange}
-            classNamePrefix="select-react"
-            className="select-outline"
-            options={options}
-            styles={customeStyle}
-            placeholder="Account Managers (AMs)"
+          <Input
+            type="number"
+            name="lowLimit"
+            id="lowLimit"
+            placeholder=""
+            value={lowLimitVol}
+            onChange={(e) => setLowLimitVol(e.target.value)}
           />
-
-          <button className="button button--block-admin-terminology">
-            Save Changes
-          </button>
         </div>
-
       </div>
 
       <div className="panel terminology">
         <div className="panel-header terminology">
-          <div className="panel-name terminology">Contract Values</div>
+          <div className="panel-name terminology">Caution Limit Voltage</div>
         </div>
 
         <div className="panel-body terminology setting">
-          <label>Contract value used for display</label>
-          <Select
-            // value={selectContract}
-            onChange={(e) => contractHandleChange(e.value)}
-            classNamePrefix="select-react"
-            className="select-outline"
-            options={contractOptions}
-            styles={customeStyle}
-            placeholder={localStorage.getItem('contractStatus')}
+          <Input
+            type="number"
+            name="cautionLimit"
+            id="cautionLimit"
+            placeholder=""
+            value={cautionLimitVol}
+            onChange={(e) => setCautionLimitVol(e.target.value)}
           />
 
-          <button className="button button--block-admin-terminology" onClick={saveContract}>
+          <button
+            className="button button--block-admin-terminology"
+            onClick={saveSettings}>
             Save Changes
           </button>
         </div>
-
       </div>
     </div>
   );

@@ -31,6 +31,7 @@ require("./routes").authRoute(app); // auth - signin, signup
 require("./routes").adminRoute(app); // admin
 require("./routes").adminUserRoute(app);
 require("./routes").adminSensorRoute(app);
+require("./routes").adminSettingRoute(app);
 require("./routes").revenueRoute(app);
 require("./routes").presentationRoute(app);
 require("./routes").alertsRoute(app);

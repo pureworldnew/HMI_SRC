@@ -670,7 +670,7 @@ const Header = (props) => {
           </div>
           <div className="revenue__buttons">
             <TeamsCreateModal
-              buttonLabel="+ Add New Company"
+              buttonLabel="+ Add New Sensor"
               className="TeamsCreateModalCustomCss"
               type="companies"
             />

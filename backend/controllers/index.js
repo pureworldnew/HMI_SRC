@@ -6,10 +6,12 @@ const presentations = require("./presentation.controller");
 const alerts = require("./alerts.controller");
 const sensors = require("./admin/sensor.controller");
 const users = require("./admin/users.controller");
+const settings = require("./admin/settings.controller");
 
 module.exports = {
   admin,
   sensors,
+  settings,
   users,
   auth,
 
