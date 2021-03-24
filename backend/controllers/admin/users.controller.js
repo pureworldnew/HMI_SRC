@@ -21,7 +21,7 @@ module.exports = {
     let companyId = req.user.companyId;
     console.log("here is test", roleId, companyId);
 
-    if (roleId < 3) {
+    if (roleId < 2) {
       // Master or System admin
       return userModel
         .findAll({
@@ -29,10 +29,6 @@ module.exports = {
             {
               model: role,
               as: "role",
-            },
-            {
-              model: company,
-              as: "companies",
             },
           ],
         })
@@ -55,37 +51,6 @@ module.exports = {
               ResponseFormat.build(
                 error,
                 "Somthing went wrong when Reterieve All User Information",
-                400,
-                "error"
-              )
-            )
-        );
-    } else if (roleId == 3) {
-      // logged in as company admin
-      return userModel
-        .findAll({
-          include: ["role", "companies"],
-          where: { companyId: companyId },
-        })
-        .then((users) => {
-          res
-            .status(200)
-            .json(
-              ResponseFormat.build(
-                users,
-                "Company Member List Reterive successfully",
-                200,
-                "success"
-              )
-            );
-        })
-        .catch((error) =>
-          res
-            .status(400)
-            .send(
-              ResponseFormat.build(
-                error,
-                "Somthing went wrong when Reterieve Company Member List",
                 400,
                 "error"
               )

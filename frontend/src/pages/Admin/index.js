@@ -55,16 +55,9 @@ const Admin = (props) => {
     }
   };
 
-  const masterAdminTab = [
-    'Sensors',
-    'Companies',
-    'Users',
-    'Teams',
-    'Settings',
-    'Connections'
-  ];
+  const masterAdminTab = ['Users', 'Sensors', 'Settings', 'Connections'];
 
-  const companyAdminTab = ['Users', 'Teams', 'Settings', 'Connections'];
+  const companyAdminTab = ['Settings'];
 
   return (
     <div className="dashboard revenue-insights">
@@ -73,7 +66,7 @@ const Admin = (props) => {
       ) : (
         <div>
           {getActiveTabHeader()}
-          {roleId < 3 ? (
+          {roleId < 2 ? (
             <HorizontalTab
               tabs={masterAdminTab}
               activeTab={activeTab}

@@ -684,12 +684,12 @@ const Header = (props) => {
             <h3 className="welcomeMessage__title">{title}</h3>
           </div>
           <div className="revenue__buttons">
-            <div style={{ marginRight: '24px' }}>
+            {/* <div style={{ marginRight: '24px' }}>
               <CreateBulkModal
                 buttonLabel="+ Add New Users in Bulk"
                 className="bulk__modal"
               />
-            </div>
+            </div> */}
             <UserCreateModal
               buttonLabel="+ Add New User"
               className="TeamsCreateModalCustomCss"

@@ -1,21 +1,22 @@
-import React from "react";
+import React from 'react';
 import useSortableData from './SortablTable';
 import PopoverItem from '../PopOverComponent/PopOverComponent';
 
 const UserTable = (props) => {
-
   const page = props.page; // page number
   const noOfDatasInTable = props.noOfDatasInTable;
 
   const header = props.header[0];
   let keys = Object.keys(header);
-  
+
   let datas = props.data;
-  let ndata = datas.map(data => {
-    data = data.role ? { ...data, roleName: data.role.roleName } : data
-    data = data.companies ? { ...data, companyName: data.companies.companyName } : { ...data, companyName: '' }
+  let ndata = datas.map((data) => {
+    data = data.role ? { ...data, roleName: data.role.roleName } : data;
+    data = data.companies
+      ? { ...data, companyName: data.companies.companyName }
+      : { ...data, companyName: '' };
     return data;
-  })
+  });
 
   const { items, requestSort, sortConfig } = useSortableData(ndata);
 
@@ -34,13 +35,12 @@ const UserTable = (props) => {
     <table className="UserTable">
       <thead>
         <tr>
-          {keys.map(key => (
+          {keys.map((key) => (
             <th key={key}>
               <button
                 type="button"
                 onClick={() => requestSort(key)}
-                className={getClassNamesFor(key)}
-              >
+                className={getClassNamesFor(key)}>
                 {header[key]}
               </button>
             </th>
@@ -53,13 +53,17 @@ const UserTable = (props) => {
           <tr key={item.id}>
             <td>
               <div>
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
                   <circle cx="18" cy="18" r="18" fill="black" />
                 </svg>
                 <span>{item.fullName}</span>
               </div>
             </td>
-            <td>{item.companyName}</td>
             <td>{item.emailAddress}</td>
             <td>{item.userId}</td>
             <td>{item.lastLogin}</td>
