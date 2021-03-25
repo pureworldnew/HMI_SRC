@@ -20,9 +20,24 @@ module.exports = function (app) {
     [authJwt.verifyToken],
     settingsController.logUrlGet
   );
+  app.get(
+    "/admin/settings/checkLogTable",
+    [authJwt.verifyToken],
+    settingsController.logDataCheck
+  );
   app.delete(
     "/admin/settings/removeLogUrl",
     [authJwt.verifyToken],
     settingsController.logUrlRemove
+  );
+  app.post(
+    "/admin/settings/addLogUrl",
+    [authJwt.verifyToken],
+    settingsController.logUrlAdd
+  );
+  app.post(
+    "/admin/settings/loadLogData",
+    [authJwt.verifyToken],
+    settingsController.loadLogData
   );
 };

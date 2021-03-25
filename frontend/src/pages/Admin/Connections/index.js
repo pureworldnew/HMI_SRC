@@ -8,6 +8,7 @@ const Connections = (props) => {
   const [googleApi, setGoogleApi] = useState('');
   const [url, setUrl] = useState('');
   const [logUrl, setLogUrl] = useState('');
+  const [loadStatus, setLoadStatus] = useState(false);
   const [database_googleApi, setDatabase_googleApi] = useState('');
   const [database_url, setDatabase_url] = useState('');
   const [companyId, setCompanyId] = useState(null);
@@ -22,53 +23,52 @@ const Connections = (props) => {
       .catch((err) => {
         console.log('Error:', err);
       });
-  }, []);
-
-  const setCompany = () => {
-    let company = null;
-    if (localStorage.getItem('roleId') < 3 && props.set_connection_company)
-      company = props.set_connection_company.value;
-    if (localStorage.getItem('roleId') >= 3)
-      company = localStorage.getItem('companyId');
-    setCompanyId(company);
-    return company;
-  };
-
-  const updateApi = (type) => {
-    AdminService.removeLogUrl(logUrl)
+    AdminService.checkLogData()
       .then((res) => {
-        console.log('res is ', res);
+        console.log('res is ', res.data.length);
+        res.data.length === '0' ? setLoadStatus(true) : setLoadStatus(false);
       })
       .catch((err) => {
         console.log('Error:', err);
       });
+  }, []);
+
+  const updateLogUrl = (type) => {
+    if (type === 'remove') {
+      console.log('remove connect');
+      AdminService.removeLogUrl(logUrl)
+        .then((res) => {})
+        .catch((err) => {
+          console.log('Error:', err);
+        });
+      setLogUrl('');
+    } else if (type === 'add') {
+      if (logUrl === '') {
+        alert('Please enter the Log URL!');
+      }
+      AdminService.addLogUrl(logUrl)
+        .then((res) => {
+          console.log('res is ', res);
+        })
+        .catch((err) => {
+          console.log('Error:', err);
+        });
+    }
   };
 
-  const insertGoogleSheet = () => {
-    if (googleApi) {
-      if (url) {
-        setPageLoading(true);
-        if (companyId) {
-          var data = {
-            companyId: companyId,
-            googleSheetUrl: url
-          };
-          ConnectionsService.insertGoogleSheet(data)
-            .then((res) => {
-              setDatabase_url(res.data.googleSheet);
-              setUrl(res.data.googleSheet);
-              setPageLoading(false);
-              // console.log(res.data);
-              alert('successfully inserted');
-            })
-            .catch((err) => {
-              setPageLoading(false);
-              console.log('Error:', err);
-              alert('Error:', err);
-            });
-        }
-      } else alert('please insert URL');
-    } else alert('first insert API');
+  const loadLogData = () => {
+    if (!logUrl) alert('Please set the Log URL for the log data');
+    setPageLoading(true);
+    AdminService.insertLogData(logUrl)
+      .then((res) => {
+        console.log(res);
+        alert('successfully inserted');
+      })
+      .catch((err) => {
+        setPageLoading(false);
+        console.log('Error:', err);
+        alert('Error:', err);
+      });
   };
 
   const removeGoogleSheet = () => {
@@ -144,19 +144,19 @@ const Connections = (props) => {
             <div className="d-flex">
               <button
                 className="button button--block-admin-connections1 mb-5 button-outlined"
-                onClick={() => updateApi('remove')}>
+                onClick={() => updateLogUrl('remove')}>
                 Disconnect
               </button>
               <button
                 className="button button--block-admin-connections1 mb-5 button-primary"
-                onClick={() => updateApi('add')}>
-                Refresh
+                onClick={() => updateLogUrl('add')}>
+                Save
               </button>
             </div>
           ) : (
             <button
               className="button button--block-admin-connections mb-5 button-primary"
-              onClick={() => updateApi('add')}>
+              onClick={() => updateLogUrl('add')}>
               Add
             </button>
           )}
@@ -166,7 +166,7 @@ const Connections = (props) => {
             <input type="text" value={logUrl} readOnly placeholder="" />
           </div>
 
-          {logUrl ? (
+          {loadStatus ? (
             <div className="d-flex">
               <button
                 className="button button--block-admin-connections1 button-outlined"
@@ -182,7 +182,7 @@ const Connections = (props) => {
           ) : (
             <button
               className="button button--block-admin-connections button-primary"
-              onClick={insertGoogleSheet}>
+              onClick={loadLogData}>
               Connect
             </button>
           )}

@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       includeDate: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       includeTime: {
         type: Sequelize.TIME

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   SensorLog.init({
-    includeDate: DataTypes.DATE,
+    includeDate: DataTypes.DATEONLY,
     includeTime: DataTypes.TIME,
     deviceName: DataTypes.STRING,
     macAddress: DataTypes.STRING,

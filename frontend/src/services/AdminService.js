@@ -47,14 +47,67 @@ class AdminService {
       .then((res) => res.data)
       .catch((error) => handleErrorResponseObject(error));
   };
+  checkLogData = () => {
+    const api = getInsightBackendAPI();
+    const token = window.localStorage.getItem('access_token');
+    return axios
+      .get(`${api}/admin/settings/checkLogTable`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((res) => res.data)
+      .catch((error) => handleErrorResponseObject(error));
+  };
   removeLogUrl = (url) => {
-    console.log('url', url);
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
       .delete(`${api}/admin/settings/removeLogUrl`, {
         headers: { Authorization: `Bearer ${token}` },
         data: { logUrl: url }
+      })
+      .then((res) => {
+        console.log('res is here', res);
+      })
+      .catch((error) => handleErrorResponseObject(error));
+  };
+  addLogUrl = (url) => {
+    const token = window.localStorage.getItem('access_token');
+    const insightBackendAPI = axios.create({
+      baseURL:
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1'
+          ? `http://localhost:8000`
+          : `${Config.API_URL}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+    return insightBackendAPI
+      .post('/admin/settings/addLogUrl', {
+        logUrl: url
+      })
+      .then((res) => res.data)
+      .catch((error) => handleErrorResponseObject(error));
+  };
+  insertLogData = (url) => {
+    const token = window.localStorage.getItem('access_token');
+    const insightBackendAPI = axios.create({
+      baseURL:
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1'
+          ? `http://localhost:8000`
+          : `${Config.API_URL}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+    return insightBackendAPI
+      .post('/admin/settings/loadLogData', {
+        logUrl: url
       })
       .then((res) => res.data)
       .catch((error) => handleErrorResponseObject(error));
