@@ -112,5 +112,15 @@ class AdminService {
       .then((res) => res.data)
       .catch((error) => handleErrorResponseObject(error));
   };
+  removeLogData = () => {
+    const api = getInsightBackendAPI();
+    const token = window.localStorage.getItem('access_token');
+    return axios
+      .delete(`${api}/admin/settings/removeLogData`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then(() => {})
+      .catch((error) => handleErrorResponseObject(error));
+  };
 }
 export default new AdminService();

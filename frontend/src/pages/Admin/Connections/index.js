@@ -26,7 +26,7 @@ const Connections = (props) => {
     AdminService.checkLogData()
       .then((res) => {
         console.log('res is ', res.data.length);
-        res.data.length === '0' ? setLoadStatus(true) : setLoadStatus(false);
+        res.data.length !== 0 ? setLoadStatus(true) : setLoadStatus(false);
       })
       .catch((err) => {
         console.log('Error:', err);
@@ -61,7 +61,7 @@ const Connections = (props) => {
     setPageLoading(true);
     AdminService.insertLogData(logUrl)
       .then((res) => {
-        console.log(res);
+        setPageLoading(false);
         alert('successfully inserted');
       })
       .catch((err) => {
@@ -71,51 +71,18 @@ const Connections = (props) => {
       });
   };
 
-  const removeGoogleSheet = () => {
-    if (companyId) {
-      var data = {
-        companyId: companyId,
-        googleSheetUrl: url
-      };
-      ConnectionsService.removeGoogleSheet(companyId)
-        .then((res) => {
-          // console.log(res.data);
-          setDatabase_url(res.data.googleSheet);
-          setUrl('');
-          alert('successfully removed');
-        })
-        .catch((err) => {
-          console.log('Error:', err);
-          alert('Error:', err);
-        });
-    }
-  };
-
-  const updateGoogleSheet = () => {
-    if (googleApi) {
-      if (url) {
-        setPageLoading(true);
-        if (companyId) {
-          var data = {
-            companyId: companyId,
-            googleSheetUrl: url
-          };
-          ConnectionsService.updateGoogleSheet(data)
-            .then((res) => {
-              setDatabase_url(res.data.googleSheet);
-              setUrl(res.data.googleSheet);
-              setPageLoading(false);
-              // console.log(res.data);
-              alert('successfully updated');
-            })
-            .catch((err) => {
-              setPageLoading(false);
-              console.log('Error:', err);
-              alert('Failed');
-            });
-        }
-      } else alert('please Update URL');
-    } else alert('first insert API');
+  const removeLogData = () => {
+    setPageLoading(true);
+    AdminService.removeLogData()
+      .then(() => {
+        setPageLoading(false);
+        alert('successfully removed');
+      })
+      .catch((err) => {
+        setPageLoading(false);
+        console.log('Error:', err);
+        alert('Error:', err);
+      });
   };
 
   return (
@@ -166,16 +133,16 @@ const Connections = (props) => {
             <input type="text" value={logUrl} readOnly placeholder="" />
           </div>
 
-          {loadStatus ? (
+          {loadStatus === true ? (
             <div className="d-flex">
               <button
                 className="button button--block-admin-connections1 button-outlined"
-                onClick={removeGoogleSheet}>
+                onClick={removeLogData}>
                 Disconnect
               </button>
               <button
                 className="button button--block-admin-connections1 button-primary"
-                onClick={updateGoogleSheet}>
+                onClick={removeLogData}>
                 Refresh
               </button>
             </div>

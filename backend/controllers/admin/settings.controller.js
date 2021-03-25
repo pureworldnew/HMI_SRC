@@ -101,7 +101,6 @@ module.exports = {
     return sensorLogModel
       .findAll()
       .then((logUrlVal) => {
-        console.log("logUrlVal", logUrlVal);
         res
           .status(200)
           .json(
@@ -194,6 +193,14 @@ module.exports = {
           }
         }
       );
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
+  removeLogData(req, res) {
+    try {
+      sensorLogModel.destroy({ truncate: true, cascade: false });
+      res.status(200).send();
     } catch (error) {
       res.status(500).send(error);
     }

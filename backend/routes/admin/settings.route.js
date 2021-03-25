@@ -40,4 +40,9 @@ module.exports = function (app) {
     [authJwt.verifyToken],
     settingsController.loadLogData
   );
+  app.delete(
+    "/admin/settings/removeLogData",
+    [authJwt.verifyToken],
+    settingsController.removeLogData
+  );
 };
