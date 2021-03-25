@@ -157,40 +157,45 @@ module.exports = {
       });
   },
   loadLogData(req, res) {
-    request.get(
-      "https://www.tronicszone.com/wmts/logs.txt",
-      function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          var txt = body;
-          // Continue with your processing here.
-          var line = txt.split("\n");
-          var logData = [];
-          for (let i = 0; i < line.length; i++) {
-            if (line[i].includes("Total")) continue;
-            else {
-              let item = {};
-              item.includeDate = line[i].split(",")[0];
-              item.includeTime = line[i].split(",")[1];
-              item.deviceName = line[i].split(",")[2];
-              item.macAddress = line[i].split(",")[3];
-              item.temp1 = line[i].split(",")[4];
-              item.temp2 = line[i].split(",")[5];
-              item.voltage = line[i].split(",")[6];
-              logData.push(item);
-            }
-          }
+    try {
+      request.get(
+        "https://www.tronicszone.com/wmts/logs.txt",
+        async function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            var txt = body;
+            var line = txt.split("\n");
 
-          sensorLogModel
-            .bulkCreate(logData)
-            .then(() => {
-              // Notice: There are no arguments here, as of right now you'll have to...
-              return sensorLogModel.findAll();
-            })
-            .then((logs) => {
-              console.log(logs); // ... in order to get the array of user objects
-            });
+            var logData = [];
+            // console.log(line[line.length - 3]);
+            for (let i = 0; i < line.length; i++) {
+              if (line[i].includes("Total") || i >= line.length - 2) continue;
+              else {
+                let item = {};
+                item.includeDate = line[i].split(",")[0];
+                item.includeTime = line[i].split(",")[1];
+                item.deviceName = line[i].split(",")[2];
+                item.macAddress = line[i].split(",")[3];
+                item.temp1 = line[i].split(",")[4];
+                item.temp2 = line[i].split(",")[5];
+                item.voltage = line[i].split(",")[6];
+                logData.push(item);
+              }
+            }
+            console.log("logData is ", logData);
+            await sensorLogModel
+              .bulkCreate(logData)
+              .then(() => {
+                // Notice: There are no arguments here, as of right now you'll have to...
+                return sensorLogModel.findAll();
+              })
+              .then((logs) => {
+                console.log(logs); // ... in order to get the array of user objects
+              });
+          }
         }
-      }
-    );
+      );
+    } catch (error) {
+      res.status(500).send(error);
+    }
   },
 };
