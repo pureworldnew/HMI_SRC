@@ -60,8 +60,10 @@ const Connections = (props) => {
     if (!logUrl) alert('Please set the Log URL for the log data');
     setPageLoading(true);
     AdminService.insertLogData(logUrl)
-      .then((res) => {
+      .then(() => {
         setPageLoading(false);
+        setLoadStatus(true);
+        console.log('here is inside');
         alert('successfully inserted');
       })
       .catch((err) => {
@@ -69,13 +71,17 @@ const Connections = (props) => {
         console.log('Error:', err);
         alert('Error:', err);
       });
+    console.log('here is outside');
   };
 
   const removeLogData = () => {
     setPageLoading(true);
     AdminService.removeLogData()
       .then(() => {
+        console.log('here is inside of remove action');
+
         setPageLoading(false);
+        setLoadStatus(false);
         alert('successfully removed');
       })
       .catch((err) => {
@@ -83,6 +89,15 @@ const Connections = (props) => {
         console.log('Error:', err);
         alert('Error:', err);
       });
+    console.log('here is outside of remove');
+  };
+
+  const refreshLogData = () => {
+    setPageLoading(true);
+    setTimeout(function () {
+      setPageLoading(false);
+      alert('Refresh Done');
+    }, 3000);
   };
 
   return (
@@ -142,7 +157,7 @@ const Connections = (props) => {
               </button>
               <button
                 className="button button--block-admin-connections1 button-primary"
-                onClick={removeLogData}>
+                onClick={refreshLogData}>
                 Refresh
               </button>
             </div>

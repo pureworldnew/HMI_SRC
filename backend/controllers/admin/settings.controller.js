@@ -165,7 +165,6 @@ module.exports = {
             var line = txt.split("\n");
 
             var logData = [];
-            // console.log(line[line.length - 3]);
             for (let i = 0; i < line.length; i++) {
               if (line[i].includes("Total") || i >= line.length - 2) continue;
               else {
@@ -182,13 +181,15 @@ module.exports = {
             }
             console.log("logData is ", logData);
             await sensorLogModel
-              .bulkCreate(logData)
-              .then(() => {
+              .bulkCreate(logData, { returning: true })
+              .then(async () => {
                 // Notice: There are no arguments here, as of right now you'll have to...
-                return sensorLogModel.findAll();
-              })
-              .then((logs) => {
-                console.log(logs); // ... in order to get the array of user objects
+                console.log("successfully added Log Url");
+                let data = await sensorLogModel.findAll({
+                  limit: 1,
+                  order: [["createdAt", "DESC"]],
+                });
+                res.status(200).send(data);
               });
           }
         }
