@@ -1,131 +1,140 @@
 .loginPage {
-    &__wrapper {
-        display: grid;
-        min-height: 100vh;
-        grid-template-columns: 2fr 1fr;
+  &__wrapper {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 2fr 1fr;
 
-        @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-        }
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
     }
+  }
 
-    &__image-wrapper {
-        display: flex;
-        background-color: $login-background-color;
-        justify-content: center;
-        align-items: center;
+  &__image-wrapper {
+    background-color: $login-background-color;
+    padding-left: 150px;
+    &__inner__logo {
+      padding-top: 60px;
     }
+    &__inner__subscribe {
+      padding-top: 12px;
+      font-size: large;
+    }
+    &__inner__image-container {
+      padding-top: 30px;
+      padding-right: 320px;
+    }
+  }
 }
 
 .login {
-    &__container {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    padding-top: 82px;
+    padding-bottom: 24px;
+    padding-right: 24px;
+    padding-left: 24px;
+
+    .form {
+      align-self: stretch;
+
+      &__link {
+        font-family: inherit;
+        font-weight: bold;
+        font-size: $font-14;
+        letter-spacing: $lbl-letter-spacing1;
+        padding-top: 10px;
+        color: $black-color;
+        text-decoration: none;
+        line-height: $line-h20;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &__label {
+        font-family: inherit;
+        font-weight: bold;
+        font-size: 14px;
+        letter-spacing: $lbl-letter-spacing1;
+        color: #000000;
+        margin-left: 12px;
+        line-height: $line-h20;
+
+        margin-top: 6px;
+        position: absolute;
+
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+
+      label {
+        font-family: inherit;
+        font-weight: bold;
+        font-size: $font-14;
+        margin-bottom: 8px;
+      }
+
+      &__group {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        height: 100%;
-        padding-top: 82px;
-        padding-bottom: 24px;
-        padding-right: 24px;
-        padding-left: 24px;
+        margin: 40px 0;
+      }
 
-        .form {
-            align-self: stretch;
+      input {
+        font-family: $input-font-style;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border: 1px solid #c4c4c4;
+        font-size: $input-txt-font-size;
+        font-weight: $input-font-w;
+        height: $btn-h56;
+        line-height: $input-line-h;
+        border-radius: 4px;
 
-            &__link {
-                font-family: inherit;
-                font-weight: bold;
-                font-size: $font-14;
-                letter-spacing: $lbl-letter-spacing1;
-                padding-top: 10px;
-                color: $black-color;
-                text-decoration: none;
-                line-height: $line-h20;
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-
-            &__label {
-                font-family: inherit;
-                font-weight: bold;
-                font-size: 14px;
-                letter-spacing: $lbl-letter-spacing1;
-                color: #000000;
-                margin-left: 12px;
-                line-height: $line-h20;
-
-                margin-top: 6px;
-                position: absolute;
-
-                &:hover {
-                    text-decoration: underline;
-                    cursor: pointer;
-                }
-            }
-
-            label {
-                font-family: inherit;
-                font-weight: bold;
-                font-size: $font-14;
-                margin-bottom: 8px;
-            }
-
-            &__group {
-                display: flex;
-                flex-direction: column;
-                margin: 40px 0;
-            }
-
-            input {
-                font-family: $input-font-style;
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
-                border: 1px solid #C4C4C4;
-                font-size: $input-txt-font-size;
-                font-weight: $input-font-w;
-                height: $btn-h56;
-                line-height: $input-line-h;
-                border-radius: 4px;
-
-                &:focus {
-                    outline: none;
-                    box-shadow: 0px 1px 1px 0px #a0a0a0;
-                }
-            }
+        &:focus {
+          outline: none;
+          box-shadow: 0px 1px 1px 0px #a0a0a0;
         }
+      }
     }
+  }
 
-    &__title {
-        font-size: 32px;
-        text-align: center;
-        font-weight: bold;
-        line-height: $line-h44;
-    }
+  &__title {
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    line-height: $line-h44;
+  }
 
-    &__info {
-        text-align: center;
-        /* padding: 0 0.5rem; */
-        font-size: 18px;
-        font-weight: 400;
-        line-height: $line-h26;
-        margin-bottom: 89px;
-        margin-top: 24px;
-    }
+  &__info {
+    text-align: center;
+    /* padding: 0 0.5rem; */
+    font-size: 18px;
+    font-weight: 400;
+    line-height: $line-h26;
+    margin-bottom: 89px;
+    margin-top: 24px;
+  }
 
-    &__header {
-        font-size: 18px;
-        font-weight: bold;
-        line-height: $line-h24;
-    }
+  &__header {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: $line-h24;
+  }
 }
 
 .create_new_account {
-    margin-top: 24px;
-    text-align: center;
+  margin-top: 24px;
+  text-align: center;
 }
 
 .login__mid {
-    margin-top: 115px;
+  margin-top: 115px;
 }
