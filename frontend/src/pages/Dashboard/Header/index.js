@@ -177,7 +177,7 @@ const Header = (props) => {
   });
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(null);
   };
 
   const handleClose = () => {
@@ -273,58 +273,6 @@ const Header = (props) => {
           <h3 className="welcomeMessage__title">{title}</h3>
           <p className="welcomeMessage__name">{subTitle}</p>
         </div>
-        <div className="revenue__buttons">
-          <Select
-            classNamePrefix="select-react"
-            className="revenue_companies"
-            options={companies_options}
-            placeholder="Companies: All"
-            // onChange={select_revenucompany}
-            // value={revenue_company}
-          />
-          <Select
-            classNamePrefix="select-react"
-            className="revenue_segments"
-            options={segments_options}
-            placeholder="Segments: All"
-            // onChange={select_segment}
-          />
-          <Select
-            classNamePrefix="select-react"
-            className="dashboard_accounts"
-            options={top_options}
-            placeholder="Showing: All Accounts"
-          />
-          <Select
-            classNamePrefix="select-react"
-            className="revenue_monthly"
-            options={monthly_options}
-            placeholder="Monthly"
-          />
-          {/* <Select options={options} placeholder="All Segements" />
-          <Select options={options} placeholder="All Companies" />
-          <DateRangePicker
-            small={true}
-            startDate={date.startDate}
-            startDatePlaceholderText="Date"
-            endDatePlaceholderText="Range"
-            startDateId="application-startdate"
-            endDate={date.endDate}
-            endDateId="application-enddate"
-            showDefaultInputIcon={false}
-            customInputIcon={''}
-            onDatesChange={({ startDate, endDate }) =>
-              setDate({ ...date, startDate, endDate })
-            }
-            focusedInput={date.focusedInput}
-            onFocusChange={(focusedInput) => setDate({ ...date, focusedInput })}
-          />
-          <div className="dashboard__statsRangeSelect">
-            <p className="dashboard__statsRangeItem--selected">Monthly</p>
-            <p>Quarterly</p>
-            <p>Annual</p>
-          </div> */}
-        </div>
       </div>
     );
   } else if (type === 'accounts') {
@@ -402,19 +350,115 @@ const Header = (props) => {
                   aria-controls="simple-menu"
                   aria-haspopup="true"
                   onClick={handleClick}>
-                  + Connect
+                  + Add Sensor
                   <MoreHorizIcon
                     className="dots-btn"
                     style={{ marginLeft: '1.1rem' }}
                   />
                 </button>
               </UnAvailableToolTip>
+              <Popover
+                className="select-menu-popover"
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left'
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left'
+                }}>
+                <button
+                  onClick={handleClose}
+                  className="button button--block-outline">
+                  + Connect Salesforce
+                  <img src={SalesforcseIcon} alt="icon" />
+                </button>
+                <button
+                  onClick={handleClose}
+                  className="button button--block-outline">
+                  + Connect Google Sheets
+                  <img src={GoogleSheetsIcon} alt="icon" />
+                </button>
+              </Popover>
+            </div>
+          ) : activetab === 'Summary' ? (
+            <>
+              <button className="button button--block-outline">
+                Export to XLSX
+              </button>
+              <Select
+                classNamePrefix="select-react"
+                className="revenue_monthly"
+                options={monthly_options}
+                // defaultValue={monthly_options[0]}
+                placeholder="Monthly"
+              />
+            </>
+          ) : (
+            <>
+              {/* <SelectSearch
+                    dataOptions={revenueCompanies}
+                    width="180px"
+                  /> */}
+              <Select
+                classNamePrefix="select-react"
+                className="revenue_companies"
+                options={revenueCompanies}
+                placeholder="Companies: All"
+                onChange={select_revenucompany}
+                value={revenue_company}
+              />
+              <Select
+                classNamePrefix="select-react"
+                className="revenue_segments"
+                options={segments_options}
+                placeholder="Segments: All"
+                onChange={select_segment}
+              />
+              <Select
+                classNamePrefix="select-react"
+                className="revenue_top"
+                options={top_options}
+                placeholder="Top: All"
+              />
+              <Select
+                classNamePrefix="select-react"
+                className="revenue_monthly"
+                options={monthly_options}
+                placeholder="Monthly"
+              />
+            </>
+          )}
+        </div>
+      </div>
+    );
+  } else if (type === 'revenue-gateways') {
+    return (
+      <div className="dashboard__header">
+        <div className="dashboard__welcomeMessage welcomeMessage">
+          <h3 className="welcomeMessage__title">{title}</h3>
+          <p className="welcomeMessage__name">{subTitle}</p>
+        </div>
+        <div className="revenue__buttons">
+          {activetab === 'Contracts' ? (
+            <div style={{ display: 'flex' }}>
               <UnAvailableToolTip
                 style={{ display: 'flex' }}
                 title="Not available in beta!">
-                <button className="button button--block icon-between button--disabled">
-                  Import
-                  <SystemUpdateAltIcon style={{ marginLeft: '2.5rem' }} />
+                <button
+                  className="button button--block-outline button-mr button--disabled"
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={handleClick}>
+                  + Add Gateway
+                  <MoreHorizIcon
+                    className="dots-btn"
+                    style={{ marginLeft: '1.1rem' }}
+                  />
                 </button>
               </UnAvailableToolTip>
               <Popover
@@ -662,21 +706,6 @@ const Header = (props) => {
           </div>
         </div>
       );
-    } else if (type === 'AdminSensors') {
-      return (
-        <div className="dashboard__header">
-          <div className="dashboard__welcomeMessage welcomeMessage">
-            <h3 className="welcomeMessage__title">{title}</h3>
-          </div>
-          <div className="revenue__buttons">
-            <TeamsCreateModal
-              buttonLabel="+ Add New Sensor"
-              className="TeamsCreateModalCustomCss"
-              type="companies"
-            />
-          </div>
-        </div>
-      );
     } else if (type === 'AdminUsers') {
       return (
         <div className="dashboard__header">
@@ -684,12 +713,12 @@ const Header = (props) => {
             <h3 className="welcomeMessage__title">{title}</h3>
           </div>
           <div className="revenue__buttons">
-            {/* <div style={{ marginRight: '24px' }}>
+            <div style={{ marginRight: '24px' }}>
               <CreateBulkModal
                 buttonLabel="+ Add New Users in Bulk"
                 className="bulk__modal"
               />
-            </div> */}
+            </div>
             <UserCreateModal
               buttonLabel="+ Add New User"
               className="TeamsCreateModalCustomCss"
@@ -729,6 +758,25 @@ const Header = (props) => {
           <div className="dashboard__welcomeMessage welcomeMessage">
             <h3 className="welcomeMessage__title">{title}</h3>
           </div>
+
+          <Select
+            className="company_select"
+            value={selectCompany}
+            placeholder={
+              <div className="place_font">
+                <SearchIcon />
+                Select a Company
+              </div>
+            }
+            onChange={handleCompany}
+            options={companyOptions}
+            styles={{
+              dropdownIndicator: (provided, state) => ({
+                ...provided,
+                transform: state.selectProps.menuIsOpen && 'rotate(180deg)'
+              })
+            }}
+          />
         </div>
       );
     } else {

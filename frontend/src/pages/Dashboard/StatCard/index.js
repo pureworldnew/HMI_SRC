@@ -9,6 +9,9 @@ import TeamViewModal from '../../Admin/Modal/CompaniesTeamsModal/ViewModal/index
 // import PopoverItem from '../../Components/PopOverComponent/Admin/popovercomponent';
 import CompanyService from '../../../services/CompanyService';
 import { connect } from 'react-redux';
+import SignalCellularAltOutlinedIcon from '@material-ui/icons/SignalCellularAltOutlined';
+import NotificationsActiveOutlinedIcon from '@material-ui/icons/NotificationsActiveOutlined';
+import SettingsInputAntennaOutlinedIcon from '@material-ui/icons/SettingsInputAntennaOutlined';
 // import * as Actions from "../../../store/actions/index"
 // import './startcard.scss';
 
@@ -42,8 +45,12 @@ const StatCard = (props) => {
 
   let main = props.main;
   let bottom = props.bottom;
+  let medium = props.medium;
+  let medium_1 = props.medium_1;
+  let medium_2 = props.medium_2;
   let title = props.title;
   let companyId = props.companyId;
+  let icon = props.icon;
 
   let adminTeamsCardCircles = members > 9 ? 9 : members;
   let adminBottome = members > 9 ? members - 9 : null;
@@ -201,8 +208,72 @@ const StatCard = (props) => {
         <div style={{ display: 'flex' }}>
           {circleElements(adminTeamsCardCircles)}
         </div>
-        <div className="statcard__bottom adminTeamsCardBottome">
-          {!!adminBottome && <p>& {adminBottome} more.</p>}
+        <div className="statcard__bottom">
+          <p>{medium}</p>
+        </div>
+        <div className="statcard__bottom">
+          <p>{bottom}</p>
+        </div>
+        <Menu
+          id="chart-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}>
+          <List component="nav" aria-label="secondary mailbox folders">
+            <MenuItem>
+              <ListItem onClick={handleClose}>
+                <TeamViewModal buttonLabel="View" type="team" />
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <TeamsEditModal
+                  buttonLabel="Edit"
+                  className="TeamsEditModalCustomCss"
+                  type="team"
+                />
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <p
+                  style={{
+                    width: '35px',
+                    height: '20px',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
+                  Delete
+                </p>
+              </ListItem>
+            </MenuItem>
+          </List>
+        </Menu>
+      </div>
+    );
+  } else if (page === 'revenueGateways') {
+    return (
+      <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
+          <div className="adminTeamsCardMore">
+            {getAccountByPeriodLegend(handleClick)}
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+          <p>{medium_1}</p>
+          <p>{medium_2}</p>
+        </div>
+        <div className="statcard__bottom">
+          <p>{bottom}</p>
         </div>
         <Menu
           id="chart-menu"
@@ -340,15 +411,27 @@ const StatCard = (props) => {
     return (
       <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
         <p className="statcard__title">{props.title}</p>
-        <p className="statcard__main">{main}</p>
-        <div className="statcard__bottom">
+        <div className="statcard__content">
+          <p className="statcard__main">{main}</p>
+          {icon === 'SignalCellularAltOutlinedIcon' ? (
+            <SignalCellularAltOutlinedIcon className="statcard__rightIcon" />
+          ) : icon === 'NotificationsActiveOutlinedIcon' ? (
+            <NotificationsActiveOutlinedIcon className="statcard__rightIcon" />
+          ) : icon === 'SettingsInputAntennaOutlinedIcon' ? (
+            <SettingsInputAntennaOutlinedIcon className="statcard__rightIcon" />
+          ) : (
+            ''
+          )}
+        </div>
+
+        {/* <div className="statcard__bottom">
           <p>Previous Month: {bottom}</p>
           <i
             className={
               hasIncreased ? 'ft-arrow-up-right' : 'ft-arrow-down-left'
             }
           />
-        </div>
+        </div> */}
       </div>
     );
   }

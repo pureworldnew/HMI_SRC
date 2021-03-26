@@ -157,10 +157,22 @@
   }
 
   &__main {
-    font-size: 44px;
+    font-size: 34px;
     font-weight: 800;
     line-height: 60px;
     margin-top: 16px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .statcard__rightIcon {
+    width: 3em;
+    height: 3em;
   }
 
   .adminTeamsCardCircle {

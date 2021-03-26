@@ -1,30 +1,20 @@
-import React, { useContext, useState } from "react";
-import StatCard from "./StatCard";
-import SmallCharts from "./SmallCharts";
-import BarChart from "./BarChart";
+import React, { useContext, useState } from 'react';
+import StatCard from './StatCard';
+import SmallCharts from './SmallCharts';
+import BarChart from './BarChart';
 
-import { StateContext } from "../../StateContextProvider";
-import "react-dates/lib/css/_datepicker.css";
-import "react-dates/initialize";
-import Header from "./Header";
-
+import { StateContext } from '../../StateContextProvider';
+import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates/initialize';
+import Header from './Header';
+import SimpleTable from '../../components/SimpleTable';
+import SensorsTable from '../../components/SensorsTable';
 const data = {
-  revenue: 23400000,
-  revenuePrev: 22493048,
-  netRevenueRetention: 450100,
-  netRevenueRetentionPrev: 123400,
+  revenue: 23,
+  revenuePrev: 22,
+  netRevenueRetention: 45,
   logoRetentionRate: 32,
-  logoRetentionRatePrev: 18,
-  accountsReceivable: 213,
-  accountsReceivablePrev: 81,
-  productEngagement: 88,
-  productEngagementPrev: 85,
-  noOfCustomers: 20,
-  totalNoOfCustomers: 80,
-  upSellThisMonth: 70,
-  totalUpSell: 100,
-  downSellThisMonth: 20,
-  totalDownSell: 100
+  accountsReceivable: 213
 };
 
 const Dashboard = () => {
@@ -37,7 +27,6 @@ const Dashboard = () => {
   });
   let firstName = loggedInUser ? loggedInUser.split(' ') : '-';
 
-
   return (
     <div className="dashboard">
       <Header
@@ -49,43 +38,32 @@ const Dashboard = () => {
 
       <div className="dashboard__statsGrid">
         <StatCard
-          title="Revenue"
+          title="Active Sensors"
           main={data.revenue}
-          reduceToMillion={true}
-          bottom={data.revenuePrev}
-          unit="dollar"
           grid={1}
+          icon="SignalCellularAltOutlinedIcon"
         />
         <StatCard
-          title="Net Revenue Retention (NRR)"
+          title="Alerting Sensors"
           main={data.netRevenueRetention}
-          bottom={data.netRevenueRetentionPrev}
-          unit="dollar"
           grid={2}
+          icon="NotificationsActiveOutlinedIcon"
         />
         <StatCard
-          title="Logo Retention Rate"
+          title="Active Gateways"
           main={data.logoRetentionRate}
-          bottom={data.logoRetentionRatePrev}
-          unit="percentage"
           grid={3}
+          icon="SettingsInputAntennaOutlinedIcon"
         />
         <StatCard
-          title="Accounts Receivable"
+          title="Alerting Gateways"
           main={data.accountsReceivable}
-          bottom={data.accountsReceivablePrev}
           grid={4}
+          icon="NotificationsActiveOutlinedIcon"
         />
-        <StatCard
-          title="Product Engagement"
-          main={data.productEngagement}
-          bottom={data.productEngagementPrev}
-          unit="percentage"
-          grid={5}
-        />
-        <SmallCharts data={data} />
       </div>
-      <BarChart />
+      <SimpleTable />
+      <SensorsTable />
     </div>
   );
 };
