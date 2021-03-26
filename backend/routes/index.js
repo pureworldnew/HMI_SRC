@@ -3,6 +3,7 @@ const adminRoute = require("./admin.routes");
 const adminUserRoute = require("./admin").userRoute;
 const adminSensorRoute = require("./admin").sensorRoute;
 const adminSettingRoute = require("./admin").settingRoute;
+const dashboardRoute = require("./dashboard").dashboardRoute;
 const revenueRoute = require("./revenue.routes");
 const presentationRoute = require("./presentations.routes");
 const alertsRoute = require("./alerts.routes");
@@ -15,6 +16,7 @@ module.exports = {
   adminUserRoute,
   adminSensorRoute,
   adminSettingRoute,
+  dashboardRoute,
   revenueRoute,
   presentationRoute,
   alertsRoute,

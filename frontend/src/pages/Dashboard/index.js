@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import StatCard from './StatCard';
 import SmallCharts from './SmallCharts';
 import BarChart from './BarChart';
@@ -9,13 +9,7 @@ import 'react-dates/initialize';
 import Header from './Header';
 import SimpleTable from '../../components/SimpleTable';
 import SensorsTable from '../../components/SensorsTable';
-const data = {
-  revenue: 23,
-  revenuePrev: 22,
-  netRevenueRetention: 45,
-  logoRetentionRate: 32,
-  accountsReceivable: 213
-};
+import DashboardService from '../../services/DashboardService';
 
 const Dashboard = () => {
   let loggedInUser = localStorage.getItem('username');
@@ -25,7 +19,29 @@ const Dashboard = () => {
     endDate: null,
     focusedInput: null
   });
+  const [data, setData] = useState({
+    activeSensor: 23,
+    alertSensor: 0,
+    activeGateway: 0,
+    alertGateway: 0
+  });
   let firstName = loggedInUser ? loggedInUser.split(' ') : '-';
+
+  useEffect(() => {
+    DashboardService.getActiveSensors()
+      .then((res) => {
+        console.log('res is ', res.data[0].activeSensor);
+        setData({
+          activeSensor: res.data[0].activeSensor,
+          alertSensor: 0,
+          activeGateway: 0,
+          alertGateway: 0
+        });
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+      });
+  }, []);
 
   return (
     <div className="dashboard">
@@ -39,25 +55,25 @@ const Dashboard = () => {
       <div className="dashboard__statsGrid">
         <StatCard
           title="Active Sensors"
-          main={data.revenue}
+          main={data.activeSensor}
           grid={1}
           icon="SignalCellularAltOutlinedIcon"
         />
         <StatCard
           title="Alerting Sensors"
-          main={data.netRevenueRetention}
+          main={data.alertSensor}
           grid={2}
           icon="NotificationsActiveOutlinedIcon"
         />
         <StatCard
           title="Active Gateways"
-          main={data.logoRetentionRate}
+          main={data.activeGateway}
           grid={3}
           icon="SettingsInputAntennaOutlinedIcon"
         />
         <StatCard
           title="Alerting Gateways"
-          main={data.accountsReceivable}
+          main={data.alertGateway}
           grid={4}
           icon="NotificationsActiveOutlinedIcon"
         />
