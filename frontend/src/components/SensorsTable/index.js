@@ -62,8 +62,29 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9)
 ];
 
-export default function SensorsTable() {
+export default function SensorsTable(props) {
   const classes = useStyles();
+
+  let data = props.sensors;
+  const items = [];
+  console.log('sensors is ', data);
+  for (let i = 0; i < data.length; i++) {
+    items.push(
+      <tr>
+        <th scope="row" className={classes.blueColor}>
+          {data[i].deviceName}
+        </th>
+        <td>{data[i].macAddress}</td>
+        <td>{data[i].temp1}</td>
+        <td>{data[i].temp2}</td>
+        <td>{data[i].voltage}</td>
+        <td>{data[i].includeDateTime}</td>
+        <td>
+          <Button color="primary">View Sensor</Button>{' '}
+        </td>
+      </tr>
+    );
+  }
 
   return (
     <div className={classes.table}>
@@ -72,58 +93,7 @@ export default function SensorsTable() {
         Sensors
       </div>
       <Table>
-        <tbody>
-          <tr>
-            <th scope="row" className={classes.blueColor}>
-              Demo 1 - 713591
-            </th>
-            <td>69.8° F</td>
-            <td>11/09/2020 10:49 AM</td>
-            <td>
-              <Button color="primary">View Sensor</Button>{' '}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" className={classes.blueLine}>
-              Demo 1 - 713591
-            </th>
-            <td className="border-0">134.2° F</td>
-            <td className="border-0">10/26/2020 6:40 PM</td>
-            <td className="border-0">
-              <Button color="primary">View Sensor</Button>{' '}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" className={classes.blueLine}>
-              Demo 1 - 713591
-            </th>
-            <td className="border-0">99.9° F</td>
-            <td className="border-0">10/24/2020 5:40 PM</td>
-            <td className="border-0">
-              <Button color="primary">View Sensor</Button>{' '}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" className={classes.blueLine}>
-              Demo 1 - 713591
-            </th>
-            <td className="border-0">99.9° F</td>
-            <td className="border-0">10/24/2020 5:38 AM</td>
-            <td className="border-0">
-              <Button color="primary">View Sensor</Button>{' '}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" className={classes.blueLine}>
-              Demo 1 - 713591
-            </th>
-            <td className="border-0">100.8° F</td>
-            <td className="border-0">10/16/2020 4:05 PM</td>
-            <td className="border-0">
-              <Button color="primary">View Sensor</Button>{' '}
-            </td>
-          </tr>
-        </tbody>
+        <tbody>{items}</tbody>
       </Table>
     </div>
   );

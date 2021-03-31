@@ -23,7 +23,8 @@ const Dashboard = () => {
     activeSensor: 23,
     alertSensor: 0,
     activeGateway: 0,
-    alertGateway: 0
+    alertGateway: 0,
+    sensors: 0
   });
   let firstName = loggedInUser ? loggedInUser.split(' ') : '-';
 
@@ -32,10 +33,11 @@ const Dashboard = () => {
       .then((res) => {
         console.log('res is ', res.data[0].activeSensor);
         setData({
-          activeSensor: res.data[0].activeSensor,
+          activeSensor: res.data.length,
           alertSensor: 0,
           activeGateway: 0,
-          alertGateway: 0
+          alertGateway: 0,
+          sensors: res.data
         });
       })
       .catch((err) => {
@@ -78,8 +80,8 @@ const Dashboard = () => {
           icon="NotificationsActiveOutlinedIcon"
         />
       </div>
-      <SimpleTable />
-      <SensorsTable />
+      {/* <SimpleTable /> */}
+      <SensorsTable sensors={data.sensors} />
     </div>
   );
 };

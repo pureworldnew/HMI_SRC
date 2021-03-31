@@ -29,6 +29,9 @@ module.exports = {
       voltage: {
         type: Sequelize.DOUBLE
       },
+      includeDateTime: {
+        type: Sequelize.DATE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

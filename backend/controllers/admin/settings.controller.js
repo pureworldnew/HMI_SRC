@@ -176,6 +176,8 @@ module.exports = {
                 item.temp1 = line[i].split(",")[4];
                 item.temp2 = line[i].split(",")[5];
                 item.voltage = line[i].split(",")[6];
+                item.includeDateTime =
+                  line[i].split(",")[0] + " " + line[i].split(",")[1];
                 logData.push(item);
               }
             }

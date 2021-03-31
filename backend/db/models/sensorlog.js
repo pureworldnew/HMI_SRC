@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     macAddress: DataTypes.STRING,
     temp1: DataTypes.STRING,
     temp2: DataTypes.STRING,
-    voltage: DataTypes.DOUBLE
+    voltage: DataTypes.DOUBLE,
+    includeDateTime: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'SensorLog',

@@ -6,17 +6,17 @@ module.exports = {
   getActiveSensors(req, res) {
     return db.sequelize
       .query(
-        "SELECT includeDate, includeTime, COUNT(id) as activeSensor FROM sensorlogs GROUP BY includeDate, includeTime ORDER BY includeDate DESC, includeTime DESC LIMIT 1",
+        "SELECT macAddress, temp1, temp2, voltage, MAX(includeDateTime) AS includeDateTime, deviceName FROM sensorlogs GROUP BY deviceName ORDER BY MAX(includeDateTime)",
         {
           type: db.sequelize.QueryTypes.SELECT,
         }
       )
-      .then(function (recentActive) {
+      .then(function (activeSensors) {
         res
           .status(200)
           .json(
             ResponseFormat.build(
-              recentActive,
+              activeSensors,
               "Company Information Reterive successfully",
               200,
               "success"
