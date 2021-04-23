@@ -51,21 +51,7 @@ const StatCard = (props) => {
 
   // const dispatch = useDispatch();
 
-  useEffect(() => {
-    CompanyService.getCompanyUsers(companyId)
-      .then((res) => {
-        props.updateState(false);
-        setMembers(res.data.data.users.length);
-      })
-      .catch((err) => {
-        console.log('Error:', err);
-      });
-  }, [set_create_company]);
-
-  // const handleChange = event => {
-  //   console.log(event);
-  //   setpercentage_show(event.target.checked);
-  // };
+  useEffect(() => {}, [set_create_company]);
 
   const getAccountByPeriodLegend = (handleClick) => {
     return (

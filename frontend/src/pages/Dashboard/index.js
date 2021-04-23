@@ -1,19 +1,18 @@
 import React, { useContext, useState, useEffect } from 'react';
 import StatCard from './StatCard';
-import SmallCharts from './SmallCharts';
-import BarChart from './BarChart';
-
 import { StateContext } from '../../StateContextProvider';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import Header from './Header';
-import SimpleTable from '../../components/SimpleTable';
 import SensorsTable from '../../components/SensorsTable';
 import DashboardService from '../../services/DashboardService';
+import loadingGif from '../../assets/gif/loading.gif';
 
 const Dashboard = () => {
   let loggedInUser = localStorage.getItem('username');
   const [{ user }] = useContext(StateContext);
+  const [pageLoading, setPageLoading] = useState(false);
+
   const [date, setDate] = useState({
     startDate: null,
     endDate: null,
@@ -29,6 +28,7 @@ const Dashboard = () => {
   let firstName = loggedInUser ? loggedInUser.split(' ') : '-';
 
   useEffect(() => {
+    setPageLoading(true);
     DashboardService.getActiveSensors()
       .then((res) => {
         console.log('res is ', res.data[0].activeSensor);
@@ -39,6 +39,7 @@ const Dashboard = () => {
           alertGateway: 0,
           sensors: res.data
         });
+        setPageLoading(false);
       })
       .catch((err) => {
         console.log('Error:', err);
@@ -53,35 +54,42 @@ const Dashboard = () => {
         date={date}
         setDate={setDate}
       />
-
-      <div className="dashboard__statsGrid">
-        <StatCard
-          title="Active Sensors"
-          main={data.activeSensor}
-          grid={1}
-          icon="SignalCellularAltOutlinedIcon"
-        />
-        <StatCard
-          title="Alerting Sensors"
-          main={data.alertSensor}
-          grid={2}
-          icon="NotificationsActiveOutlinedIcon"
-        />
-        <StatCard
-          title="Active Gateways"
-          main={data.activeGateway}
-          grid={3}
-          icon="SettingsInputAntennaOutlinedIcon"
-        />
-        <StatCard
-          title="Alerting Gateways"
-          main={data.alertGateway}
-          grid={4}
-          icon="NotificationsActiveOutlinedIcon"
-        />
-      </div>
-      {/* <SimpleTable /> */}
-      <SensorsTable sensors={data.sensors} />
+      {pageLoading ? (
+        <div className="panel-body terminology d-flex justify-content-center align-items-center">
+          <img className="pb-5 mb-5" src={loadingGif} alt="loader gif" />
+        </div>
+      ) : (
+        <div>
+          <div className="dashboard__statsGrid">
+            <StatCard
+              title="Active Sensors"
+              main={data.activeSensor}
+              grid={1}
+              icon="SignalCellularAltOutlinedIcon"
+            />
+            <StatCard
+              title="Alerting Sensors"
+              main={data.alertSensor}
+              grid={2}
+              icon="NotificationsActiveOutlinedIcon"
+            />
+            <StatCard
+              title="Active Gateways"
+              main={data.activeGateway}
+              grid={3}
+              icon="SettingsInputAntennaOutlinedIcon"
+            />
+            <StatCard
+              title="Alerting Gateways"
+              main={data.alertGateway}
+              grid={4}
+              icon="NotificationsActiveOutlinedIcon"
+            />
+          </div>
+          {/* <SimpleTable /> */}
+          <SensorsTable sensors={data.sensors} />
+        </div>
+      )}
     </div>
   );
 };

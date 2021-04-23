@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import StatCard from '../../components/StatCard/index';
 import SensorService from '../../services/SensorService';
 import Header from '../Dashboard/Header';
+import loadingGif from '../../assets/gif/loading.gif';
 
 import { connect } from 'react-redux';
 
 const Sensors = (props) => {
   const [page, setPage] = useState(0);
   const [usersList, setUsersList] = useState([]);
+  const [pageLoading, setPageLoading] = useState(false);
 
   const noOfDatasInTable = 6;
   const noOfPages = parseInt(usersList.length / noOfDatasInTable);
@@ -60,10 +62,12 @@ const Sensors = (props) => {
   };
 
   useEffect(() => {
+    setPageLoading(true);
     SensorService.getAllSensors()
       .then((res) => {
         console.log('state change:', res);
         setUsersList(res.data);
+        setPageLoading(false);
         props.updateState(false);
       })
       .catch((err) => {
@@ -74,22 +78,28 @@ const Sensors = (props) => {
   return (
     <div className="dashboard revenue-insights">
       <Header title="Sensors" type="Sensors" />
-      <div className="revenue-insights__statsGrid adminTeams">
-        {dataInTable.map((company, index) => (
-          <StatCard
-            key={index}
-            title={company.deviceName}
-            temp1={company.temp1}
-            temp2={company.temp2}
-            recentTime={company.includeDateTime}
-            voltage={company.voltage}
-            battery_status={company.battery_status}
-            grid={index + 1}
-            page="sensors"
-            companyId={company.id}
-          />
-        ))}
-      </div>
+      {pageLoading ? (
+        <div className="panel-body terminology d-flex justify-content-center align-items-center">
+          <img className="pb-5 mb-5" src={loadingGif} alt="loader gif" />
+        </div>
+      ) : (
+        <div className="revenue-insights__statsGrid adminTeams">
+          {dataInTable.map((company, index) => (
+            <StatCard
+              key={index}
+              title={company.deviceName}
+              temp1={company.temp1}
+              temp2={company.temp2}
+              recentTime={company.includeDateTime}
+              voltage={company.voltage}
+              battery_status={company.battery_status}
+              grid={index + 1}
+              page="sensors"
+              companyId={company.id}
+            />
+          ))}
+        </div>
+      )}
       {noOfPages >= 1 ? paginationComponent() : null}
     </div>
   );
