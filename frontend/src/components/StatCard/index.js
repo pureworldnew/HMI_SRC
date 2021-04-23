@@ -332,19 +332,53 @@ const StatCard = (props) => {
     );
   } else if (page === 'sensors') {
     return (
-      <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
-          <div className="adminTeamsCardMore">
-            {getAccountByPeriodLegend(handleClick)}
+      <div className="statcard p-8" style={{ gridArea: `card-${props.grid}` }}>
+        <div className="d-flex justify-content-between w-100 h-100">
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-start mr-5">
+              <img
+                src={thermometer}
+                alt="temperature"
+                className="temperature text-dark"
+              />
+              <img src={sensorLive} alt="sensor" className="sensor" />
+            </div>
+            <div className="d-flex flex-column justify-content-between">
+              <p className="statcard__title adminTeamsCardTitle pb-5">
+                {props.title}
+              </p>
+              <div className="pb-5 d-flex">
+                {props.temp1}, {props.temp2}
+              </div>
+              <div className="bg-transparent"> {props.recentTime}</div>
+            </div>
+          </div>
+          <div className="d-flex flex-column justify-content-between align-items-center py-4">
+            <div className="d-flex justify-content-between w-100">
+              <FingerprintIcon
+                className="mr-3 text-body sensor"
+                style={{ fontSize: 30 }}
+              />
+              <img src={highSignal} alt="sensor" className="highSignal mr-3" />
+              <UnAvailableToolTip title={'Battery:' + props.voltage}>
+                {props.battery_status === 'red' ? (
+                  <Battery20Icon className="sensor " style={{ fontSize: 30 }} />
+                ) : props.battery_status === 'yellow' ? (
+                  <Battery50Icon className="sensor " style={{ fontSize: 30 }} />
+                ) : (
+                  <BatteryFullIcon
+                    className="sensor "
+                    style={{ fontSize: 30 }}
+                  />
+                )}
+              </UnAvailableToolTip>
+            </div>
+            <div className="adminTeamsCardMore">
+              {getAccountByPeriodLegend(handleClick)}
+            </div>
           </div>
         </div>
-        <div style={{ display: 'flex' }}>
-          {circleElements(adminTeamsCardCircles)}
-        </div>
-        <div className="statcard__bottom adminTeamsCardBottome">
-          {!!adminBottome && <p>& {adminBottome} more.</p>}
-        </div>
+
         <Menu
           className="popOver"
           id="chart-menu"

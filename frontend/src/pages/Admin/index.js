@@ -28,8 +28,6 @@ const Admin = (props) => {
       return <Companies />;
     } else if (activeTab === 'Users') {
       return <Users />;
-    } else if (activeTab === 'Sensors') {
-      return <Sensors />;
     } else if (activeTab === 'Teams') {
       return <Teams />;
     } else if (activeTab === 'Settings') {
@@ -42,8 +40,6 @@ const Admin = (props) => {
   const getActiveTabHeader = () => {
     if (activeTab === 'Companies') {
       return <Header title="Admin" type="AdminCompanies" />;
-    } else if (activeTab === 'Sensors') {
-      return <Header title="Admin" type="AdminSensors" />;
     } else if (activeTab === 'Users') {
       return <Header title="Admin" type="AdminUsers" />;
     } else if (activeTab === 'Settings') {
@@ -55,7 +51,7 @@ const Admin = (props) => {
     }
   };
 
-  const masterAdminTab = ['Users', 'Sensors', 'Settings', 'Connections'];
+  const masterAdminTab = ['Users', 'Settings', 'Connections'];
 
   const companyAdminTab = ['Settings'];
 

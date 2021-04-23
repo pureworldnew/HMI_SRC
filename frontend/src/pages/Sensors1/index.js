@@ -78,12 +78,7 @@ const Sensors = (props) => {
         {dataInTable.map((company, index) => (
           <StatCard
             key={index}
-            title={company.deviceName}
-            temp1={company.temp1}
-            temp2={company.temp2}
-            recentTime={company.includeDateTime}
-            voltage={company.voltage}
-            battery_status={company.battery_status}
+            title={company.companyName}
             grid={index + 1}
             page="sensors"
             companyId={company.id}
