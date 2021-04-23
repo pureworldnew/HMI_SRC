@@ -10,10 +10,10 @@ import ListItem from '@material-ui/core/ListItem';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import TeamsEditModal from '../../pages/Admin/Modal/CompaniesTeamsModal/EditModal/index';
 import TeamViewModal from '../../pages/Admin/Modal/CompaniesTeamsModal/ViewModal/index';
+import UnAvailableToolTip from '../../pages/Components/TooltipComponents/UnAvailableTooltipComponent';
 // import PopoverItem from '../../pages/Components/PopOverComponent/Admin/popovercomponent';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
-import BatteryStdOutlinedIcon from '@material-ui/icons/BatteryStdOutlined';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+
 import Battery20Icon from '@material-ui/icons/Battery20';
 import BatteryFullIcon from '@material-ui/icons/BatteryFull';
 import Battery50Icon from '@material-ui/icons/Battery50';
@@ -523,8 +523,10 @@ const StatCard = (props) => {
               <p className="statcard__title adminTeamsCardTitle pb-5">
                 {props.title}
               </p>
-              <div className="pb-5">35.F</div>
-              <div>23 Minutes ago</div>
+              <div className="pb-5 d-flex">
+                {props.temp1}, {props.temp2}
+              </div>
+              <div className="bg-transparent"> {props.recentTime}</div>
             </div>
           </div>
           <div className="d-flex flex-column justify-content-between align-items-center py-4">
@@ -534,10 +536,18 @@ const StatCard = (props) => {
                 style={{ fontSize: 30 }}
               />
               <img src={highSignal} alt="sensor" className="highSignal mr-3" />
-              <BatteryFullIcon
-                className="sensor text-danger"
-                style={{ fontSize: 30 }}
-              />
+              <UnAvailableToolTip title={'Battery:' + props.voltage}>
+                {props.battery_status === 'red' ? (
+                  <Battery20Icon className="sensor " style={{ fontSize: 30 }} />
+                ) : props.battery_status === 'yellow' ? (
+                  <Battery50Icon className="sensor " style={{ fontSize: 30 }} />
+                ) : (
+                  <BatteryFullIcon
+                    className="sensor "
+                    style={{ fontSize: 30 }}
+                  />
+                )}
+              </UnAvailableToolTip>
             </div>
             <div className="adminTeamsCardMore">
               {getAccountByPeriodLegend(handleClick)}
@@ -545,16 +555,6 @@ const StatCard = (props) => {
           </div>
         </div>
 
-        {/* <BatteryStdOutlinedIcon style={{ fill: 'red' }} />
-        <Battery20Icon style={{ fill: 'red' }} />
-        <BatteryFullIcon style={{ fill: 'red' }} />
-        <Battery50Icon /> */}
-        {/* <div style={{ display: 'flex' }}>
-          {circleElements(adminTeamsCardCircles)}
-        </div> */}
-        {/* <div className="statcard__bottom adminTeamsCardBottome">
-          {!!adminBottome && <p>& {adminBottome} more.</p>}
-        </div> */}
         <Menu
           className="popOver"
           id="chart-menu"
