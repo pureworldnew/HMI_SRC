@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { TrendingUp, TrendingDown } from 'react-feather';
 import IconButton from '@material-ui/core/IconButton';
@@ -28,7 +28,7 @@ const StatCard = (props) => {
   let { dotsMore, main, bottom, title, companyId, set_create_company } = props;
 
   let adminTeamsCardCircles = members > 9 ? 9 : members;
-  let adminBottome = members > 9 ? (members - 9) : null;
+  let adminBottome = members > 9 ? members - 9 : null;
 
   let page = props.page;
   let bottom_dollar = props.bottom_dollar;
@@ -43,14 +43,13 @@ const StatCard = (props) => {
 
   useEffect(() => {
     CompanyService.getCompanyUsers(companyId)
-      .then(res => {
+      .then((res) => {
         props.updateState(false);
         setMembers(res.data.data.users.length);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('Error:', err);
-      })
-
+      });
   }, [set_create_company]);
 
   // const handleChange = event => {
@@ -59,43 +58,48 @@ const StatCard = (props) => {
   // };
 
   const getAccountByPeriodLegend = (handleClick) => {
-    return <div className="barChart__legend">
-
-      <IconButton
-        aria-label="more"
-        aria-controls="long-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <MoreHorizIcon />
-      </IconButton>
-    </div>
+    return (
+      <div className="barChart__legend">
+        <IconButton
+          aria-label="more"
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          onClick={handleClick}>
+          <MoreHorizIcon />
+        </IconButton>
+      </div>
+    );
   };
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const circleElements = (main) => {
     var indents = [];
     for (let i = 0; i < main; i++) {
-      indents.push(<p className="statcard__main adminTeamsCardCircle" style={{ marginLeft: i ? "-20px" : "0px", zIndex: -i }} key={i}></p>);
+      indents.push(
+        <p
+          className="statcard__main adminTeamsCardCircle"
+          style={{ marginLeft: i ? '-20px' : '0px', zIndex: -i }}
+          key={i}></p>
+      );
     }
     return indents;
-  }
+  };
 
-  if (props.unit === "dollar") {
+  if (props.unit === 'dollar') {
     if (props.reduceToMillion === true) {
       main = `$${props.main / 1000000}M`;
     } else {
-      main = `$${props.main.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+      main = `$${props.main.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
     }
     if (bottom_dollar) {
       bottom = `$${props.bottom
         .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
     }
-  } else if (props.unit === "percentage") {
+  } else if (props.unit === 'percentage') {
     main = `${props.main}%`;
     bottom = `${props.bottom}%`;
   } else {
@@ -133,9 +137,11 @@ const StatCard = (props) => {
         <p className="statcard__main">{main}</p>
         <div className="statcard__bottom">
           <p>Yesterday: {bottom}</p>
-          {hasIncreased
-            ? <TrendingUp style={{ marginLeft: "1rem" }} />
-            : <TrendingDown style={{ marginLeft: "1rem" }} />}
+          {hasIncreased ? (
+            <TrendingUp style={{ marginLeft: '1rem' }} />
+          ) : (
+            <TrendingDown style={{ marginLeft: '1rem' }} />
+          )}
         </div>
       </div>
     );
@@ -147,8 +153,9 @@ const StatCard = (props) => {
         <div className="statcard__bottom">
           <p>Previous Month: {bottom}</p>
           <i
-            className={hasIncreased ? "ft-arrow-up-right" : "ft-arrow-down-left"}
-          ></i>
+            className={
+              hasIncreased ? 'ft-arrow-up-right' : 'ft-arrow-down-left'
+            }></i>
         </div>
       </div>
     );
@@ -160,21 +167,22 @@ const StatCard = (props) => {
         <div className="statcard__bottom">
           <p>Yesterday: {bottom}</p>
           <i
-            className={hasIncreased ? "ft-arrow-up-right" : "ft-arrow-down-left"}
-          ></i>
+            className={
+              hasIncreased ? 'ft-arrow-up-right' : 'ft-arrow-down-left'
+            }></i>
         </div>
       </div>
     );
   } else if (page === 'adminTeamsCard') {
     return (
       <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
           <div className="adminTeamsCardMore">
             {getAccountByPeriodLegend(handleClick)}
           </div>
         </div>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: 'flex' }}>
           {circleElements(adminTeamsCardCircles)}
         </div>
         <div className="statcard__bottom adminTeamsCardBottome">
@@ -185,8 +193,7 @@ const StatCard = (props) => {
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
+          onClose={handleClose}>
           <List component="nav" aria-label="secondary mailbox folders">
             <MenuItem>
               <ListItem onClick={handleClose}>
@@ -195,25 +202,28 @@ const StatCard = (props) => {
             </MenuItem>
             <MenuItem onClick={handleClose}>
               <ListItem>
-                <TeamsEditModal buttonLabel="Edit" className="TeamsEditModalCustomCss" type="team" />
+                <TeamsEditModal
+                  buttonLabel="Edit"
+                  className="TeamsEditModalCustomCss"
+                  type="team"
+                />
               </ListItem>
             </MenuItem>
             <MenuItem onClick={handleClose}>
               <ListItem>
                 <p
                   style={{
-                    width: "35px",
-                    height: "20px",
-                    fontFamily: "Open Sans",
-                    fontStyle: "normal",
-                    fontWeight: "bold",
-                    fontSize: "14px",
-                    lineHeight: "20px",
-                    alignItems: "center",
-                    letterSpacing: "0.01em",
-                    color: "#000000",
-                  }}
-                >
+                    width: '35px',
+                    height: '20px',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
                   Delete
                 </p>
               </ListItem>
@@ -225,13 +235,13 @@ const StatCard = (props) => {
   } else if (page === 'companies') {
     return (
       <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
           <div className="adminTeamsCardMore">
             {getAccountByPeriodLegend(handleClick)}
           </div>
         </div>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: 'flex' }}>
           {circleElements(adminTeamsCardCircles)}
         </div>
         <div className="statcard__bottom adminTeamsCardBottome">
@@ -243,8 +253,7 @@ const StatCard = (props) => {
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
+          onClose={handleClose}>
           <List component="nav" aria-label="secondary mailbox folders">
             <MenuItem>
               <ListItem onClick={handleClose}>
@@ -269,20 +278,19 @@ const StatCard = (props) => {
               <ListItem>
                 <p
                   style={{
-                    width: "65px",
-                    height: "25px",
-                    paddingTop: "7px",
-                    textAlign: "center",
-                    fontFamily: "Open Sans",
-                    fontStyle: "normal",
-                    fontWeight: "bold",
-                    fontSize: "14px",
-                    lineHeight: "20px",
-                    alignItems: "center",
-                    letterSpacing: "0.01em",
-                    color: "#000000",
-                  }}
-                >
+                    width: '65px',
+                    height: '25px',
+                    paddingTop: '7px',
+                    textAlign: 'center',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
                   Un-Pause
                 </p>
               </ListItem>
@@ -291,20 +299,283 @@ const StatCard = (props) => {
               <ListItem>
                 <p
                   style={{
-                    width: "65px",
-                    height: "25px",
-                    paddingTop: "7px",
-                    textAlign: "center",
-                    fontFamily: "Open Sans",
-                    fontStyle: "normal",
-                    fontWeight: "bold",
-                    fontSize: "14px",
-                    lineHeight: "20px",
-                    alignItems: "center",
-                    letterSpacing: "0.01em",
-                    color: "#000000",
-                  }}
-                >
+                    width: '65px',
+                    height: '25px',
+                    paddingTop: '7px',
+                    textAlign: 'center',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
+                  Delete
+                </p>
+              </ListItem>
+            </MenuItem>
+          </List>
+        </Menu>
+      </div>
+    );
+  } else if (page === 'sensors') {
+    return (
+      <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
+          <div className="adminTeamsCardMore">
+            {getAccountByPeriodLegend(handleClick)}
+          </div>
+        </div>
+        <div style={{ display: 'flex' }}>
+          {circleElements(adminTeamsCardCircles)}
+        </div>
+        <div className="statcard__bottom adminTeamsCardBottome">
+          {!!adminBottome && <p>& {adminBottome} more.</p>}
+        </div>
+        <Menu
+          className="popOver"
+          id="chart-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}>
+          <List component="nav" aria-label="secondary mailbox folders">
+            <MenuItem>
+              <ListItem onClick={handleClose}>
+                <TeamViewModal
+                  buttonLabel="View"
+                  type="companies"
+                  title={title}
+                  companyId={companyId}
+                />
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <TeamsEditModal
+                  buttonLabel="Edit"
+                  className="TeamsEditModalCustomCss"
+                  type="companies"
+                />
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <p
+                  style={{
+                    width: '65px',
+                    height: '25px',
+                    paddingTop: '7px',
+                    textAlign: 'center',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
+                  Un-Pause
+                </p>
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <p
+                  style={{
+                    width: '65px',
+                    height: '25px',
+                    paddingTop: '7px',
+                    textAlign: 'center',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
+                  Delete
+                </p>
+              </ListItem>
+            </MenuItem>
+          </List>
+        </Menu>
+      </div>
+    );
+  } else if (page === 'notifications') {
+    return (
+      <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
+          <div className="adminTeamsCardMore">
+            {getAccountByPeriodLegend(handleClick)}
+          </div>
+        </div>
+        <div style={{ display: 'flex' }}>
+          {circleElements(adminTeamsCardCircles)}
+        </div>
+        <div className="statcard__bottom adminTeamsCardBottome">
+          {!!adminBottome && <p>& {adminBottome} more.</p>}
+        </div>
+        <Menu
+          className="popOver"
+          id="chart-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}>
+          <List component="nav" aria-label="secondary mailbox folders">
+            <MenuItem>
+              <ListItem onClick={handleClose}>
+                <TeamViewModal
+                  buttonLabel="View"
+                  type="companies"
+                  title={title}
+                  companyId={companyId}
+                />
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <TeamsEditModal
+                  buttonLabel="Edit"
+                  className="TeamsEditModalCustomCss"
+                  type="companies"
+                />
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <p
+                  style={{
+                    width: '65px',
+                    height: '25px',
+                    paddingTop: '7px',
+                    textAlign: 'center',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
+                  Un-Pause
+                </p>
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <p
+                  style={{
+                    width: '65px',
+                    height: '25px',
+                    paddingTop: '7px',
+                    textAlign: 'center',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
+                  Delete
+                </p>
+              </ListItem>
+            </MenuItem>
+          </List>
+        </Menu>
+      </div>
+    );
+  } else if (page === 'actions') {
+    return (
+      <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
+          <div className="adminTeamsCardMore">
+            {getAccountByPeriodLegend(handleClick)}
+          </div>
+        </div>
+        <div style={{ display: 'flex' }}>
+          {circleElements(adminTeamsCardCircles)}
+        </div>
+        <div className="statcard__bottom adminTeamsCardBottome">
+          {!!adminBottome && <p>& {adminBottome} more.</p>}
+        </div>
+        <Menu
+          className="popOver"
+          id="chart-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}>
+          <List component="nav" aria-label="secondary mailbox folders">
+            <MenuItem>
+              <ListItem onClick={handleClose}>
+                <TeamViewModal
+                  buttonLabel="View"
+                  type="companies"
+                  title={title}
+                  companyId={companyId}
+                />
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <TeamsEditModal
+                  buttonLabel="Edit"
+                  className="TeamsEditModalCustomCss"
+                  type="companies"
+                />
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <p
+                  style={{
+                    width: '65px',
+                    height: '25px',
+                    paddingTop: '7px',
+                    textAlign: 'center',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
+                  Un-Pause
+                </p>
+              </ListItem>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItem>
+                <p
+                  style={{
+                    width: '65px',
+                    height: '25px',
+                    paddingTop: '7px',
+                    textAlign: 'center',
+                    fontFamily: 'Open Sans',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    alignItems: 'center',
+                    letterSpacing: '0.01em',
+                    color: '#000000'
+                  }}>
                   Delete
                 </p>
               </ListItem>
@@ -321,21 +592,21 @@ const StatCard = (props) => {
         <div className="statcard__bottom">
           <p>Previous Month: {bottom}</p>
           <i
-            className={hasIncreased ? "ft-arrow-up-right" : "ft-arrow-down-left"}
-          ></i>
+            className={
+              hasIncreased ? 'ft-arrow-up-right' : 'ft-arrow-down-left'
+            }></i>
         </div>
       </div>
     );
   }
-
 };
 
 const mapDispatchToProps = ({ company: { updateState } }) => ({
-  updateState: (value) => updateState(value),
+  updateState: (value) => updateState(value)
 });
 
 const mapStateToProps = ({ company: { set_create_company } }) => ({
-  set_create_company,
+  set_create_company
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StatCard);

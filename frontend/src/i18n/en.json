@@ -29,7 +29,11 @@
     "files": "Files",
     "admin": "Admin",
     "productEngagement": "Product Engagement",
-    "alerts": "Alerts & Reports"
+    "alerts": "Alerts & Reports",
+    "sensors": "Sensors",
+    "actions": "Actions",
+    "gateways": "Gateways",
+    "notifications": "Notifications"
   },
   "dashboard": {
     "dashboard": "Dashboard"

@@ -6,16 +6,9 @@ import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-// import AddIcon from '@material-ui/icons/Add';
-// import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-// import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-// import SvgIcon from '@material-ui/core/SvgIcon';
 import Popover from '@material-ui/core/Popover';
-// import Menu from '@material-ui/core/Menu';
-// import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-// import { DateRangePicker } from 'react-dates';
 import UnAvailableToolTip from '../../Components/TooltipComponents/UnAvailableTooltipComponent';
 import DrawerForm from '../../AlertsReports/DrawerForm';
 import TeamsCreateModal from '../../Admin/Modal/CompaniesTeamsModal/CreateModal/index';
@@ -631,67 +624,16 @@ const Header = (props) => {
             classNamePrefix="select-react"
             placeholder="CSMs: All"
           />
-
           <button
             onClick={createTask}
             className="button button--block-tasklist button-primary">
             <p>+ Create New Task</p>
           </button>
-
-          {/*<Autocomplete*/}
-          {/*  id="ACOUNTs"*/}
-          {/*  options={top100Films}*/}
-          {/*  getOptionLabel={(option) => option.title}*/}
-          {/*  className="autoAcounts"*/}
-          {/*  popupIcon={<img src={ArrowDown} alt="arrow down" />}*/}
-          {/*  renderInput={(params) => (*/}
-          {/*    <TextField*/}
-          {/*      className="acountInput"*/}
-          {/*      {...params}*/}
-          {/*      label="Acounts: All"*/}
-          {/*      variant="outlined"*/}
-          {/*    />*/}
-          {/*  )}*/}
-          {/*/>*/}
-
-          {/*<Autocomplete*/}
-          {/*  id="TASKs"*/}
-          {/*  options={top100Films}*/}
-          {/*  getOptionLabel={(option) => option.title}*/}
-          {/*  className="autoTasks"*/}
-          {/*  popupIcon={<img src={ArrowDown} alt="arrow down" />}*/}
-          {/*  renderInput={(params) => (*/}
-          {/*    <TextField*/}
-          {/*      className="acountTask"*/}
-          {/*      {...params}*/}
-          {/*      label="Task: All"*/}
-          {/*      variant="outlined"*/}
-          {/*    />*/}
-          {/*  )}*/}
-          {/*/>*/}
-
-          {/*<Autocomplete*/}
-          {/*  id="CSMs"*/}
-          {/*  options={top100Films}*/}
-          {/*  getOptionLabel={(option) => option.title}*/}
-          {/*  className="autoCSMs"*/}
-          {/*  popupIcon={*/}
-          {/*    <img className="autoSVG" src={ArrowDown} alt="arrow down" />*/}
-          {/*  }*/}
-          {/*  renderInput={(params) => (*/}
-          {/*    <TextField*/}
-          {/*      className="acountCSM"*/}
-          {/*      {...params}*/}
-          {/*      label="CSMs: All"*/}
-          {/*      variant="outlined"*/}
-          {/*    />*/}
-          {/*  )}*/}
-          {/*/>*/}
         </div>
       </div>
     );
   } else if (title === 'Admin') {
-    if (type === 'AdminCompanies') {
+    if (type === 'AdminSensors') {
       return (
         <div className="dashboard__header">
           <div className="dashboard__welcomeMessage welcomeMessage">
@@ -817,6 +759,48 @@ const Header = (props) => {
           className="dashboard__buttons"
           style={{ maxWidth: '460px', justifyContent: 'flex-end' }}>
           <DrawerForm type="report" title="+ Create New Report" />
+          <DrawerForm type="alert" title="+ Create New Alert" />
+        </div>
+      </div>
+    );
+  } else if (type === 'Sensors') {
+    return (
+      <div className="dashboard__header">
+        <div className="dashboard__welcomeMessage welcomeMessage">
+          <h3 className="welcomeMessage__title">{title}</h3>
+        </div>
+        <div
+          className="dashboard__buttons"
+          style={{ maxWidth: '460px', justifyContent: 'flex-end' }}>
+          <DrawerForm type="report" title="+ Create New Sensor" />
+          <DrawerForm type="alert" title="+ Create New Alert" />
+        </div>
+      </div>
+    );
+  } else if (type === 'Notifictions') {
+    return (
+      <div className="dashboard__header">
+        <div className="dashboard__welcomeMessage welcomeMessage">
+          <h3 className="welcomeMessage__title">{title}</h3>
+        </div>
+        <div
+          className="dashboard__buttons"
+          style={{ maxWidth: '460px', justifyContent: 'flex-end' }}>
+          <DrawerForm type="report" title="+ Create New Notification" />
+          <DrawerForm type="alert" title="+ Create New Alert" />
+        </div>
+      </div>
+    );
+  } else if (type === 'Actions') {
+    return (
+      <div className="dashboard__header">
+        <div className="dashboard__welcomeMessage welcomeMessage">
+          <h3 className="welcomeMessage__title">{title}</h3>
+        </div>
+        <div
+          className="dashboard__buttons"
+          style={{ maxWidth: '460px', justifyContent: 'flex-end' }}>
+          <DrawerForm type="report" title="+ Create New Action" />
           <DrawerForm type="alert" title="+ Create New Alert" />
         </div>
       </div>

@@ -37,6 +37,9 @@ import Presentations from './pages/Presentations';
 import Admin from './pages/Admin';
 import AlertsReports from './pages/AlertsReports';
 import store from './store';
+import Sensors from './pages/Sensors';
+import Actions from './pages/Actions';
+import Notifications from './pages/Notifications';
 
 const MainRouter = (props) => {
   const [pageTitle] = React.useState('Insight');
@@ -203,6 +206,10 @@ const MainRouter = (props) => {
                 <Route path="/metrics" component={Metrics} />
                 <Route path="/connections" component={Connections} />
                 <Route path="/workflows" component={Workflows} />
+
+                <Route path="/sensors" component={Sensors} />
+                <Route path="/actions" component={Actions} />
+                <Route path="/notifications" component={Notifications} />
                 <Route path="/alerts" component={AlertsReports} exact />
                 <Route path="/admin" component={Admin} roleId={roleId} />
               </Switch>
