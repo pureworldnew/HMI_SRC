@@ -20,6 +20,7 @@ import GoogleSheetsIcon from '../../../assets/svg/google-sheets-icon.svg';
 import SalesforcseIcon from '../../../assets/svg/salesforcse-icon.svg';
 import CompanyService from '../../../services/CompanyService';
 import RevenueService from '../../../services/RevenueService';
+import signal_img from '../../../assets/img/signal.png';
 
 import './header.scss';
 
@@ -794,7 +795,9 @@ const Header = (props) => {
   } else if (type === 'Actions') {
     return (
       <div className="dashboard__header">
-        <div className="dashboard__welcomeMessage welcomeMessage">
+        <div className="dashboard__welcomeMessage welcomeMessage d-flex justify-content-center align-items-center">
+          <img src={signal_img} alt="signal " className="signal mr-3" />
+
           <h3 className="welcomeMessage__title">{title}</h3>
         </div>
         <div

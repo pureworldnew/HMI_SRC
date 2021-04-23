@@ -1,213 +1,213 @@
 .dashboard__rightbuttons {
-    display: flex;
+  display: flex;
 
-    .autoAcounts {
-        // position: absolute;
-        width: 189px;
-        height: 56px;
-        left: 860px;
-        top: 112px;
+  .autoAcounts {
+    // position: absolute;
+    width: 189px;
+    height: 56px;
+    left: 860px;
+    top: 112px;
 
-        background: #ffffff;
-        // border: 1px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 4px;
+    background: #ffffff;
+    // border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
 
-        label {
-            width: 88px;
-            height: 20px;
+    label {
+      width: 88px;
+      height: 20px;
 
-            font-family: Open Sans;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 14px;
-            // line-height: 20px;
-        }
-
-        div {
-            input {
-                font-family: Open Sans;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 14px;
-                // line-height: 20px;
-            }
-        }
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      // line-height: 20px;
     }
 
-    .autoTasks {
-        margin-left: 24px;
-        width: 189px;
-        height: 56px;
-        left: 1073px;
-        top: 112px;
+    div {
+      input {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        // line-height: 20px;
+      }
+    }
+  }
 
-        background: #ffffff;
-        // border: 1px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 4px;
+  .autoTasks {
+    margin-left: 24px;
+    width: 189px;
+    height: 56px;
+    left: 1073px;
+    top: 112px;
 
-        label {
-            width: 57px;
-            height: 20px;
+    background: #ffffff;
+    // border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
 
-            font-family: Open Sans;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 14px;
-            // line-height: 20px;
-        }
+    label {
+      width: 57px;
+      height: 20px;
 
-        div {
-            input {
-                font-family: Open Sans;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 14px;
-                // line-height: 20px;
-            }
-        }
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      // line-height: 20px;
     }
 
-    .autoCSMs {
-        margin-left: 24px;
-        width: 130px;
-        height: 56px;
-        left: 1286px;
-        top: 112px;
-
-        background: #ffffff;
-        // border: 1px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 4px;
-
-        label {
-            width: 63px;
-            height: 20px;
-
-            font-family: Open Sans;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 14px;
-            // line-height: 20px;
-        }
-
-        div {
-            input {
-                font-family: Open Sans;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 14px;
-                // line-height: 20px;
-            }
-        }
-
-        .autoSVG {
-            left: 0%;
-            right: 41.25%;
-            top: 79.37%;
-            bottom: -79.37%;
-
-            // background: #7B7B7B;
-            // transform: rotate(-90deg);
-        }
+    div {
+      input {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        // line-height: 20px;
+      }
     }
+  }
+
+  .autoCSMs {
+    margin-left: 24px;
+    width: 130px;
+    height: 56px;
+    left: 1286px;
+    top: 112px;
+
+    background: #ffffff;
+    // border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    label {
+      width: 63px;
+      height: 20px;
+
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      // line-height: 20px;
+    }
+
+    div {
+      input {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        // line-height: 20px;
+      }
+    }
+
+    .autoSVG {
+      left: 0%;
+      right: 41.25%;
+      top: 79.37%;
+      bottom: -79.37%;
+
+      // background: #7B7B7B;
+      // transform: rotate(-90deg);
+    }
+  }
 }
 
 .TeamsCreateModalCustomCss {
-    width: 496px !important;
+  width: 496px !important;
+  height: 100%;
+  position: absolute !important;
+  right: 0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+
+  .modal-content {
     height: 100%;
-    position: absolute !important;
-    right: 0;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+  }
 
-    .modal-content {
-        height: 100%;
+  .modal-header {
+    height: 112px;
+
+    button {
+      top: 40px;
+      position: absolute;
+      right: 24px;
+
+      span {
+        font-size: 30px;
+      }
     }
+  }
 
-    .modal-header {
-        height: 112px;
+  .modal-footer {
+    height: 96px;
 
-        button {
-            top: 40px;
-            position: absolute;
-            right: 24px;
-
-            span {
-                font-size: 30px;
-            }
-        }
+    @media (max-width: 576px) {
+      height: auto;
     }
+  }
 
-    .modal-footer {
-        height: 96px;
-
-        @media (max-width: 576px) {
-            height: auto;
-        }
-    }
-
-    .modal-title {
-        width: 100%;
-        height: 32px;
-        top: 40px;
-        position: fixed;
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 32px;
-        margin-left: 24px;
-    }
+  .modal-title {
+    width: 100%;
+    height: 32px;
+    top: 40px;
+    position: fixed;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    margin-left: 24px;
+  }
 }
 
 .TeamsEditModalCustomCss {
-    width: 496px !important;
+  width: 496px !important;
+  height: 100%;
+  position: absolute !important;
+  right: 0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+
+  .modal-content {
     height: 100%;
-    position: absolute !important;
-    right: 0;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+  }
 
-    .modal-content {
-        height: 100%;
+  .modal-header {
+    height: 112px;
+
+    button {
+      top: 40px;
+      position: absolute;
+      right: 24px;
+
+      span {
+        font-size: 30px;
+      }
     }
+  }
 
-    .modal-header {
-        height: 112px;
+  .modal-footer {
+    height: 96px;
 
-        button {
-            top: 40px;
-            position: absolute;
-            right: 24px;
-
-            span {
-                font-size: 30px;
-            }
-        }
+    @media (max-width: 576px) {
+      height: auto;
     }
+  }
 
-    .modal-footer {
-        height: 96px;
-
-        @media (max-width: 576px) {
-            height: auto;
-        }
-    }
-
-    .modal-title {
-        width: 100%;
-        height: 32px;
-        top: 40px;
-        position: fixed;
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 32px;
-        margin-left: 24px;
-    }
+  .modal-title {
+    width: 100%;
+    height: 32px;
+    top: 40px;
+    position: fixed;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    margin-left: 24px;
+  }
 }
 
 // @media (min-width: 576px) {
@@ -218,231 +218,235 @@
 // }
 
 @media (max-width: 576px) {
-    .modal-dialog {
-        width: 100% !important;
-        margin: 1.75rem auto;
-    }
+  .modal-dialog {
+    width: 100% !important;
+    margin: 1.75rem auto;
+  }
 }
 
 .MuiAutocomplete-endAdornment {
-    margin-top: 3px !important;
+  margin-top: 3px !important;
 }
 
 .revenue__buttons {
-    display: flex;
+  display: flex;
 
-    .css-1okebmr-indicatorSeparator {
-        display: none !important;
+  .css-1okebmr-indicatorSeparator {
+    display: none !important;
+  }
+
+  .css-1wa3eu0-placeholder {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .css-1uccc91-singleValue {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .css-1pahdxg-control {
+    height: 56px !important;
+  }
+
+  .css-1pahdxg-control:hover {
+    height: 56px !important;
+  }
+
+  .css-1pahdxg-control:focus {
+    height: 56px !important;
+  }
+
+  .terminology {
+    width: 498px;
+    height: 56px;
+
+    background: #ffffff;
+    // border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    .css-yk16xz-control {
+      height: 56px;
     }
 
     .css-1wa3eu0-placeholder {
+      // top: 25px !important;
+      width: 460px;
+      height: 20px;
+    }
+
+    div {
+      input {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .revenue_companies {
+    width: 180px;
+    height: 56px;
+
+    background: #ffffff;
+    // border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    .css-yk16xz-control {
+      height: 56px;
+    }
+
+    .css-1wa3eu0-placeholder {
+      width: 102px;
+      height: 20px;
+    }
+
+    div {
+      input {
         font-family: Open Sans;
         font-style: normal;
         font-weight: 600;
         font-size: 14px;
         line-height: 20px;
+      }
+    }
+  }
+
+  .revenue_segments {
+    width: 180px;
+    height: 56px;
+    margin-left: 24px;
+
+    background: #ffffff;
+    // border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    .css-yk16xz-control {
+      height: 56px;
     }
 
-    .css-1uccc91-singleValue {
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 20px;
+    .css-1wa3eu0-placeholder {
+      width: 92px;
+      height: 20px;
+    }
+  }
+
+  .revenue_top {
+    width: 136px;
+    height: 56px;
+    margin-left: 24px;
+
+    background: #ffffff;
+    // border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    .css-yk16xz-control {
+      height: 56px;
     }
 
-    .css-1pahdxg-control {
-        height: 56px !important;
+    .css-1wa3eu0-placeholder {
+      // width: 52px;
+      height: 20px;
+    }
+  }
+
+  .dashboard_accounts {
+    width: 242px;
+    height: 56px;
+    margin-left: 24px;
+
+    background: #ffffff;
+    // border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    .css-yk16xz-control {
+      height: 56px;
     }
 
-    .css-1pahdxg-control:hover {
-        height: 56px !important;
+    .css-1wa3eu0-placeholder {
+      height: 20px;
+    }
+  }
+
+  .revenue_monthly {
+    width: 129px;
+    height: 56px;
+    margin-left: 24px;
+
+    background: #ffffff;
+    // border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    .css-yk16xz-control {
+      height: 56px;
     }
 
-    .css-1pahdxg-control:focus {
-        height: 56px !important;
+    .css-1wa3eu0-placeholder {
+      width: 57px;
+      height: 20px;
     }
-
-    .terminology {
-        width: 498px;
-        height: 56px;
-
-        background: #ffffff;
-        // border: 1px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 4px;
-
-        .css-yk16xz-control {
-            height: 56px;
-        }
-
-        .css-1wa3eu0-placeholder {
-            // top: 25px !important;
-            width: 460px;
-            height: 20px;
-        }
-
-        div {
-            input {
-                font-family: "Open Sans";
-                font-style: normal;
-                font-weight: 600;
-                font-size: 14px;
-                line-height: 20px;
-            }
-        }
-    }
-
-    .revenue_companies {
-        width: 180px;
-        height: 56px;
-
-        background: #ffffff;
-        // border: 1px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 4px;
-
-        .css-yk16xz-control {
-            height: 56px;
-        }
-
-        .css-1wa3eu0-placeholder {
-            width: 102px;
-            height: 20px;
-        }
-
-        div {
-            input {
-                font-family: Open Sans;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 14px;
-                line-height: 20px;
-            }
-        }
-    }
-
-    .revenue_segments {
-        width: 180px;
-        height: 56px;
-        margin-left: 24px;
-
-        background: #ffffff;
-        // border: 1px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 4px;
-
-        .css-yk16xz-control {
-            height: 56px;
-        }
-
-        .css-1wa3eu0-placeholder {
-            width: 92px;
-            height: 20px;
-        }
-    }
-
-    .revenue_top {
-        width: 136px;
-        height: 56px;
-        margin-left: 24px;
-
-        background: #ffffff;
-        // border: 1px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 4px;
-
-        .css-yk16xz-control {
-            height: 56px;
-        }
-
-        .css-1wa3eu0-placeholder {
-            // width: 52px;
-            height: 20px;
-        }
-    }
-
-    .dashboard_accounts {
-        width: 242px;
-        height: 56px;
-        margin-left: 24px;
-
-        background: #ffffff;
-        // border: 1px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 4px;
-
-        .css-yk16xz-control {
-            height: 56px;
-        }
-
-        .css-1wa3eu0-placeholder {
-            height: 20px;
-        }
-    }
-
-    .revenue_monthly {
-        width: 129px;
-        height: 56px;
-        margin-left: 24px;
-
-        background: #ffffff;
-        // border: 1px solid #C4C4C4;
-        box-sizing: border-box;
-        border-radius: 4px;
-
-        .css-yk16xz-control {
-            height: 56px;
-        }
-
-        .css-1wa3eu0-placeholder {
-            width: 57px;
-            height: 20px;
-        }
-    }
+  }
 }
 
 body {
-    padding-right: 0px !important;
+  padding-right: 0px !important;
 }
 
 .company_select {
-    width: 228px;
-    height: 56px;
+  width: 228px;
+  height: 56px;
 
-    .css-yk16xz-control {
-        height: 100%;
-        padding-left: 12px;
-        padding-right: 8px;
+  .css-yk16xz-control {
+    height: 100%;
+    padding-left: 12px;
+    padding-right: 8px;
+  }
+
+  .css-1pahdxg-control {
+    height: 100%;
+    padding-left: 12px;
+    padding-right: 8px;
+
+    .css-b8ldur-Input {
+      font-size: 14px;
     }
+  }
 
-    .css-1pahdxg-control {
-        height: 100%;
-        padding-left: 12px;
-        padding-right: 8px;
+  .place_font {
+    font-size: 14px;
 
-        .css-b8ldur-Input {
-            font-size: 14px;
-        }
+    svg {
+      margin-right: 17px;
+      transform: rotate(90deg);
+      width: 20px;
+      height: 20px;
     }
+  }
 
-    .place_font {
-        font-size: 14px;
+  .css-1hb7zxy-IndicatorsContainer {
+    display: -webkit-box !important;
+  }
 
-        svg {
-            margin-right: 17px;
-            transform: rotate(90deg);
-            width: 20px;
-            height: 20px;
-        }
+  .css-1uccc91-singleValue {
+    font-size: 14px;
+  }
+}
 
-    }
-
-    .css-1hb7zxy-IndicatorsContainer {
-        display: -webkit-box !important;
-    }
-
-    .css-1uccc91-singleValue {
-        font-size: 14px;
-    }
+.signal {
+  width: 30px;
+  height: 30px;
 }

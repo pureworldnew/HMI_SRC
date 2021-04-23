@@ -11,8 +11,18 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import TeamsEditModal from '../../pages/Admin/Modal/CompaniesTeamsModal/EditModal/index';
 import TeamViewModal from '../../pages/Admin/Modal/CompaniesTeamsModal/ViewModal/index';
 // import PopoverItem from '../../pages/Components/PopOverComponent/Admin/popovercomponent';
+import FingerprintIcon from '@material-ui/icons/Fingerprint';
+import BatteryStdOutlinedIcon from '@material-ui/icons/BatteryStdOutlined';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import Battery20Icon from '@material-ui/icons/Battery20';
+import BatteryFullIcon from '@material-ui/icons/BatteryFull';
+import Battery50Icon from '@material-ui/icons/Battery50';
 import BtnDots from '../ButtonDotsMore';
 import CompanyService from '../../services/CompanyService';
+import thermometer from '../../assets/svg/heat.svg';
+import sensorLive from '../../assets/img/sensor.png';
+import highSignal from '../../assets/img/high-signal.png';
+
 // import PopoverItem from '../../Components/PopOverComponent/Admin/popovercomponent';
 
 // import * as Actions from "../../../store/actions/index"
@@ -498,19 +508,53 @@ const StatCard = (props) => {
     );
   } else if (page === 'actions') {
     return (
-      <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
-          <div className="adminTeamsCardMore">
-            {getAccountByPeriodLegend(handleClick)}
+      <div className="statcard p-8" style={{ gridArea: `card-${props.grid}` }}>
+        <div className="d-flex justify-content-between w-100 h-100">
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-start mr-5">
+              <img
+                src={thermometer}
+                alt="temperature"
+                className="temperature text-dark"
+              />
+              <img src={sensorLive} alt="sensor" className="sensor" />
+            </div>
+            <div className="d-flex flex-column justify-content-between">
+              <p className="statcard__title adminTeamsCardTitle pb-5">
+                {props.title}
+              </p>
+              <div className="pb-5">35.F</div>
+              <div>23 Minutes ago</div>
+            </div>
+          </div>
+          <div className="d-flex flex-column justify-content-between align-items-center py-4">
+            <div className="d-flex justify-content-between w-100">
+              <FingerprintIcon
+                className="mr-3 text-body sensor"
+                style={{ fontSize: 30 }}
+              />
+              <img src={highSignal} alt="sensor" className="highSignal mr-3" />
+              <BatteryFullIcon
+                className="sensor text-danger"
+                style={{ fontSize: 30 }}
+              />
+            </div>
+            <div className="adminTeamsCardMore">
+              {getAccountByPeriodLegend(handleClick)}
+            </div>
           </div>
         </div>
-        <div style={{ display: 'flex' }}>
+
+        {/* <BatteryStdOutlinedIcon style={{ fill: 'red' }} />
+        <Battery20Icon style={{ fill: 'red' }} />
+        <BatteryFullIcon style={{ fill: 'red' }} />
+        <Battery50Icon /> */}
+        {/* <div style={{ display: 'flex' }}>
           {circleElements(adminTeamsCardCircles)}
-        </div>
-        <div className="statcard__bottom adminTeamsCardBottome">
+        </div> */}
+        {/* <div className="statcard__bottom adminTeamsCardBottome">
           {!!adminBottome && <p>& {adminBottome} more.</p>}
-        </div>
+        </div> */}
         <Menu
           className="popOver"
           id="chart-menu"
