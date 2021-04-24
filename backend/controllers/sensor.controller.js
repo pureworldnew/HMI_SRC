@@ -113,10 +113,10 @@ module.exports = {
           END) AS battery_status
         FROM sensorlogs a
         INNER JOIN (
-        SELECT deviceName, MAX(includeDateTime) AS max_time
+        SELECT MAX(id) AS id, deviceName, MAX(includeDateTime) AS max_time
         FROM sensorlogs
         GROUP BY deviceName ) b
-        ON a.deviceName = b.deviceName AND a.includeDatetime = b.max_time
+        ON a.id = b.id AND a.includeDatetime = b.max_time
         ORDER BY a.includeDateTime`,
         {
           type: db.sequelize.QueryTypes.SELECT,

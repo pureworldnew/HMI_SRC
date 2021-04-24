@@ -10,7 +10,7 @@ import Popover from '@material-ui/core/Popover';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import UnAvailableToolTip from '../../Components/TooltipComponents/UnAvailableTooltipComponent';
-import DrawerForm from '../../AlertsReports/DrawerForm';
+import DrawerForm from '../../Sensors/DrawerForm';
 import TeamsCreateModal from '../../Admin/Modal/CompaniesTeamsModal/CreateModal/index';
 import UserCreateModal from '../../Admin/Modal/UsersModal/Create/';
 import CreateBulkModal from '../../Admin/Modal/UsersModal/CreateBulkModal';
@@ -772,15 +772,15 @@ const Header = (props) => {
           <img src={signalImg} alt="signal " className="signal mr-3" />
           <h3 className="welcomeMessage__title">{title}</h3>
         </div>
-        <div
+        {/* <div
           className="dashboard__buttons"
           style={{ maxWidth: '460px', justifyContent: 'flex-end' }}>
           <DrawerForm type="report" title="+ Create New Sensor" />
           <DrawerForm type="alert" title="+ Create New Alert" />
-        </div>
+        </div> */}
       </div>
     );
-  } else if (type === 'Notifictions') {
+  } else if (type === 'Notifications') {
     return (
       <div className="dashboard__header">
         <div className="dashboard__welcomeMessage welcomeMessage">
