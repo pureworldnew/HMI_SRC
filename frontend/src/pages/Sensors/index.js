@@ -65,7 +65,7 @@ const Sensors = (props) => {
     setPageLoading(true);
     SensorService.getAllSensors()
       .then((res) => {
-        console.log('state change:', res);
+        console.log('state changeweqwe:', res);
         setUsersList(res.data);
         setPageLoading(false);
         props.updateState(false);

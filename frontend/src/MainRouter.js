@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import Fullscreen from 'react-full-screen';
 import { Helmet } from 'react-helmet';
+import jwt_decode from 'jwt-decode';
 import { PRESENTATION as PRESENTATION_TYPE } from './store/constants';
 
 // Pages
@@ -94,6 +95,14 @@ const MainRouter = (props) => {
 
   useEffect(() => {
     mainRef.current.focus();
+    let token = localStorage.getItem('access_token');
+    const { exp } = jwt_decode(token);
+    console.log('exp is ', exp);
+    const expirationTime = exp * 1000 - 60000;
+    if (Date.now() >= expirationTime) {
+      localStorage.clear();
+      props.history.push('/login');
+    }
     if (!localStorage.getItem('access_token')) props.history.push('/login');
     else setRoleId(localStorage.getItem('roleId'));
   }, [mainRef, location, props.history]);
