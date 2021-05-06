@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import StatCard from '../../components/StatCard/index';
+import React, { useState, useEffect, PropTypes } from 'react';
+
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
+
 import SensorService from '../../services/SensorService';
 import Header from '../Dashboard/Header';
 import StepProgressBar from 'react-step-progress';
@@ -18,7 +13,11 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '@material-ui/core/Button';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
+// import { Editor } from 'react-draft-wysiwyg';
+// import RichTextEditor from 'react-rte';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import BodyTextEditor from '../../components/BodyTextEditor';
 import './notifications.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +46,7 @@ const Notifications = (props) => {
     console.log(param, 'is target value');
     setAge(param);
   };
+
   const bull = <span className={classes.bullet}>•</span>;
 
   const [page, setPage] = useState(0);
@@ -102,6 +102,12 @@ const Notifications = (props) => {
     );
   };
 
+  const [values, setValues] = useState({
+    bodyText:
+      'Temperature Data Greater Than 56 F \n\n Device: {Name} ({ID})\n\n Reading:{Reading}'
+  });
+  console.log(values);
+
   // setup the step content
   const step1Content = (
     <Card className={classes.root}>
@@ -148,11 +154,43 @@ const Notifications = (props) => {
           style={{ minWidth: '16rem', minHeight: '4rem', fontSize: '1.5rem' }}>
           <FontAwesomeIcon icon="check-square" />
           Save
+          <FontAwesomeIcon icon={faSave} className="ml-4" />
         </button>
       </CardActions>
     </Card>
   );
-  const step2Content = <h1>Step 2 Content</h1>;
+
+  const step2Content = (
+    <Card className={classes.root}>
+      <CardContent>
+        <div>
+          <div className="h2">Subject</div>
+          <div>
+            <input
+              className="m-2 w-100"
+              style={{ fontSize: '24px', minWidth: '150px' }}
+              type="text"
+              value="TemperatureData Greater Than 56 F"
+              disabled
+              placeholder="Temperature"></input>
+          </div>
+          <BodyTextEditor
+            value={values.bodyText}
+            setValue={(bodyText) => setValues({ ...values, bodyText })}
+          />
+        </div>
+        <div>Recipent</div>
+      </CardContent>
+      <CardActions>
+        <button
+          className="btn btn-primary btn-lg m-auto"
+          style={{ minWidth: '16rem', minHeight: '4rem', fontSize: '1.5rem' }}>
+          Save
+          <FontAwesomeIcon icon={faSave} className="ml-4" />
+        </button>
+      </CardActions>
+    </Card>
+  );
   const step3Content = <h1>Step 3 Content</h1>;
 
   // setup step validators, will be called before proceeding to the next step
