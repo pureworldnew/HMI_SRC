@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import BodyTextEditor from '../../components/BodyTextEditor';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faSave,
   faInfoCircle,
   faUser,
   faPaperPlane,
@@ -15,7 +16,7 @@ import {
   faAngleDoubleDown,
   faAngleDoubleUp
 } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'rsuite';
+import { Button, Toggle } from 'rsuite';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -38,17 +39,65 @@ const useStyles = makeStyles((theme) => ({
 
 const advancedSetting = () => {
   return (
-    <div className="d-flex mt-4 h2 justify-content-center">
-      <div>SMS Message(160 max):</div>
-      <div>
-        {' '}
-        <input
-          type="text"
-          className="form-control"
-          id="basic-url"
-          aria-describedby="basic-addon3"
-          placeholder="Search User Name"
-        />
+    <div className="container-fluid" style={{ transition: 'visibility 5s' }}>
+      <div className="row" align="center">
+        <div className="col-md row">
+          <div className="col">
+            <div className="h2">SMS Message(160 max):</div>
+            <div>
+              {' '}
+              <textarea
+                rows="3"
+                className="h2 p-4"
+                placeholder="If left blank, default message used"></textarea>
+            </div>
+          </div>
+          <div className="col">
+            <div className="h2">Voice Text:</div>
+            <div>
+              {' '}
+              <textarea
+                rows="3"
+                className="h2 p-4"
+                placeholder="If left blank, default message used"></textarea>
+            </div>
+          </div>
+        </div>
+        <div className="col-md row align-items-center justify-content-between">
+          <div className="">
+            {' '}
+            <div className="h2">Snooze: Don't Alert again for (Minutes):</div>
+            <input
+              className=""
+              style={{ fontSize: '24px' }}
+              type="text"
+              placeholder="60"></input>
+          </div>
+          <div className="d-flex flex-column align-items-between justify-content-around h-100">
+            <div className="row">
+              {' '}
+              <div className="h2 pr-2">Snooze each trigger:</div>
+              <div>
+                <Toggle
+                  size="lg"
+                  checkedChildren="Independently"
+                  unCheckedChildren="Jointly"
+                />
+              </div>
+            </div>
+            <div className="row">
+              {' '}
+              <div className="h2 pr-2">Acknowledgement Mode:</div>
+              <div>
+                <Toggle
+                  size="lg"
+                  checkedChildren="Auto"
+                  unCheckedChildren="Manual"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -241,6 +290,17 @@ const NotificationSettings = () => {
             />
           </Button>
           {showResults && advancedSetting()}
+          <button
+            className="btn btn-primary btn-lg mx-auto my-4"
+            style={{
+              minWidth: '16rem',
+              minHeight: '4rem',
+              fontSize: '1.5rem'
+            }}>
+            <FontAwesomeIcon icon="check-square" />
+            Save
+            <FontAwesomeIcon icon={faSave} className="ml-4" />
+          </button>
         </div>
       </CardActions>
     </Card>

@@ -13,6 +13,7 @@ import TeamViewModal from '../../pages/Admin/Modal/CompaniesTeamsModal/ViewModal
 import UnAvailableToolTip from '../../pages/Components/TooltipComponents/UnAvailableTooltipComponent';
 // import PopoverItem from '../../pages/Components/PopOverComponent/Admin/popovercomponent';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
+import CheckCircleOutlineOutlinedIcon from '@material-ui/icons/CheckCircleOutlineOutlined';
 
 import Battery20Icon from '@material-ui/icons/Battery20';
 import BatteryFullIcon from '@material-ui/icons/BatteryFull';
@@ -436,6 +437,44 @@ const StatCard = (props) => {
             </MenuItem>
           </List>
         </Menu>
+      </div>
+    );
+  } else if (page === 'notifications_settings') {
+    return (
+      <div className="statcard p-8" style={{ gridArea: `card-${props.grid}` }}>
+        <div className="d-flex justify-content-between w-100 h-100">
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-start mr-5">
+              <img
+                src={thermometer}
+                alt="temperature"
+                className="temperature text-dark"
+              />
+              <img src={sensorLive} alt="sensor" className="sensor" />
+            </div>
+            <div className="d-flex flex-column justify-content-between">
+              <p className="statcard__title adminTeamsCardTitle pb-5">
+                {props.title}
+              </p>
+              <div className="pb-5 d-flex">
+                {props.temp1}, {props.temp2}
+              </div>
+              <div className="bg-transparent"> {props.recentTime}</div>
+            </div>
+          </div>
+          <div className="d-flex flex-column justify-content-between align-items-center align-self-center py-4">
+            <div class="btn">
+              <CheckCircleOutlineOutlinedIcon
+                className="mr-3 text-success sensor"
+                style={{
+                  fontSize: 30,
+                  width: '50px',
+                  height: '50px'
+                }}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   } else if (page === 'notifications') {

@@ -13,6 +13,7 @@ import { Steps, Button, ButtonGroup } from 'rsuite';
 import './notifications.scss';
 import NotificationTrigger from './NotificationTrigger';
 import NotificationSettings from './NotificationSettings';
+import NotificationsSensors from './NotificationSensors';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 const Notifications = (props) => {
   const classes = useStyles();
 
-  const [step, setStep] = React.useState(1);
+  const [step, setStep] = React.useState(2);
   const onChange = (nextStep) => {
     setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);
   };
@@ -108,11 +109,11 @@ const Notifications = (props) => {
       <div className="mt-5">
         <Steps current={step}>
           <Steps.Item
-            title="Finished"
+            title="Triggers"
             description="What triggers your notifications?"
           />
-          <Steps.Item title="In Progress" description="Notification Settings" />
-          <Steps.Item title="Waiting" description="Notification Sensors" />
+          <Steps.Item title="Settings" description="Notification Settings" />
+          <Steps.Item title="Sensors" description="Notification Sensors" />
         </Steps>
 
         <hr />
@@ -120,6 +121,8 @@ const Notifications = (props) => {
           <NotificationTrigger />
         ) : step === 1 ? (
           <NotificationSettings />
+        ) : step === 2 ? (
+          <NotificationsSensors />
         ) : (
           ''
         )}
@@ -128,7 +131,7 @@ const Notifications = (props) => {
           <Button onClick={onPrevious} disabled={step === 0}>
             Previous
           </Button>
-          <Button onClick={onNext} disabled={step === 3}>
+          <Button onClick={onNext} disabled={step === 2}>
             Next
           </Button>
         </ButtonGroup>
