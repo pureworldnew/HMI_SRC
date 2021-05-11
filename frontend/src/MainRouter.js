@@ -41,6 +41,7 @@ import store from './store';
 import Sensors from './pages/Sensors';
 import Actions from './pages/Actions';
 import Notifications from './pages/Notifications';
+import NotificationLists from './pages/NotificationLists';
 
 const MainRouter = (props) => {
   const [pageTitle] = React.useState('Insight');
@@ -218,7 +219,11 @@ const MainRouter = (props) => {
 
                 <Route path="/sensors" component={Sensors} />
                 <Route path="/actions" component={Actions} />
-                <Route path="/notifications" component={Notifications} />
+                <Route path="/notifications-create" component={Notifications} />
+                <Route
+                  path="/notifications"
+                  component={NotificationLists}
+                />
                 <Route path="/alerts" component={AlertsReports} exact />
                 <Route path="/admin" component={Admin} roleId={roleId} />
               </Switch>

@@ -22,6 +22,7 @@ import CompanyService from '../../../services/CompanyService';
 import RevenueService from '../../../services/RevenueService';
 import signalImg from '../../../assets/img/signal.png';
 import actionImg from '../../../assets/svg/action.svg';
+import { withRouter } from 'react-router-dom';
 
 import './header.scss';
 
@@ -91,12 +92,6 @@ const options_monthly = [
   { value: 'Quarterly', label: 'Quarterly' },
   { value: 'Yearly', label: 'Yearly' }
 ];
-
-// const options_segments = [
-//   { value: "enterprise", label: "Enterprise" },
-//   { value: "mid", label: "Mid" },
-//   { value: "smb", label: "SMB" }
-// ];
 
 const viewing_options = [
   { value: 'summary', label: 'Summary' },
@@ -259,6 +254,11 @@ const Header = (props) => {
   const select_segment = (e) => {
     console.log(e.value);
     props.updateInsightArrSegmentState(e.value);
+  };
+
+  const createNewNotification = () => {
+    console.log('here is notifcation creation');
+    props.history.push('/notifications-create');
   };
 
   if (type === undefined) {
@@ -794,6 +794,25 @@ const Header = (props) => {
         </div>
       </div>
     );
+  } else if (type === 'Notification_lists') {
+    return (
+      <div className="dashboard__header">
+        <div className="dashboard__welcomeMessage welcomeMessage">
+          <h3 className="welcomeMessage__title">{title}</h3>
+        </div>
+        <div
+          className="dashboard__buttons"
+          style={{ maxWidth: '360px', justifyContent: 'flex-end' }}>
+          <button
+            className="button button--block-admin button-primary"
+            onClick={() => {
+              createNewNotification(true);
+            }}>
+            + Create New Notification
+          </button>
+        </div>
+      </div>
+    );
   } else if (type === 'Actions') {
     return (
       <div className="dashboard__header">
@@ -848,4 +867,4 @@ const mapDispatchToProps = ({
   updateInsightArrSegmentState: (value) => updateInsightArrSegmentState(value)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

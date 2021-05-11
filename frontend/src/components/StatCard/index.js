@@ -23,7 +23,7 @@ import CompanyService from '../../services/CompanyService';
 import thermometer from '../../assets/svg/heat.svg';
 import sensorLive from '../../assets/img/sensor.png';
 import highSignal from '../../assets/img/high-signal.png';
-
+import Popover from './Popover';
 // import PopoverItem from '../../Components/PopOverComponent/Admin/popovercomponent';
 
 // import * as Actions from "../../../store/actions/index"
@@ -437,6 +437,62 @@ const StatCard = (props) => {
             </MenuItem>
           </List>
         </Menu>
+      </div>
+    );
+  } else if (page === 'notification_lists') {
+    return (
+      <div
+        className="statcard p-8"
+        style={{
+          gridArea: `card-${props.grid}`,
+          boxShadow: '0px 2px 9px 3px rgb(0 0 0 / 25%)',
+          borderRadius: '6px',
+          cursor: 'pointer'
+        }}>
+        <div className="d-flex justify-content-between w-100 h-100">
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-start mr-5">
+              <img
+                src={thermometer}
+                alt="temperature"
+                className="temperature text-dark"
+              />
+              <img src={sensorLive} alt="sensor" className="sensor" />
+            </div>
+            <div className="d-flex flex-column justify-content-between">
+              <p className="text-bold pb-5">Temperature Data Greater Than</p>
+              <div className="pb-5 d-flex">{props.temp1}</div>
+              <div className="bg-transparent">
+                Last Sent: {props.recentTime}
+              </div>
+            </div>
+          </div>
+          <div className="d-flex flex-column justify-content-between align-items-center py-4">
+            <div className="adminTeamsCardMore">
+              {getAccountByPeriodLegend(handleClick)}
+            </div>
+          </div>
+        </div>
+        <Popover
+          anchorEl={anchorEl}
+          handleClose={() => setAnchorEl(null)}
+          onView={() => {
+            // showModal('view');
+            setAnchorEl(null);
+          }}
+          onPause={() => {
+            // showModal('pause');
+            setAnchorEl(null);
+          }}
+          onDelete={() => {
+            // showModal('delete');
+            setAnchorEl(null);
+          }}
+          onEdit={() => {
+            // showModal('edit');
+            setAnchorEl(null);
+          }}
+        />
       </div>
     );
   } else if (page === 'notifications_settings') {

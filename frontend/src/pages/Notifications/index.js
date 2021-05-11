@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 const Notifications = (props) => {
   const classes = useStyles();
 
-  const [step, setStep] = React.useState(2);
+  const [step, setStep] = React.useState(0);
   const onChange = (nextStep) => {
     setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);
   };
