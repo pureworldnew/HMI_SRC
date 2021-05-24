@@ -126,7 +126,7 @@ const NotificationSensors = (props) => {
                 voltage={company.voltage}
                 battery_status={company.battery_status}
                 grid={index + 1}
-                page="notifications_settings"
+                page="notifications_create"
                 companyId={company.id}
               />
             ))}

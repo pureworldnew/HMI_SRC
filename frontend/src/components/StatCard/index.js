@@ -319,7 +319,13 @@ const StatCard = (props) => {
     );
   } else if (page === 'sensors') {
     return (
-      <div className="statcard p-8" style={{ gridArea: `card-${props.grid}` }}>
+      <div
+        className="statcard p-8"
+        style={{
+          gridArea: `card-${props.grid}`,
+          boxShadow: '0px 2px 9px 3px rgb(0 0 0 / 25%)',
+          borderRadius: '6px'
+        }}>
         <div className="d-flex justify-content-between w-100 h-100">
           <div className="d-flex justify-content-between align-items-center">
             <div className="d-flex justify-content-start mr-5">
@@ -360,83 +366,32 @@ const StatCard = (props) => {
                 )}
               </UnAvailableToolTip>
             </div>
-            <div className="adminTeamsCardMore">
+            <div className="adminTeamsCardMore align-self-end mr-4 mb-2">
               {getAccountByPeriodLegend(handleClick)}
             </div>
           </div>
         </div>
 
-        <Menu
-          className="popOver"
-          id="chart-menu"
+        <Popover
           anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}>
-          <List component="nav" aria-label="secondary mailbox folders">
-            <MenuItem>
-              <ListItem onClick={handleClose}>
-                <TeamViewModal
-                  buttonLabel="View"
-                  type="companies"
-                  title={title}
-                  companyId={companyId}
-                />
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <TeamsEditModal
-                  buttonLabel="Edit"
-                  className="TeamsEditModalCustomCss"
-                  type="companies"
-                />
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <p
-                  style={{
-                    width: '65px',
-                    height: '25px',
-                    paddingTop: '7px',
-                    textAlign: 'center',
-                    fontFamily: 'Open Sans',
-                    fontStyle: 'normal',
-                    fontWeight: 'bold',
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    alignItems: 'center',
-                    letterSpacing: '0.01em',
-                    color: '#000000'
-                  }}>
-                  Un-Pause
-                </p>
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <p
-                  style={{
-                    width: '65px',
-                    height: '25px',
-                    paddingTop: '7px',
-                    textAlign: 'center',
-                    fontFamily: 'Open Sans',
-                    fontStyle: 'normal',
-                    fontWeight: 'bold',
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    alignItems: 'center',
-                    letterSpacing: '0.01em',
-                    color: '#000000'
-                  }}>
-                  Delete
-                </p>
-              </ListItem>
-            </MenuItem>
-          </List>
-        </Menu>
+          handleClose={() => setAnchorEl(null)}
+          onView={() => {
+            // showModal('view');
+            setAnchorEl(null);
+          }}
+          onPause={() => {
+            // showModal('pause');
+            setAnchorEl(null);
+          }}
+          onDelete={() => {
+            // showModal('delete');
+            setAnchorEl(null);
+          }}
+          onEdit={() => {
+            // showModal('edit');
+            setAnchorEl(null);
+          }}
+        />
       </div>
     );
   } else if (page === 'notification_lists') {
@@ -467,7 +422,7 @@ const StatCard = (props) => {
               </div>
             </div>
           </div>
-          <div className="d-flex flex-column justify-content-between align-items-center py-4">
+          <div className="">
             <div className="adminTeamsCardMore">
               {getAccountByPeriodLegend(handleClick)}
             </div>
@@ -495,9 +450,15 @@ const StatCard = (props) => {
         />
       </div>
     );
-  } else if (page === 'notifications_settings') {
+  } else if (page === 'notifications_create') {
     return (
-      <div className="statcard p-8" style={{ gridArea: `card-${props.grid}` }}>
+      <div
+        className="statcard p-8"
+        style={{
+          gridArea: `card-${props.grid}`,
+          boxShadow: '0px 2px 9px 3px rgb(0 0 0 / 25%)',
+          borderRadius: '6px'
+        }}>
         <div className="d-flex justify-content-between w-100 h-100">
           <div className="d-flex justify-content-between align-items-center">
             <div className="d-flex justify-content-start mr-5">

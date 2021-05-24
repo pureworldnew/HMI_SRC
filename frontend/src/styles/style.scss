@@ -7,6 +7,7 @@
 @import 'layout/forgotPassword';
 @import 'layout/setNewPwd';
 @import 'layout/main';
+@import 'layout/header';
 
 // Components
 @import 'components/Button';
@@ -33,7 +34,7 @@
 @import 'components/Popover';
 @import 'components/Menu';
 @import 'components/Datepicker';
-@import "components/TimeLine";
-@import "components/AccountManagers";
-@import "components/Drawer";
-@import "components/Switch";
+@import 'components/TimeLine';
+@import 'components/AccountManagers';
+@import 'components/Drawer';
+@import 'components/Switch';

@@ -702,25 +702,6 @@ const Header = (props) => {
           <div className="dashboard__welcomeMessage welcomeMessage">
             <h3 className="welcomeMessage__title">{title}</h3>
           </div>
-
-          <Select
-            className="company_select"
-            value={selectCompany}
-            placeholder={
-              <div className="place_font">
-                <SearchIcon />
-                Select a Company
-              </div>
-            }
-            onChange={handleCompany}
-            options={companyOptions}
-            styles={{
-              dropdownIndicator: (provided, state) => ({
-                ...provided,
-                transform: state.selectProps.menuIsOpen && 'rotate(180deg)'
-              })
-            }}
-          />
         </div>
       );
     } else {
@@ -785,12 +766,6 @@ const Header = (props) => {
       <div className="dashboard__header">
         <div className="dashboard__welcomeMessage welcomeMessage">
           <h3 className="welcomeMessage__title">{title}</h3>
-        </div>
-        <div
-          className="dashboard__buttons"
-          style={{ maxWidth: '460px', justifyContent: 'flex-end' }}>
-          <DrawerForm type="report" title="+ Create New Notification" />
-          <DrawerForm type="alert" title="+ Create New Alert" />
         </div>
       </div>
     );

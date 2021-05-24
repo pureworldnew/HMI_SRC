@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { ChevronDown, XCircle } from 'react-feather';
 import { deleteItemsLocalStorage } from '../../utils/Auth';
 // import { useStateValue } from "../../StateContextProvider";
-import { UncontrolledPopover, PopoverBody } from 'reactstrap';
+import {
+  UncontrolledPopover,
+  Button,
+  Popover,
+  PopoverHeader,
+  PopoverBody
+} from 'reactstrap';
 
 const Header = ({
   setShowMenu,
@@ -15,11 +21,16 @@ const Header = ({
   // const [{ user }] = useStateValue();
   const username = window.localStorage.getItem('username');
 
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
+  const toggle = () => setPopoverOpen(!popoverOpen);
+
   const openPresentationMode = () => {
     history.push('/presentation-view');
   };
 
   const logout = () => {
+    console.log('Here is logout');
     localStorage.clear();
     history.push('/login');
   };
@@ -113,9 +124,10 @@ const Header = ({
           </figure>
 
           <div className="header__dropdown">
-            <button id="logout-popover">
+            <button id="logout-popover" type="button">
               <ChevronDown />
             </button>
+
             <UncontrolledPopover
               trigger="legacy"
               placement="bottom"
@@ -128,7 +140,7 @@ const Header = ({
                     </button>
                   </div>
                   <div className="_logout">
-                    <button onClick={() => logout()}>Log out</button>
+                    <Button onClick={() => logout()}>Log out</Button>
                   </div>
                 </div>
               </PopoverBody>
