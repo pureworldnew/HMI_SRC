@@ -1,29 +1,11 @@
 import React from 'react';
-import ErrorOutlineOutlinedIcon from '@material-ui/icons/ErrorOutlineOutlined';
 import GraphicEqOutlinedIcon from '@material-ui/icons/GraphicEqOutlined';
-import { AddBox, ArrowDownward } from '@material-ui/icons';
 import { Table, Button } from 'reactstrap';
-import {
-  makeStyles,
-  ThemeProvider,
-  createMuiTheme
-} from '@material-ui/core/styles';
-// import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-const theme = createMuiTheme({
-  typography: {
-    fontSize: '24px'
-  }
-});
+import { makeStyles } from '@material-ui/core/styles';
+
 const useStyles = makeStyles({
   table: {
     opacity: '1',
-    // transition: 'all .2s ease',
     borderRadius: '10px',
     border: 'none',
     boxShadow: '0px 5px 5px 0px rgb(0 0 0 / 20%)',
@@ -46,21 +28,13 @@ const useStyles = makeStyles({
     border: 'none!important'
   },
   blueColor: {
-    color: 'blue'
+    color: 'blue',
+    fontSize: '18px'
+  },
+  textSize: {
+    fontSize: '18px'
   }
 });
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9)
-];
 
 export default function SensorsTable(props) {
   const classes = useStyles();
@@ -70,17 +44,17 @@ export default function SensorsTable(props) {
   console.log('sensors is ', data);
   for (let i = 0; i < data.length; i++) {
     items.push(
-      <tr>
-        <th scope="row" className={classes.blueColor}>
-          {data[i].deviceName}
-        </th>
-        <td>{data[i].macAddress}</td>
-        <td>{data[i].temp1}</td>
-        <td>{data[i].temp2}</td>
-        <td>{data[i].voltage}</td>
-        <td>{data[i].includeDateTime}</td>
-        <td>
-          <Button color="primary">View Sensor</Button>{' '}
+      <tr key={i}>
+        <td className={classes.blueColor}>{data[i].deviceName}</td>
+        <td className={classes.textSize}>{data[i].macAddress}</td>
+        <td className={classes.textSize}>{data[i].temp1}</td>
+        <td className={classes.textSize}>{data[i].temp2}</td>
+        <td className={classes.textSize}>{data[i].voltage}</td>
+        <td className={classes.textSize}>{data[i].includeDateTime}</td>
+        <td className={classes.textSize}>
+          <Button color="primary" size="lg">
+            View Sensor
+          </Button>{' '}
         </td>
       </tr>
     );
@@ -92,7 +66,7 @@ export default function SensorsTable(props) {
         <GraphicEqOutlinedIcon className={classes.iconSize} />
         Sensors
       </div>
-      <Table>
+      <Table size="md">
         <tbody>{items}</tbody>
       </Table>
     </div>
