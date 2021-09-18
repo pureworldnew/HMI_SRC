@@ -478,7 +478,7 @@ const Sidebar = ({
                   {showMenu && <T.span text="sidebar.alerts" />}
                 </NavLink>
               </li> */}
-              <li>
+              {/* <li>
                 <NavLink to="/alerts" activeClassName="active">
                   <svg
                     width="24"
@@ -508,7 +508,7 @@ const Sidebar = ({
                   </svg>
                   {showMenu && <T.span text="sidebar.alerts" />}
                 </NavLink>
-              </li>
+              </li> */}
 
               {roleId < 4 ? (
                 <li>

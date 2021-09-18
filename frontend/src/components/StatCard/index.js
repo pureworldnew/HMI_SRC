@@ -340,10 +340,13 @@ const StatCard = (props) => {
               <p className="statcard__title adminTeamsCardTitle pb-5">
                 {props.title}
               </p>
-              <div className="pb-5 d-flex">
+              <div className="pb-5 d-flex temperatureText">
                 {props.temp1}, {props.temp2}
               </div>
-              <div className="bg-transparent"> {props.recentTime}</div>
+              <div className="bg-transparent sensorRecentTime">
+                {' '}
+                {props.recentTime}
+              </div>
             </div>
           </div>
           <div className="d-flex flex-column justify-content-between align-items-center py-4">
@@ -415,9 +418,11 @@ const StatCard = (props) => {
               <img src={sensorLive} alt="sensor" className="sensor" />
             </div>
             <div className="d-flex flex-column justify-content-between">
-              <p className="text-bold pb-5">Temperature Data Greater Than</p>
-              <div className="pb-5 d-flex">{props.temp1}</div>
-              <div className="bg-transparent">
+              <p className="text-bold pb-5 adminTeamsCardTitle">
+                Temperature Data Greater Than
+              </p>
+              <div className="pb-5 d-flex temperatureText">{props.temp1}</div>
+              <div className="bg-transparent sensorRecentTime">
                 Last Sent: {props.recentTime}
               </div>
             </div>
