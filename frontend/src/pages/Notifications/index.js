@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
-
-import SensorService from '../../services/SensorService';
-import Header from '../Dashboard/Header';
-
+import React from 'react';
 import { connect } from 'react-redux';
-
-import 'rsuite/dist/styles/rsuite-default.css';
 import { Steps, Button, ButtonGroup } from 'rsuite';
 
-import './notifications.scss';
+import Header from '../Dashboard/Header';
 import NotificationTrigger from './NotificationTrigger';
 import NotificationSettings from './NotificationSettings';
 import NotificationsSensors from './NotificationSensors';
 
+import 'rsuite/dist/styles/rsuite-default.css';
+import './notifications.scss';
+
 const Notifications = (props) => {
   const [step, setStep] = React.useState(0);
+  const [condition, setCondition] = React.useState([]);
   const onChange = (nextStep) => {
     setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);
   };
@@ -22,62 +20,11 @@ const Notifications = (props) => {
   const onNext = () => onChange(step + 1);
   const onPrevious = () => onChange(step - 1);
 
-  const [page, setPage] = useState(0);
-  const [usersList, setUsersList] = useState([]);
-  const [showResults, setShowResults] = useState(false);
-
-  const noOfDatasInTable = 6;
-  const noOfPages = parseInt(usersList.length / noOfDatasInTable);
-  const dataInTable = usersList.slice(
-    page * noOfDatasInTable,
-    page * noOfDatasInTable + noOfDatasInTable
-  );
-
-  const onClickSettings = () => {
-    setShowResults(!showResults);
+  const onSaveCondition = (tempCondition) => {
+    console.log('condition is ', tempCondition);
+    setCondition(tempCondition);
+    onNext();
   };
-
-  console.log(showResults);
-
-  const [values, setValues] = useState({
-    bodyText:
-      'Temperature Data Greater Than 56 F \n\n Device: {Name} ({ID})\n\n Reading:{Reading}'
-  });
-
-  // setup the step content
-
-  const step3Content = <h1>Step 3 Content</h1>;
-
-  // setup step validators, will be called before proceeding to the next step
-  function step2Validator() {
-    // return a boolean
-    return true;
-  }
-
-  function step3Validator() {
-    // return a boolean
-    // return true;
-  }
-
-  function onFormSubmit() {
-    // handle the submit logic here
-    // This function will be executed at the last step
-    // when the submit button (next button in the previous steps) is pressed
-    console.log('submitted');
-  }
-
-  useEffect(() => {
-    console.log('here');
-    SensorService.getAllSensors()
-      .then((res) => {
-        console.log('state change:', res);
-        setUsersList(res.data);
-        props.updateState(false);
-      })
-      .catch((err) => {
-        console.log('Error:', err);
-      });
-  }, []);
 
   return (
     <div className="dashboard revenue-insights">
@@ -95,7 +42,7 @@ const Notifications = (props) => {
 
         <hr />
         {step === 0 ? (
-          <NotificationTrigger />
+          <NotificationTrigger onSaveCondition={onSaveCondition} />
         ) : step === 1 ? (
           <NotificationSettings />
         ) : step === 2 ? (
