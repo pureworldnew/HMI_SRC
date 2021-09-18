@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
-
 import SensorService from '../../services/SensorService';
 import Header from '../Dashboard/Header';
 
@@ -15,28 +13,7 @@ import NotificationTrigger from './NotificationTrigger';
 import NotificationSettings from './NotificationSettings';
 import NotificationsSensors from './NotificationSensors';
 
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1)
-  },
-  root: {
-    minWidth: 275,
-    marginTop: 50,
-    padding: 16
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)'
-  },
-  pos: {
-    marginBottom: 12
-  }
-}));
-
 const Notifications = (props) => {
-  const classes = useStyles();
-
   const [step, setStep] = React.useState(0);
   const onChange = (nextStep) => {
     setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);

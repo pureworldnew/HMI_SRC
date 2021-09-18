@@ -5,8 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-
+import fontawesome from '@fortawesome/fontawesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 12
   }
 }));
-
+fontawesome.library.add(faCheckSquare, faCoffee);
 const NotificationTrigger = () => {
   const classes = useStyles();
   const [age, setAge] = useState(10);
@@ -45,9 +46,12 @@ const NotificationTrigger = () => {
             <select
               className="form-select form-select-lg fs24 m-2"
               aria-label="Default select example"
+              defaultValue="Select Temperature Condition"
               onChange={(e) => setAge(e.target.value)}>
               <optgroup className="fs24">
-                <option selected>Select Temperature Condition</option>
+                <option value="Select Temperature Condition">
+                  Select Temperature Condition
+                </option>
                 <option value="10">Greater Than</option>
                 <option value="20">Less Than</option>
               </optgroup>
@@ -60,9 +64,12 @@ const NotificationTrigger = () => {
             <select
               className="form-select form-select-lg fs24 m-2"
               aria-label="Default select example"
+              defaultValue="Select Temperature Unit"
               onChange={(e) => setAge(e.target.value)}>
               <optgroup className="fs24">
-                <option selected>Select Temperature Unit</option>
+                <option value="Select Temperature Unit">
+                  Select Temperature Unit
+                </option>
                 <option value="F">Fahrenheit</option>
                 <option value="C">Celsius</option>
               </optgroup>
