@@ -5,9 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import fontawesome from '@fortawesome/fontawesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 12
   }
 }));
-fontawesome.library.add(faCheckSquare, faCoffee);
 const NotificationTrigger = () => {
   const classes = useStyles();
   const [age, setAge] = useState(10);
@@ -57,8 +54,7 @@ const NotificationTrigger = () => {
               </optgroup>
             </select>
             <input
-              className="m-2 w-25"
-              style={{ fontSize: '24px' }}
+              className="m-2 w-25 fs24"
               type="number"
               placeholder="Temperature"></input>
             <select
@@ -81,11 +77,10 @@ const NotificationTrigger = () => {
         <button
           className="btn btn-primary btn-lg m-auto"
           style={{
-            minWidth: '16rem',
+            minWidth: '12rem',
             minHeight: '4rem',
             fontSize: '1.5rem'
           }}>
-          <FontAwesomeIcon icon="check-square" />
           Save
           <FontAwesomeIcon icon={faSave} className="ml-4" />
         </button>
