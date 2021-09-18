@@ -140,7 +140,7 @@ const Header = ({
                     </button>
                   </div>
                   <div className="_logout">
-                    <Button onClick={() => logout()}>Log out</Button>
+                    <button onClick={() => logout()}>Log out</button>
                   </div>
                 </div>
               </PopoverBody>
