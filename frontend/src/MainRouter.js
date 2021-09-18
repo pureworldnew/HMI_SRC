@@ -28,12 +28,7 @@ import TimeLine from './pages/AccountManagement/TimeLine';
 import TaskList from './pages/AccountManagement/TaskList';
 import AccountManagement from './pages/AccountManagement';
 import Account from './pages/Account';
-import Product from './pages/Product';
 import Presentation from './pages/PresentationView';
-import Document from './pages/Document';
-import Metrics from './pages/Metrics';
-import Connections from './pages/Connections';
-import Workflows from './pages/Workflows';
 import Presentations from './pages/Presentations';
 import Admin from './pages/Admin';
 import AlertsReports from './pages/AlertsReports';
@@ -211,19 +206,10 @@ const MainRouter = (props) => {
                 </Route>
 
                 <Route path="/account" component={Account} />
-                <Route path="/product" component={Product} />
-                <Route path="/documents" component={Document} />
-                <Route path="/metrics" component={Metrics} />
-                <Route path="/connections" component={Connections} />
-                <Route path="/workflows" component={Workflows} />
-
                 <Route path="/sensors" component={Sensors} />
                 <Route path="/actions" component={Actions} />
                 <Route path="/notifications-create" component={Notifications} />
-                <Route
-                  path="/notifications"
-                  component={NotificationLists}
-                />
+                <Route path="/notifications" component={NotificationLists} />
                 <Route path="/alerts" component={AlertsReports} exact />
                 <Route path="/admin" component={Admin} roleId={roleId} />
               </Switch>
