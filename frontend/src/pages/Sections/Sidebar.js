@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { ChevronDown, ChevronUp } from 'react-feather';
 import T from 'i18n-react';
 import UnAvailableToolTip from '../Components/TooltipComponents/UnAvailableTooltipComponent';
 import Footer from './Footer';
 
-const Sidebar = ({
-  showMenu,
-  setShowMenu,
-  fullSceen,
-  setFullSceen,
-  roleId
-}) => {
+const Sidebar = ({ showMenu, setShowMenu, roleId }) => {
   const [menuDropDown, setMenuDropDown] = useState('');
   return (
     <div
