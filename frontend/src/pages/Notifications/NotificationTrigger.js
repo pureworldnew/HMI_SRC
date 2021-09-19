@@ -36,13 +36,14 @@ const NotificationTrigger = (props) => {
   });
 
   const saveCondition = () => {
-    if (
-      !condition.temperatureCondition ||
-      !condition.temperature ||
-      !condition.temperatureUnit
-    ) {
-      return;
-    }
+    // if (
+    //   !condition.temperatureCondition ||
+    //   !condition.temperature ||
+    //   !condition.temperatureUnit
+    // ) {
+    //   alert('Enter the necessary inputs');
+    //   return;
+    // }
     props.onSaveCondition(condition);
   };
   return (

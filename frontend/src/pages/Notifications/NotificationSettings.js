@@ -111,6 +111,8 @@ const NotificationSettings = () => {
       'Temperature Data Greater Than 56 F \n\n Device: {Name} ({ID})\n\n Reading:{Reading}'
   });
 
+  const nameArray = ['Joseph Richter', 'Joseph', 'Joseph Richter', 'Joseph'];
+
   const [showResults, setShowResults] = useState(false);
 
   return (
@@ -163,112 +165,36 @@ const NotificationSettings = () => {
               />
             </div>
           </div>
-          <div class="">
-            <table class="table">
-              <tr className="row mb-2">
-                <div className="col">
-                  <FontAwesomeIcon icon={faUser} className="mr-4 fa-2x" />
-                  Joe Richter
-                </div>
-                <div className="col row">
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faPaperPlane}
-                      className="mr-4 fa-2x"
-                    />
+          <div>
+            <table className="table">
+              {nameArray.map((value, index) => (
+                <tr className="row mb-2" key={index}>
+                  <div className="col">
+                    <FontAwesomeIcon icon={faUser} className="mr-4 fa-2x" />
+                    {value}
                   </div>
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faSms}
-                      className="mr-4 fa-2x text-success"
-                    />
+                  <div className="col row">
+                    <div className="col-4">
+                      <FontAwesomeIcon
+                        icon={faPaperPlane}
+                        className="mr-4 fa-2x"
+                      />
+                    </div>
+                    <div className="col-4">
+                      <FontAwesomeIcon
+                        icon={faSms}
+                        className="mr-4 fa-2x text-success"
+                      />
+                    </div>
+                    <div className="col-4">
+                      <FontAwesomeIcon
+                        icon={faPhoneVolume}
+                        className="mr-4 fa-2x"
+                      />
+                    </div>
                   </div>
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faPhoneVolume}
-                      className="mr-4 fa-2x"
-                    />
-                  </div>
-                </div>
-              </tr>
-              <tr className="row mb-2">
-                <div className="col">
-                  <FontAwesomeIcon icon={faUser} className="mr-4 fa-2x" />
-                  Joseph Richter
-                </div>
-                <div className="col row">
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faPaperPlane}
-                      className="mr-4 fa-2x"
-                    />
-                  </div>
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faSms}
-                      className="mr-4 fa-2x text-success"
-                    />
-                  </div>
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faPhoneVolume}
-                      className="mr-4 fa-2x"
-                    />
-                  </div>
-                </div>
-              </tr>
-              <tr className="row mb-2">
-                <div className="col">
-                  <FontAwesomeIcon icon={faUser} className="mr-4 fa-2x" />
-                  Joe Richter
-                </div>
-                <div className="col row">
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faPaperPlane}
-                      className="mr-4 fa-2x"
-                    />
-                  </div>
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faSms}
-                      className="mr-4 fa-2x text-success"
-                    />
-                  </div>
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faPhoneVolume}
-                      className="mr-4 fa-2x"
-                    />
-                  </div>
-                </div>
-              </tr>
-              <tr className="row mb-2">
-                <div className="col">
-                  <FontAwesomeIcon icon={faUser} className="mr-4 fa-2x" />
-                  Joe Richter
-                </div>
-                <div className="col row">
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faPaperPlane}
-                      className="mr-4 fa-2x"
-                    />
-                  </div>
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faSms}
-                      className="mr-4 fa-2x text-success"
-                    />
-                  </div>
-                  <div className="col-4">
-                    <FontAwesomeIcon
-                      icon={faPhoneVolume}
-                      className="mr-4 fa-2x"
-                    />
-                  </div>
-                </div>
-              </tr>
+                </tr>
+              ))}
             </table>
           </div>
         </div>
@@ -297,7 +223,6 @@ const NotificationSettings = () => {
               minHeight: '4rem',
               fontSize: '1.5rem'
             }}>
-            <FontAwesomeIcon icon="check-square" />
             Save
             <FontAwesomeIcon icon={faSave} className="ml-4" />
           </button>
