@@ -16,25 +16,9 @@ import { PRESENTATION as PRESENTATION_TYPE } from './store/constants';
 import Header from './pages/Sections/Header';
 import Sidebar from './pages/Sections/Sidebar';
 import Dashboard from './pages/Dashboard';
-import Revenue from './pages/Revenue';
-import RevenueInsights from './pages/RevenueInsights';
-import RevenueManagement from './pages/RevenueManagement';
-import RevenueChurn from './pages/RevenueChurn';
-import RevenueAr from './pages/RevenueAr';
-import Accounts from './pages/AccountManagement/Accounts';
-import AccountManagers from './pages/AccountManagement/AccountManagers';
-import Heatmap from './pages/AccountManagement/Heatmap';
-import TimeLine from './pages/AccountManagement/TimeLine';
-import TaskList from './pages/AccountManagement/TaskList';
-import AccountManagement from './pages/AccountManagement';
-import Account from './pages/Account';
-import Presentation from './pages/PresentationView';
-import Presentations from './pages/Presentations';
 import Admin from './pages/Admin';
-import AlertsReports from './pages/AlertsReports';
 import store from './store';
 import Sensors from './pages/Sensors';
-import Actions from './pages/Actions';
 import Notifications from './pages/Notifications';
 import NotificationLists from './pages/NotificationLists';
 
@@ -148,69 +132,9 @@ const MainRouter = (props) => {
               <Switch>
                 <Redirect from="/" to="/dashboard" exact />
                 <Route path="/dashboard" component={Dashboard} />
-
-                <Route path="/overview" component={AccountManagement} exact />
-                <Route path="/overview/accounts" component={Accounts} />
-                <Route
-                  path="/overview/account-managers"
-                  component={AccountManagers}
-                />
-                <Route path="/overview/heatmap" component={Heatmap} />
-                <Route path="/overview/timeline" component={TimeLine} />
-                <Route path="/overview/tasklist" component={TaskList} />
-
-                <Route path="/revenue-management" component={Revenue} exact />
-                <Route
-                  path="/revenue-management/insights"
-                  component={RevenueInsights}
-                />
-                <Route
-                  path="/revenue-management/management"
-                  component={RevenueManagement}
-                />
-                <Route
-                  path="/revenue-management/churn"
-                  component={RevenueChurn}
-                />
-                <Route path="/revenue-management/ar" component={RevenueAr} />
-
-                <Route
-                  path="/account-management"
-                  component={AccountManagement}
-                  exact
-                />
-                <Route
-                  path="/account-management/accounts"
-                  component={Accounts}
-                />
-                <Route
-                  path="/account-management/account-managers"
-                  component={AccountManagers}
-                />
-                <Route path="/account-management/heatmap" component={Heatmap} />
-                <Route
-                  path="/account-management/timeline"
-                  component={TimeLine}
-                />
-                <Route
-                  path="/account-management/tasklist"
-                  component={TaskList}
-                />
-
-                <Route path="/presentations" component={Presentations} />
-                <Route path="/presentation-view">
-                  <Presentation
-                    setFullSceen={setFullSceen}
-                    fullSceen={fullSceen}
-                  />
-                </Route>
-
-                <Route path="/account" component={Account} />
                 <Route path="/sensors" component={Sensors} />
-                <Route path="/actions" component={Actions} />
                 <Route path="/notifications-create" component={Notifications} />
                 <Route path="/notifications" component={NotificationLists} />
-                <Route path="/alerts" component={AlertsReports} exact />
                 <Route path="/admin" component={Admin} roleId={roleId} />
               </Switch>
             </main>

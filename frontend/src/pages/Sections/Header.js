@@ -43,10 +43,6 @@ const Header = ({
       window.location.pathname.includes('revenue-management/management') ||
       window.location.pathname.includes('revenue-management/churn') ||
       window.location.pathname.includes('revenue-management/ar') ||
-      window.location.pathname.includes('account-management/accounts') ||
-      window.location.pathname.includes(
-        'account-management/account-managers'
-      ) ||
       window.location.pathname.includes('account-management/heatmap') ||
       window.location.pathname.includes('account-management/timeline') ||
       window.location.pathname.includes('account-management/tasklist') ? (
