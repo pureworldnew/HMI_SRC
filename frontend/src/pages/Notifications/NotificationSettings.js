@@ -167,34 +167,34 @@ const NotificationSettings = () => {
           </div>
           <div>
             <table className="table">
-              {nameArray.map((value, index) => (
-                <tr className="row mb-2" key={index}>
-                  <div className="col">
-                    <FontAwesomeIcon icon={faUser} className="mr-4 fa-2x" />
-                    {value}
-                  </div>
-                  <div className="col row">
-                    <div className="col-4">
+              <tbody>
+                {nameArray.map((value, index) => (
+                  <tr className="row mb-2" key={index}>
+                    <td className="col">
+                      <FontAwesomeIcon icon={faUser} className="mr-4 fa-2x" />
+                      {value}
+                    </td>
+                    <td className="col">
                       <FontAwesomeIcon
                         icon={faPaperPlane}
                         className="mr-4 fa-2x"
                       />
-                    </div>
-                    <div className="col-4">
+                    </td>
+                    <td className="col">
                       <FontAwesomeIcon
                         icon={faSms}
                         className="mr-4 fa-2x text-success"
                       />
-                    </div>
-                    <div className="col-4">
+                    </td>
+                    <td className="col">
                       <FontAwesomeIcon
                         icon={faPhoneVolume}
                         className="mr-4 fa-2x"
                       />
-                    </div>
-                  </div>
-                </tr>
-              ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </div>
         </div>
