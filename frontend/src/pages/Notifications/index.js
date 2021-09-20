@@ -11,7 +11,7 @@ import 'rsuite/dist/styles/rsuite-default.css';
 import './notifications.scss';
 
 const Notifications = (props) => {
-  const [step, setStep] = React.useState(0);
+  const [step, setStep] = React.useState(1);
   const [condition, setCondition] = React.useState([]);
   const onChange = (nextStep) => {
     setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);

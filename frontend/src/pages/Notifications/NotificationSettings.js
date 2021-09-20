@@ -137,16 +137,6 @@ const NotificationSettings = (props) => {
           />
         </div>
         <div className="col-md-6 col-sm-12 bg-gradient-primary">
-          <div
-            className="notification-header row w-100 align-items-center mb-4"
-            style={{ backgroundColor: '#e3e3e3', height: '36px' }}>
-            <div className="col">Recipient</div>
-            <div className="col row">
-              <div className="col-4">Email</div>
-              <div className="col-4">SMS</div>
-              <div className="col-4">Voice</div>
-            </div>
-          </div>
           <div className="searchInputUser row w-100">
             <div className="input-group mb-3 input-group-lg">
               <div className="input-group-prepend w-50">
@@ -164,6 +154,14 @@ const NotificationSettings = (props) => {
                 placeholder="Search User Name"
               />
             </div>
+          </div>
+          <div
+            className="notification-header row w-100 align-items-center mb-4"
+            style={{ backgroundColor: '#e3e3e3', height: '36px' }}>
+            <div className="col">Recipient</div>
+            <div className="col">Email</div>
+            <div className="col">SMS</div>
+            <div className="col">Voice</div>
           </div>
           <div>
             <table className="table">
