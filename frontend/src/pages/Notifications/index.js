@@ -17,11 +17,13 @@ const Notifications = (props) => {
     setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);
   };
 
-  const onNext = () => onChange(step + 1);
+  const onNext = () => {
+    console.log(condition);
+    onChange(step + 1);
+  };
   const onPrevious = () => onChange(step - 1);
 
   const onSaveCondition = (tempCondition) => {
-    console.log('condition is ', tempCondition);
     setCondition(tempCondition);
     onNext();
   };
@@ -44,14 +46,14 @@ const Notifications = (props) => {
         {step === 0 ? (
           <NotificationTrigger onSaveCondition={onSaveCondition} />
         ) : step === 1 ? (
-          <NotificationSettings />
+          <NotificationSettings triggerCondition={condition} />
         ) : step === 2 ? (
           <NotificationsSensors />
         ) : (
           ''
         )}
         <hr />
-        <ButtonGroup>
+        <ButtonGroup style={{ display: step === 0 ? 'none' : 'block' }}>
           <Button onClick={onPrevious} disabled={step === 0}>
             Previous
           </Button>

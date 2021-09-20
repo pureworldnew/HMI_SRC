@@ -103,17 +103,17 @@ const advancedSetting = () => {
   );
 };
 
-const NotificationSettings = () => {
+const NotificationSettings = (props) => {
   const classes = useStyles();
 
   const [values, setValues] = useState({
-    bodyText:
-      'Temperature Data Greater Than 56 F \n\n Device: {Name} ({ID})\n\n Reading:{Reading}'
+    bodyText: `Temperature Data ${props.triggerCondition.temperatureCondition} ${props.triggerCondition.temperature} ${props.triggerCondition.temperatureUnit} \n\n Device: {Name} ({ID})\n\n Reading:{Reading}`
   });
 
   const nameArray = ['Joseph Richter', 'Joseph', 'Joseph Richter', 'Joseph'];
 
   const [showResults, setShowResults] = useState(false);
+  const inputValue = `Temperature Data ${props.triggerCondition.temperatureCondition} ${props.triggerCondition.temperature} ${props.triggerCondition.temperatureUnit}`;
 
   return (
     <Card className={classes.root}>
@@ -124,7 +124,7 @@ const NotificationSettings = () => {
             className="w-100 my-4"
             style={{ fontSize: '24px', minWidth: '150px' }}
             type="text"
-            value="Temperature Data Greater Than 56 F"
+            value={inputValue}
             disabled
             placeholder="Temperature"></input>
 
@@ -223,7 +223,7 @@ const NotificationSettings = () => {
               minHeight: '4rem',
               fontSize: '1.5rem'
             }}>
-            Save
+            Next
             <FontAwesomeIcon icon={faSave} className="ml-4" />
           </button>
         </div>

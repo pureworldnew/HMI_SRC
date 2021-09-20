@@ -36,14 +36,14 @@ const NotificationTrigger = (props) => {
   });
 
   const saveCondition = () => {
-    // if (
-    //   !condition.temperatureCondition ||
-    //   !condition.temperature ||
-    //   !condition.temperatureUnit
-    // ) {
-    //   alert('Enter the necessary inputs');
-    //   return;
-    // }
+    if (
+      !condition.temperatureCondition ||
+      !condition.temperature ||
+      !condition.temperatureUnit
+    ) {
+      alert('Enter the necessary inputs');
+      return;
+    }
     props.onSaveCondition(condition);
   };
   return (
@@ -69,8 +69,8 @@ const NotificationTrigger = (props) => {
               }>
               <optgroup className="fs24">
                 <option value="">Select Temperature Condition</option>
-                <option value="greaterThan">Greater Than</option>
-                <option value="lessThan">Less Than</option>
+                <option value="Greater Than">Greater Than</option>
+                <option value="Less Than">Less Than</option>
               </optgroup>
             </select>
             <input
@@ -106,7 +106,7 @@ const NotificationTrigger = (props) => {
             fontSize: '1.5rem'
           }}
           onClick={saveCondition}>
-          Save
+          Next
           <FontAwesomeIcon icon={faSave} className="ml-4" />
         </button>
       </CardActions>
