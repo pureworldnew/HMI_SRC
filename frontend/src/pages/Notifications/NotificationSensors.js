@@ -8,7 +8,7 @@ const NotificationSensors = (props) => {
   const [page, setPage] = useState(0);
   const [usersList, setUsersList] = useState([]);
   const [pageLoading, setPageLoading] = useState(false);
-
+  const [actionName, setActionName] = useState(props.settings.subject);
   const noOfDatasInTable = 6;
   const noOfPages = parseInt(usersList.length / noOfDatasInTable);
   const dataInTable = usersList.slice(
@@ -59,6 +59,14 @@ const NotificationSensors = (props) => {
     );
   };
 
+  const handleActionNameSave = () => {
+    props.onActionNameChange(actionName);
+  };
+
+  const onSensorsChange = (sensor) => {
+    props.onSensorsChange(sensor);
+  };
+
   useEffect(() => {
     setPageLoading(true);
     SensorService.getAllSensors()
@@ -88,16 +96,18 @@ const NotificationSensors = (props) => {
             className="w-100"
             style={{ fontSize: '24px' }}
             type="text"
-            value="Temperature Data Greater Than 56 F"
-            placeholder="Temperature Data Greater Than 56 F"></input>
+            value={actionName}
+            placeholder="Temperature Data Greater Than 56 F"
+            onChange={(e) => setActionName(e.target.value)}
+          />
           <button
             className="btn btn-primary btn-lg mx-auto my-4"
             style={{
               minWidth: '16rem',
               minHeight: '4rem',
               fontSize: '1.5rem'
-            }}>
-            <FontAwesomeIcon icon="check-square" />
+            }}
+            onClick={handleActionNameSave}>
             Save
             <FontAwesomeIcon icon={faSave} className="ml-4" />
           </button>
@@ -116,18 +126,19 @@ const NotificationSensors = (props) => {
         </h5>
         <div className="card-body">
           <div className="revenue-insights__statsGrid adminTeams">
-            {dataInTable.map((company, index) => (
+            {dataInTable.map((sensor, index) => (
               <StatCard
-                key={index}
-                title={company.deviceName}
-                temp1={company.temp1}
-                temp2={company.temp2}
-                recentTime={company.includeDateTime}
-                voltage={company.voltage}
-                battery_status={company.battery_status}
+                key={sensor.id}
+                title={sensor.deviceName}
+                temp1={sensor.temp1}
+                temp2={sensor.temp2}
+                recentTime={sensor.includeDateTime}
+                voltage={sensor.voltage}
+                battery_status={sensor.battery_status}
                 grid={index + 1}
                 page="notifications_create"
-                companyId={company.id}
+                sensorId={sensor.id}
+                onSensorsChange={onSensorsChange}
               />
             ))}
           </div>

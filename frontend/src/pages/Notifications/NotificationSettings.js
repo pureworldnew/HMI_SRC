@@ -37,83 +37,43 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const advancedSetting = () => {
-  return (
-    <div className="container-fluid" style={{ transition: 'visibility 5s' }}>
-      <div className="row" align="center">
-        <div className="col-md row">
-          <div className="col">
-            <div className="h2">SMS Message(160 max):</div>
-            <div>
-              {' '}
-              <textarea
-                rows="3"
-                className="h2 p-4"
-                placeholder="If left blank, default message used"></textarea>
-            </div>
-          </div>
-          <div className="col">
-            <div className="h2">Voice Text:</div>
-            <div>
-              {' '}
-              <textarea
-                rows="3"
-                className="h2 p-4"
-                placeholder="If left blank, default message used"></textarea>
-            </div>
-          </div>
-        </div>
-        <div className="col-md row align-items-center justify-content-between">
-          <div className="">
-            {' '}
-            <div className="h2">Snooze: Don't Alert again for (Minutes):</div>
-            <input
-              className=""
-              style={{ fontSize: '24px' }}
-              type="text"
-              placeholder="60"></input>
-          </div>
-          <div className="d-flex flex-column align-items-between justify-content-around h-100">
-            <div className="row">
-              {' '}
-              <div className="h2 pr-2">Snooze each trigger:</div>
-              <div>
-                <Toggle
-                  size="lg"
-                  checkedChildren="Independently"
-                  unCheckedChildren="Jointly"
-                />
-              </div>
-            </div>
-            <div className="row">
-              {' '}
-              <div className="h2 pr-2">Acknowledgement Mode:</div>
-              <div>
-                <Toggle
-                  size="lg"
-                  checkedChildren="Auto"
-                  unCheckedChildren="Manual"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const NotificationSettings = (props) => {
   const classes = useStyles();
 
   const [values, setValues] = useState({
-    bodyText: `Temperature Data ${props.triggerCondition.temperatureCondition} ${props.triggerCondition.temperature} ${props.triggerCondition.temperatureUnit} \n\n Device: {Name} ({ID})\n\n Reading:{Reading}`
+    bodyText: `Temperature Data ${props.trigger.temperatureCondition} ${props.trigger.temperature} ${props.trigger.temperatureUnit} \n\n Device: {Name} ({ID})\n\n Reading:{Reading}`
   });
 
   const nameArray = ['Joseph Richter', 'Joseph', 'Joseph Richter', 'Joseph'];
 
   const [showResults, setShowResults] = useState(false);
-  const inputValue = `Temperature Data ${props.triggerCondition.temperatureCondition} ${props.triggerCondition.temperature} ${props.triggerCondition.temperatureUnit}`;
+  const [smsMessage, setSmsMessage] = useState('');
+  const [voiceText, setVoiceText] = useState('');
+  const [snoozePeriod, setSnoozePeriod] = useState('60');
+  const [snoozeMode, setSnoozeMode] = useState('');
+  const [acknowledgeMode, setAcknowledgeMode] = useState('');
+
+  const handleSettingsClick = () => {
+    props.onSettingsChange({
+      subject: inputValue,
+      message: values,
+      user: {
+        userId: 1,
+        email: true,
+        sms: true,
+        voice: false
+      },
+      extra: {
+        smsMessage: smsMessage,
+        voiceText: voiceText,
+        snoozePeriod: snoozePeriod,
+        snoozeMode: snoozeMode,
+        acknowledgeMode: acknowledgeMode
+      }
+    });
+  };
+
+  const inputValue = `Temperature Data ${props.trigger.temperatureCondition} ${props.trigger.temperature} ${props.trigger.temperatureUnit}`;
 
   return (
     <Card className={classes.root}>
@@ -126,7 +86,8 @@ const NotificationSettings = (props) => {
             type="text"
             value={inputValue}
             disabled
-            placeholder="Temperature"></input>
+            placeholder="Temperature"
+          />
 
           <div className="h2">
             Message: <FontAwesomeIcon icon={faInfoCircle} className="ml-2" />
@@ -213,14 +174,89 @@ const NotificationSettings = (props) => {
               className="ml-4"
             />
           </Button>
-          {showResults && advancedSetting()}
+          {showResults && (
+            <div
+              className="container-fluid"
+              style={{ transition: 'visibility 5s' }}>
+              <div className="row" align="center">
+                <div className="col-md row">
+                  <div className="col">
+                    <div className="h2">SMS Message(160 max):</div>
+                    <div>
+                      {' '}
+                      <textarea
+                        rows="3"
+                        className="h2 p-4"
+                        value={smsMessage}
+                        onChange={(e) => setSmsMessage(e.target.value)}
+                        placeholder="If left blank, default message used"></textarea>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="h2">Voice Text:</div>
+                    <div>
+                      {' '}
+                      <textarea
+                        rows="3"
+                        className="h2 p-4"
+                        value={voiceText}
+                        onChange={(e) => setVoiceText(e.target.value)}
+                        placeholder="If left blank, default message used"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md row align-items-center justify-content-between">
+                  <div className="">
+                    {' '}
+                    <div className="h2">
+                      Snooze: Don't Alert again for (Minutes):
+                    </div>
+                    <input
+                      className=""
+                      style={{ fontSize: '24px' }}
+                      type="text"
+                      value={snoozePeriod}
+                      onChange={(e) => setSnoozePeriod(e.target.value)}
+                      placeholder="60"></input>
+                  </div>
+                  <div className="d-flex flex-column align-items-between justify-content-around h-100">
+                    <div className="row">
+                      {' '}
+                      <div className="h2 pr-2">Snooze each trigger:</div>
+                      <div>
+                        <Toggle
+                          size="lg"
+                          checkedChildren="Independently"
+                          unCheckedChildren="Jointly"
+                          onChange={(e) => setSnoozeMode(e)}
+                        />
+                      </div>
+                    </div>
+                    <div className="row">
+                      {' '}
+                      <div className="h2 pr-2">Acknowledgement Mode:</div>
+                      <div>
+                        <Toggle
+                          size="lg"
+                          checkedChildren="Auto"
+                          unCheckedChildren="Manual"
+                          onChange={(e) => setAcknowledgeMode(e)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <button
             className="btn btn-primary btn-lg mx-auto my-4"
             style={{
               minWidth: '16rem',
               minHeight: '4rem',
               fontSize: '1.5rem'
-            }}>
+            }}
+            onClick={handleSettingsClick}>
             Next
             <FontAwesomeIcon icon={faSave} className="ml-4" />
           </button>

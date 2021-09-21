@@ -35,7 +35,7 @@ const NotificationTrigger = (props) => {
     temperatureUnit: ''
   });
 
-  const saveCondition = () => {
+  const handleTriggerClick = () => {
     // if (
     //   !condition.temperatureCondition ||
     //   !condition.temperature ||
@@ -44,7 +44,7 @@ const NotificationTrigger = (props) => {
     //   alert('Enter the necessary inputs');
     //   return;
     // }
-    props.onSaveCondition(condition);
+    props.onTriggerChange(condition);
   };
   return (
     <Card className={classes.root}>
@@ -105,7 +105,7 @@ const NotificationTrigger = (props) => {
             minHeight: '4rem',
             fontSize: '1.5rem'
           }}
-          onClick={saveCondition}>
+          onClick={handleTriggerClick}>
           Next
           <FontAwesomeIcon icon={faSave} className="ml-4" />
         </button>

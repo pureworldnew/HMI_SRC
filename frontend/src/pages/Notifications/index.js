@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Steps, Button, ButtonGroup } from 'rsuite';
 
@@ -11,23 +11,47 @@ import 'rsuite/dist/styles/rsuite-default.css';
 import './notifications.scss';
 
 const Notifications = (props) => {
-  const [step, setStep] = React.useState(1);
-  const [condition, setCondition] = React.useState([]);
+  const [step, setStep] = useState(1);
+  const [trigger, setTrigger] = useState({});
+  const [settings, setSettings] = useState({});
+  const [actionName, setActionName] = useState('');
+
+  const [sensorsList, setSensorsList] = useState([]);
+
   const onChange = (nextStep) => {
     setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);
   };
 
   const onNext = () => {
-    console.log(condition);
+    console.log(trigger);
+    console.log(settings);
     onChange(step + 1);
   };
   const onPrevious = () => onChange(step - 1);
 
-  const onSaveCondition = (tempCondition) => {
-    setCondition(tempCondition);
+  const handleTriggerChange = (triggerValue) => {
+    setTrigger(triggerValue);
     onNext();
   };
 
+  const handleSettingsChange = (settingsValue) => {
+    console.log('param', settingsValue);
+    setSettings(settingsValue);
+    onNext();
+  };
+
+  const handleSensorsChange = (sensorsValue) => {
+    let newArray = [...sensorsList, sensorsValue];
+    if (sensorsList.includes(sensorsValue)) {
+      newArray = newArray.filter((day) => day !== sensorsValue);
+    }
+    setSensorsList(newArray);
+  };
+
+  const handleActionNameSave = (actionName) => {
+    setActionName(actionName);
+  };
+  console.log('sensorsList', sensorsList);
   return (
     <div className="dashboard revenue-insights">
       <Header title="Notifications" type="Notifications" />
@@ -44,11 +68,18 @@ const Notifications = (props) => {
 
         <hr />
         {step === 0 ? (
-          <NotificationTrigger onSaveCondition={onSaveCondition} />
+          <NotificationTrigger onTriggerChange={handleTriggerChange} />
         ) : step === 1 ? (
-          <NotificationSettings triggerCondition={condition} />
+          <NotificationSettings
+            trigger={trigger}
+            onSettingsChange={handleSettingsChange}
+          />
         ) : step === 2 ? (
-          <NotificationsSensors />
+          <NotificationsSensors
+            settings={settings}
+            onSensorsChange={handleSensorsChange}
+            onActionNameChange={handleActionNameSave}
+          />
         ) : (
           ''
         )}
