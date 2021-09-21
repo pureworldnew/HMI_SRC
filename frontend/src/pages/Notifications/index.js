@@ -51,6 +51,16 @@ const Notifications = (props) => {
   const handleActionNameSave = (actionName) => {
     setActionName(actionName);
   };
+
+  const handleSensorComplete = () => {
+    let paramNotificationData = {
+      trigger: trigger,
+      settings: settings,
+      actionName: actionName,
+      sensorsList: sensorsList
+    };
+    console.log('paramNotificationData', paramNotificationData);
+  };
   console.log('sensorsList', sensorsList);
   return (
     <div className="dashboard revenue-insights">
@@ -79,6 +89,7 @@ const Notifications = (props) => {
             settings={settings}
             onSensorsChange={handleSensorsChange}
             onActionNameChange={handleActionNameSave}
+            onSensorComplete={handleSensorComplete}
           />
         ) : (
           ''

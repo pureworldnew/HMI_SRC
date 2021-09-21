@@ -63,9 +63,13 @@ const NotificationSensors = (props) => {
     props.onActionNameChange(actionName);
   };
 
-  const onSensorsChange = (sensor) => {
+  const handleSensorsChange = (sensor) => {
     props.onSensorsChange(sensor);
   };
+
+  const handleSensorComplete = () => {
+    props.onSensorComplete();
+  }
 
   useEffect(() => {
     setPageLoading(true);
@@ -138,7 +142,7 @@ const NotificationSensors = (props) => {
                 grid={index + 1}
                 page="notifications_create"
                 sensorId={sensor.id}
-                onSensorsChange={onSensorsChange}
+                onSensorsChange={handleSensorsChange}
               />
             ))}
           </div>
@@ -150,7 +154,8 @@ const NotificationSensors = (props) => {
                 minWidth: '16rem',
                 minHeight: '4rem',
                 fontSize: '1.5rem'
-              }}>
+              }}
+              onClick={handleSensorComplete}>
               Complete
               <FontAwesomeIcon icon={faUpload} className="ml-4" />
             </button>

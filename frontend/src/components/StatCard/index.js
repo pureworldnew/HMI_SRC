@@ -23,6 +23,7 @@ import thermometer from '../../assets/svg/heat.svg';
 import sensorLive from '../../assets/img/sensor.png';
 import highSignal from '../../assets/img/high-signal.png';
 import Popover from './Popover';
+import Tooltip from '@mui/material/Tooltip';
 
 import './startcard.scss';
 
@@ -417,32 +418,39 @@ const StatCard = (props) => {
             </div>
           </div>
           <div className="d-flex flex-column justify-content-between align-items-center align-self-center py-4">
-            <button className="btn">
-              <Checkbox
-                icon={
-                  <CheckCircleOutlineIcon
-                    className="mr-3 text-success sensor"
-                    style={{
-                      fontSize: 30,
-                      width: '50px',
-                      height: '50px'
-                    }}
-                  />
-                }
-                checkedIcon={
-                  <CheckCircleIcon
-                    className="mr-3 text-success sensor"
-                    style={{
-                      fontSize: 30,
-                      width: '50px',
-                      height: '50px'
-                    }}
-                  />
-                }
-                id={props.sensorId}
-                onChange={handleCheckChange}
-              />
-            </button>
+            <div className="btn">
+              <Tooltip
+                title={
+                  <span style={{ fontSize: '18px', padding: '5px' }}>
+                    Please click to enable/disable
+                  </span>
+                }>
+                <Checkbox
+                  icon={
+                    <CheckCircleOutlineIcon
+                      className="mr-3 text-success sensor"
+                      style={{
+                        fontSize: 30,
+                        width: '50px',
+                        height: '50px'
+                      }}
+                    />
+                  }
+                  checkedIcon={
+                    <CheckCircleIcon
+                      className="mr-3 text-success sensor"
+                      style={{
+                        fontSize: 30,
+                        width: '50px',
+                        height: '50px'
+                      }}
+                    />
+                  }
+                  id={props.sensorId.toString()}
+                  onChange={handleCheckChange}
+                />
+              </Tooltip>
+            </div>
           </div>
         </div>
       </div>

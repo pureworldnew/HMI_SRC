@@ -6,17 +6,23 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import BodyTextEditor from '../../components/BodyTextEditor';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SmsIcon from '@mui/icons-material/Sms';
+import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
+import PhoneDisabledIcon from '@mui/icons-material/PhoneDisabled';
+import PhoneEnabledOutlinedIcon from '@mui/icons-material/PhoneEnabledOutlined';
+import EmailIcon from '@mui/icons-material/Email';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import Tooltip from '@mui/material/Tooltip';
 import {
   faSave,
   faInfoCircle,
   faUser,
-  faPaperPlane,
-  faSms,
-  faPhoneVolume,
   faAngleDoubleDown,
   faAngleDoubleUp
 } from '@fortawesome/free-solid-svg-icons';
+
 import { Button, Toggle } from 'rsuite';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -134,22 +140,56 @@ const NotificationSettings = (props) => {
                       {value}
                     </td>
                     <td className="col">
-                      <FontAwesomeIcon
-                        icon={faPaperPlane}
-                        className="mr-4 fa-2x"
-                      />
+                      <Tooltip
+                        title={
+                          <span style={{ fontSize: '18px', padding: '5px' }}>
+                            Please click to enable
+                          </span>
+                        }>
+                        <Checkbox
+                          icon={
+                            <EmailOutlinedIcon className="mr-3 text-success sensor icon-size" />
+                          }
+                          checkedIcon={
+                            <EmailIcon className="mr-3 text-success sensor icon-size" />
+                          }
+                        />
+                      </Tooltip>
                     </td>
                     <td className="col">
-                      <FontAwesomeIcon
-                        icon={faSms}
-                        className="mr-4 fa-2x text-success"
-                      />
+                      <Tooltip
+                        title={
+                          <span style={{ fontSize: '18px', padding: '5px' }}>
+                            Please click to enable
+                          </span>
+                        }
+                        arrow>
+                        <Checkbox
+                          icon={
+                            <SmsOutlinedIcon className="mr-3 text-success icon-size" />
+                          }
+                          checkedIcon={
+                            <SmsIcon className="mr-3 text-success icon-size" />
+                          }
+                        />
+                      </Tooltip>
                     </td>
                     <td className="col">
-                      <FontAwesomeIcon
-                        icon={faPhoneVolume}
-                        className="mr-4 fa-2x"
-                      />
+                      <Tooltip
+                        title={
+                          <span style={{ fontSize: '18px', padding: '5px' }}>
+                            Please click to enable
+                          </span>
+                        }>
+                        <Checkbox
+                          icon={
+                            <PhoneDisabledIcon className="mr-3 text-success icon-size" />
+                          }
+                          checkedIcon={
+                            <PhoneEnabledOutlinedIcon className="mr-3 text-success icon-size" />
+                          }
+                        />
+                      </Tooltip>
                     </td>
                   </tr>
                 ))}
