@@ -11,7 +11,7 @@ import 'rsuite/dist/styles/rsuite-default.css';
 import './notifications.scss';
 
 const Notifications = (props) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [trigger, setTrigger] = useState({});
   const [settings, setSettings] = useState({});
   const [actionName, setActionName] = useState('');
@@ -56,7 +56,7 @@ const Notifications = (props) => {
     let paramNotificationData = {
       trigger: trigger,
       settings: settings,
-      actionName: actionName,
+      actionName: actionName ? actionName : settings.subject,
       sensorsList: sensorsList
     };
     console.log('paramNotificationData', paramNotificationData);
