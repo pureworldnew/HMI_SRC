@@ -4,7 +4,7 @@ import store from './store';
 import AppRouter from './AppRouter';
 import { StateProvider, initialState, reducer } from './StateContextProvider';
 
-class InsightApp extends React.Component {
+class HmiApp extends React.Component {
   componentDidMount() {
     // localStorage.setItem('contractStatus', 'ACV');
   }
@@ -20,4 +20,4 @@ class InsightApp extends React.Component {
   }
 }
 
-export default InsightApp;
+export default HmiApp;
