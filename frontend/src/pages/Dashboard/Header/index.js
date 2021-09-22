@@ -1,23 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import Select, { components } from 'react-select';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Select from 'react-select';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import SearchIcon from '@material-ui/icons/Search';
-import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import Popover from '@material-ui/core/Popover';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import UnAvailableToolTip from '../../Components/TooltipComponents/UnAvailableTooltipComponent';
 import DrawerForm from '../../Sensors/DrawerForm';
 import TeamsCreateModal from '../../Admin/Modal/CompaniesTeamsModal/CreateModal/index';
 import UserCreateModal from '../../Admin/Modal/UsersModal/Create/';
-import CreateBulkModal from '../../Admin/Modal/UsersModal/CreateBulkModal';
-import SelectSearch from '../../../components/SelectSearch';
-import ArrowDown from '../../../assets/svg/arrow-down.svg';
-import GoogleSheetsIcon from '../../../assets/svg/google-sheets-icon.svg';
-import SalesforcseIcon from '../../../assets/svg/salesforcse-icon.svg';
 import CompanyService from '../../../services/CompanyService';
 import RevenueService from '../../../services/RevenueService';
 import signalImg from '../../../assets/img/signal.png';
@@ -25,49 +13,6 @@ import actionImg from '../../../assets/svg/action.svg';
 import { withRouter } from 'react-router-dom';
 
 import './header.scss';
-
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-];
-
-const companies_options = [
-  { value: 'SMNorthwest Co.B', label: 'Northwest Co.' },
-  { value: 'Balenciaga', label: 'Balenciaga' },
-  { value: 'Off White', label: 'Off White' }
-];
-
-const segments_options = [
-  { value: null, label: 'Segments: All' },
-  { value: 'SMB', label: 'SMB' },
-  { value: 'Mid', label: 'Mid' },
-  { value: 'Enterprise', label: 'Enterprise' }
-];
-
-const top_options = [
-  { value: null, label: 'Top: All' },
-  { value: 'Top 10', label: 'Top 10' },
-  { value: 'Top 15', label: 'Top 15' },
-  { value: 'Top 20', label: 'Top 20' },
-  { value: 'Top 25', label: 'Top 25' },
-  { value: 'Top 10%', label: 'Top 10%' },
-  { value: 'Top 15%', label: 'Top 15%' },
-  { value: 'Top 20%', label: 'Top 20%' },
-  { value: 'Top 25%', label: 'Top 25%' }
-];
-
-const monthly_options = [
-  { value: 'monthly', label: 'Monthly' },
-  { value: 'quarterly', label: 'Quarterly' },
-  { value: 'annual', label: 'Annual' }
-];
-
-const top100Films = [
-  { title: 'chocolate' },
-  { title: 'strawberry' },
-  { title: 'vanilla' }
-];
 
 const options_top = [
   { value: 'top_10', label: 'Top 10%' },
@@ -93,26 +38,12 @@ const options_monthly = [
   { value: 'Yearly', label: 'Yearly' }
 ];
 
-const viewing_options = [
-  { value: 'summary', label: 'Summary' },
-  { value: 'account', label: 'Account' },
-  { value: 'account_by_period', label: 'Account By Period' },
-  { value: 'am_by_period', label: 'Account Manager By Period' }
-];
-
-const heatmap_select_options = [
-  { value: 'Showing: Top 5 Accounts', label: 'Showing: Top 5 Accounts' },
-  { value: 'Showing: Top 10 Accounts', label: 'Showing: Top 10 Accounts' },
-  { value: 'Showing: Top 15 Accounts', label: 'Showing: Top 15 Accounts' }
-];
 const timeline_select_options = [
   { value: '5', label: 'Showing: Top 5 Accounts' },
   { value: '10', label: 'Showing: Top 10 Accounts' },
   { value: '15', label: 'Showing: Top 15 Accounts' }
 ];
 const tlCmsOptions = [];
-
-const presentationOptions = [];
 
 const useStyles = makeStyles((theme) => ({
   button: {

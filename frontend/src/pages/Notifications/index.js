@@ -9,6 +9,7 @@ import NotificationsSensors from './NotificationSensors';
 
 import 'rsuite/dist/styles/rsuite-default.css';
 import './notifications.scss';
+import NotificationService from '../../services/NotificationService';
 
 const Notifications = (props) => {
   const [step, setStep] = useState(0);
@@ -59,7 +60,17 @@ const Notifications = (props) => {
       actionName: actionName ? actionName : settings.subject,
       sensorsList: sensorsList
     };
+
     console.log('paramNotificationData', paramNotificationData);
+
+    NotificationService.createNotification(paramNotificationData)
+      .then((notification) => {
+        console.log('notification res', notification)
+        props.updateState(true, 'add_new_user');
+      })
+      .catch((err) => {
+        console.log('add new user error', err);
+      });
   };
   console.log('sensorsList', sensorsList);
   return (
