@@ -23,8 +23,8 @@ module.exports = {
       settings_message: {
         type: Sequelize.STRING
       },
-      settings_user_list: {
-        type: Sequelize.JSON
+      settings_user_id: {
+        type: Sequelize.INTEGER
       },
       extra_acknowledgeMode: {
         type: Sequelize.STRING
@@ -40,6 +40,12 @@ module.exports = {
       },
       extra_voiceText: {
         type: Sequelize.STRING
+      },
+      action_name: {
+        type: Sequelize.STRING
+      },
+      sensor_id: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

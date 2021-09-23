@@ -12,6 +12,7 @@ import { table } from './models/_table';
 import { alerts } from './models/_alerts';
 import { accountManagers } from './models/_account_managers';
 import { revenue_insight } from './models/_revenue_insight';
+import { notifications } from './models/_notifications';
 
 const loading = createLoadingPlugin();
 
@@ -28,7 +29,8 @@ const store = init({
     table,
     alerts,
     accountManagers,
-    revenue_insight
+    revenue_insight,
+    notifications
   },
   plugins: [loading]
 });

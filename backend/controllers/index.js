@@ -8,6 +8,7 @@ const alerts = require("./alerts.controller");
 const sensors = require("./sensor.controller");
 const users = require("./admin/users.controller");
 const settings = require("./admin/settings.controller");
+const notifications = require("./notifications.controller");
 
 module.exports = {
   admin,
@@ -22,4 +23,5 @@ module.exports = {
 
   presentations,
   alerts,
+  notifications,
 };

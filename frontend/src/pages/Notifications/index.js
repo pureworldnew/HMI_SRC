@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { Steps, Button, ButtonGroup } from 'rsuite';
 
 import Header from '../Dashboard/Header';
@@ -12,6 +12,7 @@ import './notifications.scss';
 import NotificationService from '../../services/NotificationService';
 
 const Notifications = (props) => {
+  const dispatch = useDispatch();
   const [step, setStep] = useState(0);
   const [trigger, setTrigger] = useState({});
   const [settings, setSettings] = useState({});
@@ -53,7 +54,7 @@ const Notifications = (props) => {
     setActionName(actionName);
   };
 
-  const handleSensorComplete = () => {
+  const handleSensorComplete = async () => {
     let paramNotificationData = {
       trigger: trigger,
       settings: settings,
@@ -63,14 +64,7 @@ const Notifications = (props) => {
 
     console.log('paramNotificationData', paramNotificationData);
 
-    NotificationService.createNotification(paramNotificationData)
-      .then((notification) => {
-        console.log('notification res', notification)
-        props.updateState(true, 'add_new_user');
-      })
-      .catch((err) => {
-        console.log('add new user error', err);
-      });
+    await dispatch.notifications.createNotification(paramNotificationData);
   };
   console.log('sensorsList', sensorsList);
   return (
@@ -119,11 +113,11 @@ const Notifications = (props) => {
   );
 };
 
-const mapDispatchToProps = ({ company: { updateState } }) => ({
+const mapDispatchToProps = ({ notifications: { updateState } }) => ({
   updateState: (value) => updateState(value)
 });
 
-const mapStateToProps = ({ sensor: { set_create_company } }) => ({
+const mapStateToProps = ({ notifications: { set_create_company } }) => ({
   set_create_company
 });
 

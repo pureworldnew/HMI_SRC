@@ -3,9 +3,10 @@ import { getInsightBackendAPI } from '../../utils/Http';
 const token = window.localStorage.getItem('access_token');
 const api = getInsightBackendAPI();
 
-export const alerts = {
+export const notifications = {
   state: {
     data: null,
+    notificationData: null,
     alertsActive: [],
     alertsPaused: [],
     alertCreate: {},
@@ -28,8 +29,7 @@ export const alerts = {
     // This work
     async getAllAlerts() {
       try {
-        console.log('getAllAlerts dispatch happened');
-        const data = await fetch(`${api}/alerts`, {
+        const data = await fetch(`${api}/notifications`, {
           method: 'GET',
           headers: { Authorization: `Bearer ${token}` }
         }).then((res) => res.json());
@@ -42,7 +42,24 @@ export const alerts = {
     },
     async createAlert(formData) {
       try {
-        const data = await fetch(`${api}/alerts`, {
+        const data = await fetch(`${api}/notifications`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        }).then((res) => res.json());
+
+        this.updateState(data.data, 'createAlert');
+      } catch (e) {
+        this.updateError(e);
+      }
+    },
+    async createNotification(formData) {
+      try {
+        console.log('createNotification log is here');
+        const data = await fetch(`${api}/notifications`, {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -58,7 +75,7 @@ export const alerts = {
     },
     async deleteAlertById(formData) {
       try {
-        await fetch(`${api}/alerts/${formData}`, {
+        await fetch(`${api}/notifications/${formData}`, {
           method: 'DELETE',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -72,7 +89,7 @@ export const alerts = {
     async editAlertById(formData) {
       const bodyData = { status: formData.status };
       try {
-        const data = await fetch(`${api}/alerts/${formData.id}`, {
+        const data = await fetch(`${api}/notifications/${formData.id}`, {
           method: 'PATCH',
           headers: {
             Authorization: `Bearer ${token}`,

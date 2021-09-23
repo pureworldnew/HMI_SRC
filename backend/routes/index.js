@@ -11,6 +11,7 @@ const reportsRoute = require("./reports.routes");
 const accountManagersRoute = require("./accountManagers.routes");
 
 const actionsRoute = require("./actions.route");
+const notificationRoute = require("./notifications.routes");
 
 module.exports = {
   authRoute,
@@ -25,4 +26,5 @@ module.exports = {
   reportsRoute,
   accountManagersRoute,
   actionsRoute,
+  notificationRoute,
 };

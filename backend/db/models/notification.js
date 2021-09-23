@@ -19,12 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     trigger_temperature_unit: DataTypes.STRING,
     settings_subject: DataTypes.STRING,
     settings_message: DataTypes.STRING,
-    settings_user_list: DataTypes.JSON,
+    settings_user_id: DataTypes.INTEGER,
     extra_acknowledgeMode: DataTypes.STRING,
     extra_smsMessage: DataTypes.STRING,
     extra_snoozeMode: DataTypes.STRING,
     extra_snoozePeriod: DataTypes.STRING,
-    extra_voiceText: DataTypes.STRING
+    extra_voiceText: DataTypes.STRING,
+    action_name: DataTypes.STRING,
+    sensor_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Notification',

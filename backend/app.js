@@ -37,6 +37,7 @@ require("./routes").revenueRoute(app);
 require("./routes").presentationRoute(app);
 require("./routes").alertsRoute(app);
 require("./routes").accountManagersRoute(app);
+require("./routes").notificationRoute(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

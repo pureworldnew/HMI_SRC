@@ -11,6 +11,7 @@ import loadingGif from '../../assets/gif/loading.gif';
 const Dashboard = () => {
   let loggedInUser = localStorage.getItem('username');
   const [{ user }] = useContext(StateContext);
+  console.log(user, 'use context value');
   const [pageLoading, setPageLoading] = useState(false);
 
   const [date, setDate] = useState({
