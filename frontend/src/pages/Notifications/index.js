@@ -65,6 +65,7 @@ const Notifications = (props) => {
     console.log('paramNotificationData', paramNotificationData);
 
     await dispatch.notifications.createNotification(paramNotificationData);
+    props.history.push('./notifications');
   };
   console.log('sensorsList', sensorsList);
   return (

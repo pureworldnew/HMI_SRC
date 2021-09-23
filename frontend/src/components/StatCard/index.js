@@ -352,12 +352,10 @@ const StatCard = (props) => {
             </div>
             <div className="d-flex flex-column justify-content-between">
               <p className="text-bold pb-5 adminTeamsCardTitle">
-                Temperature Data Greater Than
+                {props.actionName}
               </p>
               <div className="pb-5 d-flex temperatureText">{props.temp1}</div>
-              <div className="bg-transparent sensorRecentTime">
-                Last Sent: {props.recentTime}
-              </div>
+              <div className="bg-transparent sensorRecentTime">Last Sent:</div>
             </div>
           </div>
           <div className="">

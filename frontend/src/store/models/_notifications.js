@@ -13,10 +13,8 @@ export const notifications = {
     errors: ''
   },
   reducers: {
-    updateAlerts(state, payload) {
-      const alertsActive = payload.filter((key) => key.status);
-      const alertsPaused = payload.filter((key) => !key.status);
-      return { ...state, data: payload, alertsActive, alertsPaused };
+    updateNotifications(state, payload) {
+      return { ...state, notificationData: payload };
     },
     updateState(state, payload, name) {
       return { ...state, [name]: payload };
@@ -27,31 +25,15 @@ export const notifications = {
   },
   effects: (dispatch) => ({
     // This work
-    async getAllAlerts() {
+    async getAllNotifications() {
       try {
         const data = await fetch(`${api}/notifications`, {
           method: 'GET',
           headers: { Authorization: `Bearer ${token}` }
         }).then((res) => res.json());
 
-        this.updateAlerts(data.data);
-        this.updateState(data.data, 'data');
-      } catch (e) {
-        this.updateError(e);
-      }
-    },
-    async createAlert(formData) {
-      try {
-        const data = await fetch(`${api}/notifications`, {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        }).then((res) => res.json());
-
-        this.updateState(data.data, 'createAlert');
+        this.updateNotifications(data.data);
+        this.updateState(data.data, 'notificationData');
       } catch (e) {
         this.updateError(e);
       }
@@ -68,7 +50,7 @@ export const notifications = {
           body: JSON.stringify(formData)
         }).then((res) => res.json());
 
-        this.updateState(data.data, 'createAlert');
+        this.updateState(data.data, 'createNotification');
       } catch (e) {
         this.updateError(e);
       }

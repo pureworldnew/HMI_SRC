@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Dashboard/Header';
 import StatCard from '../../components/StatCard/index';
-import SensorService from '../../services/SensorService';
 import loadingGif from '../../assets/gif/loading.gif';
 import Modal from '../../components/Modal';
+import NotificationService from '../../services/NotificationService';
 
 function NotificationLists({ ...props }) {
   const dispatch = useDispatch();
-  const roleId = window.localStorage.getItem('roleId');
-  const alerts = useSelector((state) => state.alerts.data);
+  const notifications = useSelector(
+    (state) => state.notifications.notificationData
+  );
   const { alertsActive, alertsPaused } = useSelector((state) => state.alerts);
   const loading = useSelector((state) => state.loading.models.alerts);
   const [activeTab, setActiveTab] = useState('Upcoming');
@@ -18,49 +19,8 @@ function NotificationLists({ ...props }) {
   const [data, setDate] = useState([]);
 
   useEffect(() => {
-    dispatch.alerts.getAllAlerts();
+    dispatch.notifications.getAllNotifications();
   }, []);
-
-  useEffect(() => {
-    setDate(alerts);
-  }, [alerts]);
-
-  const columns = [
-    {
-      name: 'id',
-      options: {
-        display: 'false'
-      }
-    },
-    {
-      name: 'alertName',
-      label: 'Alert / Report Name',
-      options: {
-        sort: false
-      }
-    },
-    {
-      name: 'recipients',
-      label: 'Recipients',
-      options: {
-        sort: false
-      }
-    },
-    {
-      name: 'status',
-      label: 'STATUS',
-      options: {
-        sort: false
-      }
-    },
-    {
-      name: 'options',
-      label: 'OPTIONS',
-      options: {
-        sort: false
-      }
-    }
-  ];
 
   const deleteReport = async () => {
     await dispatch.alerts.deleteAlertById(activeRow);
@@ -70,22 +30,22 @@ function NotificationLists({ ...props }) {
   };
 
   const pauseReport = async () => {
-    let item = alerts.filter((key) => key.id === activeRow)[0];
-    let status = !item.status;
-    const formData = { id: activeRow, status };
-    await dispatch.alerts.editAlertById(formData);
-    await dispatch.alerts.getAllAlerts();
-    await setModalShow(null);
+    // let item = alerts.filter((key) => key.id === activeRow)[0];
+    // let status = !item.status;
+    // const formData = { id: activeRow, status };
+    // await dispatch.alerts.editAlertById(formData);
+    // await dispatch.alerts.getAllAlerts();
+    // await setModalShow(null);
     await setActiveRow(null);
   };
 
   const [page, setPage] = useState(0);
-  const [usersList, setUsersList] = useState([]);
+  const [notificationList, setNotificationList] = useState([]);
   const [pageLoading, setPageLoading] = useState(false);
 
   const noOfDatasInTable = 6;
-  const noOfPages = parseInt(usersList.length / noOfDatasInTable);
-  const dataInTable = usersList.slice(
+  const noOfPages = parseInt(notificationList.length / noOfDatasInTable);
+  const dataInTable = notificationList.slice(
     page * noOfDatasInTable,
     page * noOfDatasInTable + noOfDatasInTable
   );
@@ -135,10 +95,10 @@ function NotificationLists({ ...props }) {
 
   useEffect(() => {
     setPageLoading(true);
-    SensorService.getAllSensors()
+    NotificationService.getNotification()
       .then((res) => {
         console.log('state changeweqwe:', res);
-        setUsersList(res.data);
+        setNotificationList(res.data);
         setPageLoading(false);
         props.updateState(false);
       })
@@ -160,18 +120,13 @@ function NotificationLists({ ...props }) {
         </div>
       ) : (
         <div className="revenue-insights__statsGrid adminTeams">
-          {dataInTable.map((company, index) => (
+          {dataInTable.map((notification, index) => (
             <StatCard
               key={index}
-              title={company.deviceName}
-              temp1={company.temp1}
-              temp2={company.temp2}
-              recentTime={company.includeDateTime}
-              voltage={company.voltage}
-              battery_status={company.battery_status}
+              actionName={notification.action_name}
               grid={index + 1}
               page="notification_lists"
-              companyId={company.id}
+              notificationId={notification.id}
             />
           ))}
         </div>
