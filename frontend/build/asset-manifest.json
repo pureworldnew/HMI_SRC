@@ -1,22 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.b3035134.chunk.css",
-    "main.js": "/static/js/main.ba89ea89.chunk.js",
-    "main.js.map": "/static/js/main.ba89ea89.chunk.js.map",
+    "main.css": "/static/css/main.b8d33716.chunk.css",
+    "main.js": "/static/js/main.ae00d379.chunk.js",
+    "main.js.map": "/static/js/main.ae00d379.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
     "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/css/2.d55b1fd7.chunk.css": "/static/css/2.d55b1fd7.chunk.css",
-    "static/js/2.258352c8.chunk.js": "/static/js/2.258352c8.chunk.js",
-    "static/js/2.258352c8.chunk.js.map": "/static/js/2.258352c8.chunk.js.map",
+    "static/css/2.c057f10c.chunk.css": "/static/css/2.c057f10c.chunk.css",
+    "static/js/2.042b847e.chunk.js": "/static/js/2.042b847e.chunk.js",
+    "static/js/2.042b847e.chunk.js.map": "/static/js/2.042b847e.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.6e837d3b9b05476391ef21e97719af9e.js": "/precache-manifest.6e837d3b9b05476391ef21e97719af9e.js",
+    "precache-manifest.d4f50ce69f05287dbb69a0e1d2c93880.js": "/precache-manifest.d4f50ce69f05287dbb69a0e1d2c93880.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.d55b1fd7.chunk.css.map": "/static/css/2.d55b1fd7.chunk.css.map",
-    "static/css/main.b3035134.chunk.css.map": "/static/css/main.b3035134.chunk.css.map",
-    "static/media/style.scss": "/static/media/stage-3.27dd54ad.svg",
-    "static/media/google-sheets-icon.svg": "/static/media/google-sheets-icon.5a531a45.svg",
-    "static/media/loading.gif": "/static/media/loading.a21cb694.gif",
-    "static/media/presentation-view.a7503233.svg": "/static/media/presentation-view.a7503233.svg",
-    "static/media/salesforcse-icon.svg": "/static/media/salesforcse-icon.764b4f4c.svg"
+    "static/css/2.c057f10c.chunk.css.map": "/static/css/2.c057f10c.chunk.css.map",
+    "static/css/main.b8d33716.chunk.css.map": "/static/css/main.b8d33716.chunk.css.map",
+    "static/media/heat.svg": "/static/media/heat.4bc90d4e.svg",
+    "static/media/loading.gif": "/static/media/loading.0d96348a.gif",
+    "static/media/sensor.png": "/static/media/sensor.67181a1b.png",
+    "static/media/signal.png": "/static/media/signal.75d64f76.png"
   }
 }
