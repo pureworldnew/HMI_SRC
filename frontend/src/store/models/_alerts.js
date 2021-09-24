@@ -1,4 +1,3 @@
-// import { toast } from 'react-toastify';
 import { getInsightBackendAPI } from '../../utils/Http';
 const token = window.localStorage.getItem('access_token');
 const api = getInsightBackendAPI();
@@ -70,19 +69,19 @@ export const alerts = {
       }
     },
     async editAlertById(formData) {
-      const bodyData = { status: formData.status };
-      try {
-        const data = await fetch(`${api}/alerts/${formData.id}`, {
-          method: 'PATCH',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(bodyData)
-        }).then((res) => res.json());
-      } catch (e) {
-        this.updateError(e);
-      }
+      // const bodyData = { status: formData.status };
+      // try {
+      //   const data = await fetch(`${api}/alerts/${formData.id}`, {
+      //     method: 'PATCH',
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //       'Content-Type': 'application/json'
+      //     },
+      //     body: JSON.stringify(bodyData)
+      //   }).then((res) => res.json());
+      // } catch (e) {
+      //   this.updateError(e);
+      // }
     }
   })
 };

@@ -46,7 +46,7 @@ const MainRouter = (props) => {
       else setRoleId(localStorage.getItem('roleId'));
       // valid token format
     } catch (error) {
-      AuthService.LogOut();
+      AuthService.logout();
       // invalid token format
     }
   }, [mainRef, location, props.history]);

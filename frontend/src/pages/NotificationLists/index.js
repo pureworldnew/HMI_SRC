@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Header from '../Dashboard/Header';
 import StatCard from '../../components/StatCard/index';
 import loadingGif from '../../assets/gif/loading.gif';
@@ -8,36 +8,22 @@ import NotificationService from '../../services/NotificationService';
 
 function NotificationLists({ ...props }) {
   const dispatch = useDispatch();
-  const notifications = useSelector(
-    (state) => state.notifications.notificationData
-  );
-  const { alertsActive, alertsPaused } = useSelector((state) => state.alerts);
-  const loading = useSelector((state) => state.loading.models.alerts);
-  const [activeTab, setActiveTab] = useState('Upcoming');
-  const [activeRow, setActiveRow] = useState();
+  // const notifications = useSelector(
+  //   (state) => state.notifications.notificationData
+  // );
+  // const loading = useSelector((state) => state.loading.models.alerts);
   const [modalShow, setModalShow] = useState(false);
-  const [data, setDate] = useState([]);
 
   useEffect(() => {
     dispatch.notifications.getAllNotifications();
   }, []);
 
   const deleteReport = async () => {
-    await dispatch.alerts.deleteAlertById(activeRow);
     await dispatch.alerts.getAllAlerts();
     await setModalShow(null);
-    await setActiveRow(null);
   };
 
-  const pauseReport = async () => {
-    // let item = alerts.filter((key) => key.id === activeRow)[0];
-    // let status = !item.status;
-    // const formData = { id: activeRow, status };
-    // await dispatch.alerts.editAlertById(formData);
-    // await dispatch.alerts.getAllAlerts();
-    // await setModalShow(null);
-    await setActiveRow(null);
-  };
+  const pauseReport = async () => {};
 
   const [page, setPage] = useState(0);
   const [notificationList, setNotificationList] = useState([]);
@@ -109,11 +95,7 @@ function NotificationLists({ ...props }) {
 
   return (
     <div className="dashboard revenue-insights">
-      <Header
-        title="Notifications Lists"
-        type="Notification_lists"
-        activetab={activeTab}
-      />
+      <Header title="Notifications Lists" type="Notification_lists" />
       {pageLoading ? (
         <div className="panel-body terminology d-flex justify-content-center align-items-center">
           <img className="pb-5 mb-5" src={loadingGif} alt="loader gif" />

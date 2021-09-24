@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import UnAvailableToolTip from '../../pages/Components/TooltipComponents/UnAvailableTooltipComponent';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
@@ -29,22 +25,7 @@ import SettingsInputAntennaOutlinedIcon from '@material-ui/icons/SettingsInputAn
 import './startcard.scss';
 
 const StatCard = (props) => {
-  const [members, setMembers] = useState('');
-
-  let {
-    icon,
-    main,
-    bottom,
-    medium,
-    title,
-    medium_1,
-    medium_2,
-    companyId,
-    set_create_company
-  } = props;
-
-  let adminTeamsCardCircles = members > 9 ? 9 : members;
-  let adminBottome = members > 9 ? members - 9 : null;
+  let { icon, main, bottom, set_create_company } = props;
 
   let page = props.page;
   let bottom_dollar = props.bottom_dollar;
@@ -53,10 +34,6 @@ const StatCard = (props) => {
 
   const handleCheckChange = (event) => {
     props.onSensorsChange(event.target.id);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
   };
 
   useEffect(() => {}, [set_create_company]);

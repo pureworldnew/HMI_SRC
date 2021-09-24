@@ -73,7 +73,7 @@ const Sensors = (props) => {
       .catch((err) => {
         console.log('Error:', err);
       });
-  }, []);
+  },[]);
 
   return (
     <div className="dashboard revenue-insights">

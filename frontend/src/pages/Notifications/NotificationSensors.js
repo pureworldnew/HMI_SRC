@@ -7,7 +7,6 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 const NotificationSensors = (props) => {
   const [page, setPage] = useState(0);
   const [usersList, setUsersList] = useState([]);
-  const [pageLoading, setPageLoading] = useState(false);
   const [actionName, setActionName] = useState(props.settings.subject);
   const noOfDatasInTable = 6;
   const noOfPages = parseInt(usersList.length / noOfDatasInTable);
@@ -72,18 +71,16 @@ const NotificationSensors = (props) => {
   };
 
   useEffect(() => {
-    setPageLoading(true);
     SensorService.getAllSensors()
       .then((res) => {
         console.log('state changeweqwe:', res);
         setUsersList(res.data);
-        setPageLoading(false);
         props.updateState(false);
       })
       .catch((err) => {
         console.log('Error:', err);
       });
-  }, []);
+  });
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import T from 'i18n-react';
@@ -6,7 +6,6 @@ import UnAvailableToolTip from '../Components/TooltipComponents/UnAvailableToolt
 import Footer from './Footer';
 
 const Sidebar = ({ showMenu, setShowMenu, roleId }) => {
-  const [menuDropDown, setMenuDropDown] = useState('');
   return (
     <div
       className={`main__sidebar-container ${
@@ -14,13 +13,11 @@ const Sidebar = ({ showMenu, setShowMenu, roleId }) => {
       }`}
       onMouseLeave={() => {
         setShowMenu(false);
-        setMenuDropDown('');
       }}>
       <div
         className={`sideBar ${!showMenu && 'sideBar-collapse'}`}
         onMouseLeave={() => {
           setShowMenu(false);
-          setMenuDropDown('');
         }}
         onMouseEnter={() => {
           setShowMenu(true);
@@ -30,7 +27,6 @@ const Sidebar = ({ showMenu, setShowMenu, roleId }) => {
           onClick={() => {
             if (showMenu) {
               setShowMenu(false);
-              setMenuDropDown('');
             } else setShowMenu(true);
           }}>
           {showMenu ? 'LOGO' : 'L'}

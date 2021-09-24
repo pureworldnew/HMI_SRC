@@ -78,17 +78,17 @@ export const notifications = {
       }
     },
     async editAlertById(formData) {
-      const bodyData = { status: formData.status };
-      const token = window.localStorage.getItem('access_token');
+      // const bodyData = { status: formData.status };
+      // const token = window.localStorage.getItem('access_token');
       try {
-        const data = await fetch(`${api}/notifications/${formData.id}`, {
-          method: 'PATCH',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(bodyData)
-        }).then((res) => res.json());
+        // const data = await fetch(`${api}/notifications/${formData.id}`, {
+        //   method: 'PATCH',
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //     'Content-Type': 'application/json'
+        //   },
+        //   body: JSON.stringify(bodyData)
+        // }).then((res) => res.json());
       } catch (e) {
         this.updateError(e);
       }
