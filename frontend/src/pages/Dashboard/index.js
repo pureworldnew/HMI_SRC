@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
-import StatCard from './StatCard';
+import StatCard from '../../components/StatCard';
 import { StateContext } from '../../StateContextProvider';
-import 'react-dates/lib/css/_datepicker.css';
-import 'react-dates/initialize';
 import Header from './Header';
 import SensorsTable from '../../components/SensorsTable';
 import DashboardService from '../../services/DashboardService';
@@ -67,24 +65,28 @@ const Dashboard = () => {
               main={data.activeSensor}
               grid={1}
               icon="SignalCellularAltOutlinedIcon"
+              page="dashboard"
             />
             <StatCard
               title="Alerting Sensors"
               main={data.alertSensor}
               grid={2}
               icon="NotificationsActiveOutlinedIcon"
+              page="dashboard"
             />
             <StatCard
               title="Active Gateways"
               main={data.activeGateway}
               grid={3}
               icon="SettingsInputAntennaOutlinedIcon"
+              page="dashboard"
             />
             <StatCard
               title="Alerting Gateways"
               main={data.alertGateway}
               grid={4}
               icon="NotificationsActiveOutlinedIcon"
+              page="dashboard"
             />
           </div>
           <SensorsTable sensors={data.sensors} />

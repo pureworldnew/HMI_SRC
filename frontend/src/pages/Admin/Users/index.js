@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PopoverItem from './PopOverComponent/PopOverComponent';
-import FullTableView from './../../../components/TableFreeze/FullTableView';
 import UserTable from './UserTableComponent/UserTable';
 import CompanyUserTable from './UserTableComponent/CompanyUserTable';
 
@@ -128,7 +127,6 @@ const Users = (props) => {
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <FullTableView />
         {tablePagination()}
       </div>
     </div>

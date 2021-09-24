@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import Select from 'react-select';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import DrawerForm from '../../Sensors/DrawerForm';
 import TeamsCreateModal from '../../Admin/Modal/CompaniesTeamsModal/CreateModal/index';
 import UserCreateModal from '../../Admin/Modal/UsersModal/Create/';
 import CompanyService from '../../../services/CompanyService';
 import signalImg from '../../../assets/img/signal.png';
-import actionImg from '../../../assets/svg/action.svg';
 import { withRouter } from 'react-router-dom';
 
 import './header.scss';
@@ -294,20 +292,6 @@ const Header = (props) => {
         </div>
       );
     }
-  } else if (type === 'Alerts') {
-    return (
-      <div className="dashboard__header">
-        <div className="dashboard__welcomeMessage welcomeMessage">
-          <h3 className="welcomeMessage__title">{title}</h3>
-        </div>
-        <div
-          className="dashboard__buttons"
-          style={{ maxWidth: '460px', justifyContent: 'flex-end' }}>
-          <DrawerForm type="report" title="+ Create New Report" />
-          <DrawerForm type="alert" title="+ Create New Alert" />
-        </div>
-      </div>
-    );
   } else if (type === 'Sensors') {
     return (
       <div className="dashboard__header">
@@ -341,22 +325,6 @@ const Header = (props) => {
             }}>
             + Create New Notification
           </button>
-        </div>
-      </div>
-    );
-  } else if (type === 'Actions') {
-    return (
-      <div className="dashboard__header">
-        <div className="dashboard__welcomeMessage welcomeMessage d-flex justify-content-center align-items-center">
-          <img src={actionImg} alt="signal " className="signal mr-3" />
-
-          <h3 className="welcomeMessage__title">{title}</h3>
-        </div>
-        <div
-          className="dashboard__buttons"
-          style={{ maxWidth: '460px', justifyContent: 'flex-end' }}>
-          <DrawerForm type="report" title="+ Create New Action" />
-          <DrawerForm type="alert" title="+ Create New Alert" />
         </div>
       </div>
     );

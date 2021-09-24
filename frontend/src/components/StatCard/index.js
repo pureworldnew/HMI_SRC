@@ -24,14 +24,26 @@ import sensorLive from '../../assets/img/sensor.png';
 import highSignal from '../../assets/img/high-signal.png';
 import Popover from './Popover';
 import Tooltip from '@mui/material/Tooltip';
+import SignalCellularAltOutlinedIcon from '@material-ui/icons/SignalCellularAltOutlined';
+import NotificationsActiveOutlinedIcon from '@material-ui/icons/NotificationsActiveOutlined';
+import SettingsInputAntennaOutlinedIcon from '@material-ui/icons/SettingsInputAntennaOutlined';
 
 import './startcard.scss';
 
 const StatCard = (props) => {
   const [members, setMembers] = useState('');
-  const [sensorLists, setSensorLists] = useState([]);
 
-  let { dotsMore, main, bottom, title, companyId, set_create_company } = props;
+  let {
+    icon,
+    main,
+    bottom,
+    medium,
+    title,
+    medium_1,
+    medium_2,
+    companyId,
+    set_create_company
+  } = props;
 
   let adminTeamsCardCircles = members > 9 ? 9 : members;
   let adminBottome = members > 9 ? members - 9 : null;
@@ -102,155 +114,7 @@ const StatCard = (props) => {
   }
 
   const hasIncreased = props.main > props.bottom;
-
-  if (page === 'adminTeamsCard') {
-    return (
-      <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
-          <div className="adminTeamsCardMore">
-            {getAccountByPeriodLegend(handleClick)}
-          </div>
-        </div>
-        <div style={{ display: 'flex' }}>
-          {circleElements(adminTeamsCardCircles)}
-        </div>
-        <div className="statcard__bottom adminTeamsCardBottome">
-          {!!adminBottome && <p>& {adminBottome} more.</p>}
-        </div>
-        <Menu
-          id="chart-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}>
-          <List component="nav" aria-label="secondary mailbox folders">
-            <MenuItem>
-              <ListItem onClick={handleClose}>
-                <TeamViewModal buttonLabel="View" type="team" />
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <TeamsEditModal
-                  buttonLabel="Edit"
-                  className="TeamsEditModalCustomCss"
-                  type="team"
-                />
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <p
-                  style={{
-                    width: '35px',
-                    height: '20px',
-                    fontFamily: 'Open Sans',
-                    fontStyle: 'normal',
-                    fontWeight: 'bold',
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    alignItems: 'center',
-                    letterSpacing: '0.01em',
-                    color: '#000000'
-                  }}>
-                  Delete
-                </p>
-              </ListItem>
-            </MenuItem>
-          </List>
-        </Menu>
-      </div>
-    );
-  } else if (page === 'companies') {
-    return (
-      <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <p className="statcard__title adminTeamsCardTitle">{props.title}</p>
-          <div className="adminTeamsCardMore">
-            {getAccountByPeriodLegend(handleClick)}
-          </div>
-        </div>
-        <div style={{ display: 'flex' }}>
-          {circleElements(adminTeamsCardCircles)}
-        </div>
-        <div className="statcard__bottom adminTeamsCardBottome">
-          {!!adminBottome && <p>& {adminBottome} more.</p>}
-        </div>
-        <Menu
-          className="popOver"
-          id="chart-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}>
-          <List component="nav" aria-label="secondary mailbox folders">
-            <MenuItem>
-              <ListItem onClick={handleClose}>
-                <TeamViewModal
-                  buttonLabel="View"
-                  type="companies"
-                  title={title}
-                  companyId={companyId}
-                />
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <TeamsEditModal
-                  buttonLabel="Edit"
-                  className="TeamsEditModalCustomCss"
-                  type="companies"
-                />
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <p
-                  style={{
-                    width: '65px',
-                    height: '25px',
-                    paddingTop: '7px',
-                    textAlign: 'center',
-                    fontFamily: 'Open Sans',
-                    fontStyle: 'normal',
-                    fontWeight: 'bold',
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    alignItems: 'center',
-                    letterSpacing: '0.01em',
-                    color: '#000000'
-                  }}>
-                  Un-Pause
-                </p>
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <p
-                  style={{
-                    width: '65px',
-                    height: '25px',
-                    paddingTop: '7px',
-                    textAlign: 'center',
-                    fontFamily: 'Open Sans',
-                    fontStyle: 'normal',
-                    fontWeight: 'bold',
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    alignItems: 'center',
-                    letterSpacing: '0.01em',
-                    color: '#000000'
-                  }}>
-                  Delete
-                </p>
-              </ListItem>
-            </MenuItem>
-          </List>
-        </Menu>
-      </div>
-    );
-  } else if (page === 'sensors') {
+  if (page === 'sensors') {
     return (
       <div
         className="statcard p-8"
@@ -453,126 +317,22 @@ const StatCard = (props) => {
         </div>
       </div>
     );
-  } else if (page === 'notifications') {
+  } else if (page === 'dashboard') {
     return (
-      <div className="statcard p-8" style={{ gridArea: `card-${props.grid}` }}>
-        <div className="d-flex justify-content-between w-100 h-100">
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="d-flex justify-content-start mr-5">
-              <img
-                src={thermometer}
-                alt="temperature"
-                className="temperature text-dark"
-              />
-              <img src={sensorLive} alt="sensor" className="sensor" />
-            </div>
-            <div className="d-flex flex-column justify-content-between">
-              <p className="statcard__title adminTeamsCardTitle pb-5">
-                {props.title}
-              </p>
-              <div className="pb-5 d-flex">
-                {props.temp1}, {props.temp2}
-              </div>
-              <div className="bg-transparent"> {props.recentTime}</div>
-            </div>
-          </div>
-          <div className="d-flex flex-column justify-content-between align-items-center py-4">
-            <div className="d-flex justify-content-between w-100">
-              <FingerprintIcon
-                className="mr-3 text-body sensor"
-                style={{ fontSize: 30 }}
-              />
-              <img src={highSignal} alt="sensor" className="highSignal mr-3" />
-              <UnAvailableToolTip title={'Battery:' + props.voltage}>
-                {props.battery_status === 'red' ? (
-                  <Battery20Icon className="sensor " style={{ fontSize: 30 }} />
-                ) : props.battery_status === 'yellow' ? (
-                  <Battery50Icon className="sensor " style={{ fontSize: 30 }} />
-                ) : (
-                  <BatteryFullIcon
-                    className="sensor "
-                    style={{ fontSize: 30 }}
-                  />
-                )}
-              </UnAvailableToolTip>
-            </div>
-            <div className="adminTeamsCardMore">
-              {getAccountByPeriodLegend(handleClick)}
-            </div>
-          </div>
+      <div className="statcard" style={{ gridArea: `card-${props.grid}` }}>
+        <p className="statcard__title">{props.title}</p>
+        <div className="statcard__content">
+          <p className="statcard__main">{main}</p>
+          {icon === 'SignalCellularAltOutlinedIcon' ? (
+            <SignalCellularAltOutlinedIcon className="statcard__rightIcon" />
+          ) : icon === 'NotificationsActiveOutlinedIcon' ? (
+            <NotificationsActiveOutlinedIcon className="statcard__rightIcon" />
+          ) : icon === 'SettingsInputAntennaOutlinedIcon' ? (
+            <SettingsInputAntennaOutlinedIcon className="statcard__rightIcon" />
+          ) : (
+            ''
+          )}
         </div>
-
-        <Menu
-          className="popOver"
-          id="chart-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}>
-          <List component="nav" aria-label="secondary mailbox folders">
-            <MenuItem>
-              <ListItem onClick={handleClose}>
-                <TeamViewModal
-                  buttonLabel="View"
-                  type="companies"
-                  title={title}
-                  companyId={companyId}
-                />
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <TeamsEditModal
-                  buttonLabel="Edit"
-                  className="TeamsEditModalCustomCss"
-                  type="companies"
-                />
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <p
-                  style={{
-                    width: '65px',
-                    height: '25px',
-                    paddingTop: '7px',
-                    textAlign: 'center',
-                    fontFamily: 'Open Sans',
-                    fontStyle: 'normal',
-                    fontWeight: 'bold',
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    alignItems: 'center',
-                    letterSpacing: '0.01em',
-                    color: '#000000'
-                  }}>
-                  Un-Pause
-                </p>
-              </ListItem>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItem>
-                <p
-                  style={{
-                    width: '65px',
-                    height: '25px',
-                    paddingTop: '7px',
-                    textAlign: 'center',
-                    fontFamily: 'Open Sans',
-                    fontStyle: 'normal',
-                    fontWeight: 'bold',
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    alignItems: 'center',
-                    letterSpacing: '0.01em',
-                    color: '#000000'
-                  }}>
-                  Delete
-                </p>
-              </ListItem>
-            </MenuItem>
-          </List>
-        </Menu>
       </div>
     );
   } else {
