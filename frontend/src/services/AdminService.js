@@ -20,7 +20,7 @@ class AdminService {
       }
     });
     return insightBackendAPI
-      .post('/admin/settings/limitSet', {
+      .post('/backoffice/settings/limit', {
         lowLimitVol: lowLimitVol,
         cautionLimitVol: cautionLimitVol
       })
@@ -31,7 +31,7 @@ class AdminService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .get(`${api}/admin/settings/getLimit`, {
+      .get(`${api}/backoffice/settings/limit`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => res.data)
@@ -41,7 +41,7 @@ class AdminService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .get(`${api}/admin/settings/getLogUrl`, {
+      .get(`${api}/backoffice/connections/logUrl/`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => res.data)
@@ -51,7 +51,7 @@ class AdminService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .get(`${api}/admin/settings/checkLogTable`, {
+      .get(`${api}/backoffice/connections/checkLogTable`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => res.data)
@@ -61,7 +61,7 @@ class AdminService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .delete(`${api}/admin/settings/removeLogUrl`, {
+      .delete(`${api}/backoffice/connections/logUrl`, {
         headers: { Authorization: `Bearer ${token}` },
         data: { logUrl: url }
       })
@@ -85,7 +85,7 @@ class AdminService {
       }
     });
     return insightBackendAPI
-      .post('/admin/settings/addLogUrl', {
+      .post('/backoffice/connections/logUrl/', {
         logUrl: url
       })
       .then((res) => res.data)
@@ -106,7 +106,7 @@ class AdminService {
       }
     });
     return insightBackendAPI
-      .post('/admin/settings/loadLogData', {
+      .post('/backoffice/connections/logData/', {
         logUrl: url
       })
       .then((res) => res.data)
@@ -116,7 +116,7 @@ class AdminService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .delete(`${api}/admin/settings/removeLogData`, {
+      .delete(`${api}/backoffice/connections/logData/`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(() => {})

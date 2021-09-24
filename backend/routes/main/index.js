@@ -9,5 +9,6 @@ const MainRouter = require("express").Router();
 MainRouter.use("/dashboard", require("./dashboard"));
 MainRouter.use("/notifications", require("./notifications"));
 MainRouter.use("/sensors", require("./sensors"));
+MainRouter.use("/auth", require("./auth"));
 
 module.exports = MainRouter;

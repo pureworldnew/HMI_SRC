@@ -7,7 +7,7 @@ class UserService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .get(`${api}/admin/users/getUsersList`, {
+      .get(`${api}/backoffice/user/getUserList`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => res.data)
@@ -27,7 +27,7 @@ class UserService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .get(`${api}/admin/users/getRoleList`, {
+      .get(`${api}/backoffice/user/getRoleList`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => res.data)

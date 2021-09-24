@@ -1,6 +1,5 @@
 // import { toast } from 'react-toastify';
 import { getInsightBackendAPI } from '../../utils/Http';
-const token = window.localStorage.getItem('access_token');
 const api = getInsightBackendAPI();
 
 export const notifications = {
@@ -27,6 +26,8 @@ export const notifications = {
     // This work
     async getAllNotifications() {
       try {
+        const token = window.localStorage.getItem('access_token');
+
         const data = await fetch(
           `${api}/main/notifications/notificationList/`,
           {
@@ -43,7 +44,8 @@ export const notifications = {
     },
     async createNotification(formData) {
       try {
-        console.log('createNotification log is here');
+        const token = window.localStorage.getItem('access_token');
+
         const data = await fetch(
           `${api}/main/notifications/notificationList/`,
           {
@@ -62,6 +64,7 @@ export const notifications = {
       }
     },
     async deleteAlertById(formData) {
+      const token = window.localStorage.getItem('access_token');
       try {
         await fetch(`${api}/notifications/${formData}`, {
           method: 'DELETE',
@@ -76,6 +79,7 @@ export const notifications = {
     },
     async editAlertById(formData) {
       const bodyData = { status: formData.status };
+      const token = window.localStorage.getItem('access_token');
       try {
         const data = await fetch(`${api}/notifications/${formData.id}`, {
           method: 'PATCH',
