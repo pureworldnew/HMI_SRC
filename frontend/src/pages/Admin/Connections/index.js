@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import ConnectionsService from './../../../services/ConnectionsService';
 import AdminService from '../../../services/AdminService';
-import { connect } from 'react-redux';
 import loadingGif from '../../../assets/gif/loading.gif';
 
 const Connections = (props) => {
-  const [googleApi, setGoogleApi] = useState('');
-  const [url, setUrl] = useState('');
   const [logUrl, setLogUrl] = useState('');
   const [loadStatus, setLoadStatus] = useState(false);
-  const [database_googleApi, setDatabase_googleApi] = useState('');
-  const [database_url, setDatabase_url] = useState('');
-  const [companyId, setCompanyId] = useState(null);
   const [pageLoading, setPageLoading] = useState(false);
 
   useEffect(() => {
     AdminService.getLogUrl()
       .then((res) => {
-        console.log('res is ', res);
         setLogUrl(res.data[0].logUrl);
       })
       .catch((err) => {
@@ -174,14 +166,4 @@ const Connections = (props) => {
   );
 };
 
-const mapStateToProps = ({ dashboard_header: { set_connection_company } }) => ({
-  set_connection_company
-});
-
-const mapDispatchToProps = ({
-  dashboard_header: { updateConnectionState }
-}) => ({
-  updateConnectionState: (value) => updateConnectionState(value)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Connections);
+export default Connections;
