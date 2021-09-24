@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent';
 
 import { makeStyles } from '@material-ui/core/styles';
 import BodyTextEditor from '../../components/BodyTextEditor';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SmsIcon from '@mui/icons-material/Sms';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import PhoneDisabledIcon from '@mui/icons-material/PhoneDisabled';
@@ -13,13 +12,11 @@ import PhoneEnabledOutlinedIcon from '@mui/icons-material/PhoneEnabledOutlined';
 import EmailIcon from '@mui/icons-material/Email';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import Tooltip from '@mui/material/Tooltip';
-import {
-  faSave,
-  faInfoCircle,
-  faUser,
-  faAngleDoubleDown,
-  faAngleDoubleUp
-} from '@fortawesome/free-solid-svg-icons';
+import Fab from '@mui/material/Fab';
+import InfoIcon from '@mui/icons-material/Info';
+import PersonIcon from '@mui/icons-material/Person';
+import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 
 import { Button, Toggle } from 'rsuite';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -96,7 +93,7 @@ const NotificationSettings = (props) => {
           />
 
           <div className="h2">
-            Message: <FontAwesomeIcon icon={faInfoCircle} className="ml-2" />
+            Message: <InfoIcon />
           </div>
           <BodyTextEditor
             value={values.bodyText}
@@ -136,7 +133,7 @@ const NotificationSettings = (props) => {
                 {nameArray.map((value, index) => (
                   <tr className="row mb-2" key={index}>
                     <td className="col">
-                      <FontAwesomeIcon icon={faUser} className="mr-4 fa-2x" />
+                      <PersonIcon className="mr-2" />
                       {value}
                     </td>
                     <td className="col">
@@ -209,10 +206,11 @@ const NotificationSettings = (props) => {
               fontSize: '1.5rem'
             }}>
             Advanced Settings
-            <FontAwesomeIcon
-              icon={showResults ? faAngleDoubleUp : faAngleDoubleDown}
-              className="ml-4"
-            />
+            {showResults ? (
+              <ArrowCircleDownIcon sx={{ ml: 1 }} />
+            ) : (
+              <ArrowCircleUpIcon sx={{ ml: 1 }} />
+            )}
           </Button>
           {showResults && (
             <div
@@ -289,17 +287,19 @@ const NotificationSettings = (props) => {
               </div>
             </div>
           )}
-          <button
-            className="btn btn-primary btn-lg mx-auto my-4"
+          <Fab
+            variant="extended"
+            color="primary"
+            aria-label="next"
+            size="large"
+            onClick={handleSettingsClick}
             style={{
               minWidth: '16rem',
               minHeight: '4rem',
               fontSize: '1.5rem'
-            }}
-            onClick={handleSettingsClick}>
+            }}>
             Next
-            <FontAwesomeIcon icon={faSave} className="ml-4" />
-          </button>
+          </Fab>
         </div>
       </CardActions>
     </Card>

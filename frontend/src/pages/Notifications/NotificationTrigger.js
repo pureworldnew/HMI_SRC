@@ -6,9 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
-
+import Fab from '@mui/material/Fab';
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1)
@@ -36,14 +34,14 @@ const NotificationTrigger = (props) => {
   });
 
   const handleTriggerClick = () => {
-    if (
-      !condition.temperatureCondition ||
-      !condition.temperature ||
-      !condition.temperatureUnit
-    ) {
-      alert('Enter the necessary inputs');
-      return;
-    }
+    // if (
+    //   !condition.temperatureCondition ||
+    //   !condition.temperature ||
+    //   !condition.temperatureUnit
+    // ) {
+    //   alert('Enter the necessary inputs');
+    //   return;
+    // }
     props.onTriggerChange(condition);
   };
   return (
@@ -98,17 +96,20 @@ const NotificationTrigger = (props) => {
         </div>
       </CardContent>
       <CardActions>
-        <button
+        <Fab
+          variant="extended"
+          color="primary"
+          aria-label="next"
+          size="large"
+          onClick={handleTriggerClick}
           className="btn btn-primary btn-lg m-auto"
           style={{
-            minWidth: '12rem',
+            minWidth: '16rem',
             minHeight: '4rem',
             fontSize: '1.5rem'
-          }}
-          onClick={handleTriggerClick}>
+          }}>
           Next
-          <FontAwesomeIcon icon={faSave} className="ml-4" />
-        </button>
+        </Fab>
       </CardActions>
     </Card>
   );

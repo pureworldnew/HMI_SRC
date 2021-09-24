@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import StatCard from '../../components/StatCard/index';
 import SensorService from '../../services/SensorService';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSave, faUpload } from '@fortawesome/free-solid-svg-icons';
 import signalImg from '../../assets/img/signal.png';
+import Fab from '@mui/material/Fab';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 const NotificationSensors = (props) => {
   const [page, setPage] = useState(0);
   const [usersList, setUsersList] = useState([]);
@@ -69,7 +69,7 @@ const NotificationSensors = (props) => {
 
   const handleSensorComplete = () => {
     props.onSensorComplete();
-  }
+  };
 
   useEffect(() => {
     setPageLoading(true);
@@ -104,17 +104,20 @@ const NotificationSensors = (props) => {
             placeholder="Temperature Data Greater Than 56 F"
             onChange={(e) => setActionName(e.target.value)}
           />
-          <button
+          <Fab
+            variant="extended"
+            color="primary"
+            aria-label="next"
+            size="large"
+            onClick={handleActionNameSave}
             className="btn btn-primary btn-lg mx-auto my-4"
             style={{
               minWidth: '16rem',
               minHeight: '4rem',
               fontSize: '1.5rem'
-            }}
-            onClick={handleActionNameSave}>
+            }}>
             Save
-            <FontAwesomeIcon icon={faSave} className="ml-4" />
-          </button>
+          </Fab>
         </div>
       </div>
       <div
@@ -148,17 +151,21 @@ const NotificationSensors = (props) => {
           </div>
           {noOfPages >= 1 ? paginationComponent() : null}
           <div className="d-flex text-center">
-            <button
+            <Fab
+              variant="extended"
+              color="primary"
+              aria-label="next"
+              size="large"
+              onClick={handleSensorComplete}
               className="btn btn-primary btn-lg mx-auto my-4"
               style={{
                 minWidth: '16rem',
                 minHeight: '4rem',
                 fontSize: '1.5rem'
-              }}
-              onClick={handleSensorComplete}>
+              }}>
               Complete
-              <FontAwesomeIcon icon={faUpload} className="ml-4" />
-            </button>
+              <CloudUploadIcon sx={{ ml: 1 }} />
+            </Fab>
           </div>
         </div>
       </div>
