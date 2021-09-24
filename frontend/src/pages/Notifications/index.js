@@ -9,7 +9,6 @@ import NotificationsSensors from './NotificationSensors';
 
 import 'rsuite/dist/styles/rsuite-default.css';
 import './notifications.scss';
-import NotificationService from '../../services/NotificationService';
 
 const Notifications = (props) => {
   const dispatch = useDispatch();
