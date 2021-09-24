@@ -17,7 +17,6 @@ import Header from './pages/Sections/Header';
 import Sidebar from './pages/Sections/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
-import store from './store';
 import Sensors from './pages/Sensors';
 import Notifications from './pages/Notifications';
 import NotificationLists from './pages/NotificationLists';
@@ -31,47 +30,6 @@ const MainRouter = (props) => {
   let location = useLocation();
   const mainRef = useRef(null);
   const dispatch = useDispatch();
-  store.dispatch.presentations.getPresentations();
-
-  const slidesSelector = (state) => state.presentation.slides;
-  const slectedSlideSelector = (state) => state.presentation.slectedSlide;
-
-  const slectedSlideId = useSelector(slectedSlideSelector);
-  const slides = useSelector(slidesSelector);
-
-  let slectedSlide;
-  slides.forEach((slide, index) => {
-    if (slide.id === slectedSlideId) {
-      slectedSlide = { slide, index };
-    }
-  });
-
-  const handelSlide = (e) => {
-    if (location.pathname === '/presentation-view') {
-      const keyCode = e.keyCode;
-      if (keyCode === 37 || keyCode === 38) {
-        if (slectedSlide && slectedSlide.index > 0) {
-          const newSlideID = slides[slectedSlide.index - 1].id;
-          dispatch({
-            type: PRESENTATION_TYPE.SELECT_SLIDE,
-            payload: {
-              id: newSlideID
-            }
-          });
-        }
-      } else if (keyCode === 39 || keyCode === 40) {
-        if (slectedSlide && slectedSlide.index < slides.length - 1) {
-          const newSlideID = slides[slectedSlide.index + 1].id;
-          dispatch({
-            type: PRESENTATION_TYPE.SELECT_SLIDE,
-            payload: {
-              id: newSlideID
-            }
-          });
-        }
-      }
-    }
-  };
 
   useEffect(() => {
     mainRef.current.focus();
@@ -109,7 +67,7 @@ const MainRouter = (props) => {
           presentaionContainer.style.height = isFull ? '100vh' : null;
         }
       }}>
-      <div tabIndex="0" ref={mainRef} onKeyDown={handelSlide}>
+      <div tabIndex="0" ref={mainRef}>
         <div className="main">
           <Helmet>
             <title>{pageTitle}</title>

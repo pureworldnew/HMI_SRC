@@ -105,7 +105,7 @@ const Sensors = (props) => {
   );
 };
 
-const mapDispatchToProps = ({ company: { updateState } }) => ({
+const mapDispatchToProps = ({ sensor: { updateState } }) => ({
   updateState: (value) => updateState(value)
 });
 

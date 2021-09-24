@@ -41,7 +41,7 @@ const ActivityStatCard = (props) => {
 
 const StatCard = (props) => {
   const [members, setMembers] = useState('');
-  const { set_create_company, cardId } = props;
+  const { cardId } = props;
 
   let main = props.main;
   let bottom = props.bottom;
@@ -65,17 +65,6 @@ const StatCard = (props) => {
   };
 
   // const dispatch = useDispatch();
-
-  useEffect(() => {
-    // CompanyService.getCompanyUsers(companyId)
-    //   .then((res) => {
-    //     props.updateState(false);
-    //     setMembers(res.data.data.users.length);
-    //   })
-    //   .catch((err) => {
-    //     console.log('Error:', err);
-    //   });
-  }, [set_create_company]);
 
   // const handleChange = event => {
   //   console.log(event);
@@ -437,12 +426,4 @@ const StatCard = (props) => {
   }
 };
 
-const mapDispatchToProps = ({ company: { updateState } }) => ({
-  updateState: (value) => updateState(value)
-});
-
-const mapStateToProps = ({ company: { set_create_company } }) => ({
-  set_create_company
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(StatCard);
+export default StatCard;

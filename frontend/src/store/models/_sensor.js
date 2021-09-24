@@ -8,7 +8,6 @@ export const sensor = {
   },
   reducers: {
     updateState(state, payload) {
-      // console.log('state, pageyload: ', state, payload);
       return {
         ...state,
         set_create_company: payload
@@ -21,7 +20,6 @@ export const sensor = {
   effects: (dispatch) => ({
     async testAPI(formData) {
       try {
-        // const data = await authApi.post('register', false, formData);
         const data = {};
         if (data.errors) {
           return this.updateError(data.errors);

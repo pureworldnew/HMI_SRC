@@ -592,11 +592,11 @@ const StatCard = (props) => {
   }
 };
 
-const mapDispatchToProps = ({ company: { updateState } }) => ({
+const mapDispatchToProps = ({ sensor: { updateState } }) => ({
   updateState: (value) => updateState(value)
 });
 
-const mapStateToProps = ({ company: { set_create_company } }) => ({
+const mapStateToProps = ({ sensor: { set_create_company } }) => ({
   set_create_company
 });
 
