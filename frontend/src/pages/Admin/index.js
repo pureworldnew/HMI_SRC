@@ -5,9 +5,7 @@ import Header from '../Dashboard/Header';
 import HorizontalTab from './HorizontalTab';
 // Admin Components
 import Companies from './Companies';
-import Sensors from './Sensors';
 import Users from './Users';
-import Teams from './Teams';
 import Settings from './Settings';
 import Connections from './Connections';
 
@@ -28,8 +26,6 @@ const Admin = (props) => {
       return <Companies />;
     } else if (activeTab === 'Users') {
       return <Users />;
-    } else if (activeTab === 'Teams') {
-      return <Teams />;
     } else if (activeTab === 'Settings') {
       return <Settings />;
     } else {
@@ -44,8 +40,6 @@ const Admin = (props) => {
       return <Header title="Admin" type="AdminUsers" />;
     } else if (activeTab === 'Settings') {
       return <Header title="Admin" type="AdminSettings" />;
-    } else if (activeTab === 'Teams') {
-      return <Header title="Admin" type="AdminTeams" />;
     } else {
       return <Header title="Admin" type="AdminConnections" />;
     }

@@ -27,8 +27,6 @@ import {
   ListItem,
   ListItemText
 } from '@material-ui/core';
-import { ExportToJPG } from '../../components/ContextMenu';
-import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
 
 function TableFreeze({
   data,
