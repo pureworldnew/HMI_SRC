@@ -6,11 +6,10 @@ import {
   useLocation,
   withRouter
 } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Fullscreen from 'react-full-screen';
 import { Helmet } from 'react-helmet';
 import jwt_decode from 'jwt-decode';
-import { PRESENTATION as PRESENTATION_TYPE } from './store/constants';
 
 // Pages
 import Header from './pages/Sections/Header';
