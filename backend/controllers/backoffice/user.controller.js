@@ -1,16 +1,8 @@
 const userModel = require("../../db/models").User;
 const role = require("../../db/models").Role;
-const company = require("../../db/models").Company;
 
-const moment = require("moment");
 var bcrypt = require("bcryptjs");
 const ResponseFormat = require("../../core").ResponseFormat;
-const { GoogleSpreadsheet } = require("google-spreadsheet");
-const {
-  contract_header,
-  contracts_waterfall_header,
-  segment_header,
-} = require("../../enums/connections.enum");
 
 module.exports = {
   /**

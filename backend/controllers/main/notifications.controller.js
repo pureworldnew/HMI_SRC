@@ -1,7 +1,7 @@
-const user = require("../db/models").User;
-const role = require("../db/models").Role;
-const notifications = require("../db/models").Notification;
-const ResponseFormat = require("../core").ResponseFormat;
+const user = require("../../db/models").User;
+const role = require("../../db/models").Role;
+const notifications = require("../../db/models").Notification;
+const ResponseFormat = require("../../core").ResponseFormat;
 
 module.exports = {
   async getAllNotifications(req, res) {

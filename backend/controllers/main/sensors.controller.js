@@ -1,16 +1,10 @@
 const userModel = require("../../db/models").User;
 const role = require("../../db/models").Role;
 const company = require("../../db/models").Company;
-
+const db = require("../../db/models");
 const moment = require("moment");
 var bcrypt = require("bcryptjs");
 const ResponseFormat = require("../../core").ResponseFormat;
-const { GoogleSpreadsheet } = require("google-spreadsheet");
-const {
-  contract_header,
-  contracts_waterfall_header,
-  segment_header,
-} = require("../../enums/connections.enum");
 
 module.exports = {
   /**
@@ -101,20 +95,39 @@ module.exports = {
   },
 
   getCompanyList(req, res) {
-    return company
-      .all()
-      .then((companies) =>
+    return db.sequelize
+      .query(
+        `SELECT a.*, 
+        (
+          CASE 
+            WHEN a.voltage < 1.5 THEN "red" 
+            WHEN a.voltage > 1.5 && a.voltage < 2.0 THEN "yellow"
+            WHEN a.voltage >= 2.0 THEN "green"
+            ELSE "green" 
+          END) AS battery_status
+        FROM sensorlogs a
+        INNER JOIN (
+        SELECT MAX(id) AS id, deviceName, MAX(includeDateTime) AS max_time
+        FROM sensorlogs
+        GROUP BY deviceName ) b
+        ON a.id = b.id AND a.includeDatetime = b.max_time
+        ORDER BY a.includeDateTime`,
+        {
+          type: db.sequelize.QueryTypes.SELECT,
+        }
+      )
+      .then(function (activeSensors) {
         res
           .status(200)
           .json(
             ResponseFormat.build(
-              companies,
+              activeSensors,
               "Company Information Reterive successfully",
               200,
               "success"
             )
-          )
-      )
+          );
+      })
       .catch((error) =>
         res
           .status(400)

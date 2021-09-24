@@ -2,6 +2,6 @@
  * /routes/backoffice/user/addNewUser/
  * @description:: get user list
  */
-const adminController = require("../../../controllers").admin;
+const userController = require("../../../controllers/backoffice").user;
 
-module.exports = adminController.addNewUser;
+module.exports = userController.addNewUser;

@@ -1,9 +1,9 @@
-const db = require("../db/models");
+const db = require("../../db/models");
 var moment = require("moment");
-const config = require("../config/auth.config");
+const config = require("../../config/auth.config");
 const User = db.User;
 const Role = db.Role;
-const ResponseFormat = require("../core").ResponseFormat;
+const ResponseFormat = require("../../core").ResponseFormat;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");

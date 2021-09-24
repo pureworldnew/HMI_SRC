@@ -2,6 +2,6 @@
  * /routes/backoffice/user/getRoleList/
  * @description:: get user role list
  */
-const adminController = require("../../../controllers").admin;
+const userController = require("../../../controllers/backoffice").user;
 
-module.exports = adminController.getRoleList;
+module.exports = userController.getRoleList;
