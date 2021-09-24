@@ -62,7 +62,6 @@ const Sensors = (props) => {
   useEffect(() => {
     SensorService.getAllSensors()
       .then((res) => {
-        // console.log('state change:', set_create_company);
         setUsersList(res.data);
         props.updateState(false);
       })

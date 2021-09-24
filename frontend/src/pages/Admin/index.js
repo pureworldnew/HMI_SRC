@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Header from '../Dashboard/Header';
 import HorizontalTab from './HorizontalTab';
 // Admin Components
-import Companies from './Companies';
 import Users from './Users';
 import Settings from './Settings';
 import Connections from './Connections';
@@ -22,9 +21,7 @@ const Admin = (props) => {
   }
 
   const getActiveTabContent = () => {
-    if (activeTab === 'Companies') {
-      return <Companies />;
-    } else if (activeTab === 'Users') {
+    if (activeTab === 'Users') {
       return <Users />;
     } else if (activeTab === 'Settings') {
       return <Settings />;
@@ -34,9 +31,7 @@ const Admin = (props) => {
   };
 
   const getActiveTabHeader = () => {
-    if (activeTab === 'Companies') {
-      return <Header title="Admin" type="AdminCompanies" />;
-    } else if (activeTab === 'Users') {
+    if (activeTab === 'Users') {
       return <Header title="Admin" type="AdminUsers" />;
     } else if (activeTab === 'Settings') {
       return <Header title="Admin" type="AdminSettings" />;

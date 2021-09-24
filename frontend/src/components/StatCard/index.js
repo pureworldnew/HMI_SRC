@@ -6,8 +6,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import TeamsEditModal from '../../pages/Admin/Modal/CompaniesTeamsModal/EditModal/index';
-import TeamViewModal from '../../pages/Admin/Modal/CompaniesTeamsModal/ViewModal/index';
 import UnAvailableToolTip from '../../pages/Components/TooltipComponents/UnAvailableTooltipComponent';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
 
