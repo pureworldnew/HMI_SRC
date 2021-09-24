@@ -1,24 +1,24 @@
-import React from "react";
-
+import React from 'react';
+import { Link } from 'react-router-dom';
 class ForgotPwdForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
 
-      email: ""
+      email: ''
     };
   }
 
-  onChangeInput = e => {
+  onChangeInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onForgotPassword = async e => {
+  onForgotPassword = async (e) => {
     e.preventDefault();
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     this.onForgotPassword(e);
   };
 
@@ -26,19 +26,18 @@ class ForgotPwdForm extends React.Component {
     return (
       <div className="forgotPassword">
         <div className="forgotPassword__container">
-          <div className="forgotPassword__header">
-            LOGO
-          </div>
+          <div className="forgotPassword__header">LOGO</div>
           <div className="forgotPassword__mid">
             <h1 className="forgotPassword__title">Forgot Password</h1>
             <p className="forgotPassword__info">
-              We can send you a new password link to your E-Mail. 
-              <br />Please type in your E-Mail with account.
+              We can send you a new password link to your E-Mail.
+              <br />
+              Please type in your E-Mail with account.
             </p>
           </div>
 
           <form className="form" onSubmit={this.handleSubmit}>
-            <div className="form__group" style={{marginTop: "0px"}}>
+            <div className="form__group" style={{ marginTop: '0px' }}>
               <label htmlFor="e-mail">E-Mail Address</label>
               <input
                 value={this.state.email}
@@ -49,10 +48,14 @@ class ForgotPwdForm extends React.Component {
             </div>
             <button
               className="button button--block"
-              onClick={this.handleSubmit}
-            >
+              onClick={this.handleSubmit}>
               Submit
             </button>
+            <div className="create_new_account">
+              <Link className="form__link" to="/login">
+                Sign In
+              </Link>
+            </div>
           </form>
         </div>
       </div>

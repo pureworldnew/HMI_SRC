@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Checkbox from 'react-simple-checkbox';
 import AuthService from '../../../../services/AuthService';
 
@@ -101,6 +101,11 @@ const SignUp = (props) => {
             type="submit">
             Create Account
           </button>
+          <div className="create_new_account">
+            <Link className="form__link" to="/login">
+              Sign In
+            </Link>
+          </div>
           <div className="description">
             By clicking “Create Account”, you agree to our <span>Teams</span>.
             Learn how we keep your data secure in our{' '}

@@ -18,7 +18,7 @@ const Dashboard = () => {
     focusedInput: null
   });
   const [data, setData] = useState({
-    activeSensor: 23,
+    activeSensor: 0,
     alertSensor: 0,
     activeGateway: 0,
     alertGateway: 0,
@@ -53,44 +53,45 @@ const Dashboard = () => {
         date={date}
         setDate={setDate}
       />
+
+      <div>
+        <div className="dashboard__statsGrid">
+          <StatCard
+            title="Active Sensors"
+            main={data.activeSensor}
+            grid={1}
+            icon="SignalCellularAltOutlinedIcon"
+            page="dashboard"
+          />
+          <StatCard
+            title="Alerting Sensors"
+            main={data.alertSensor}
+            grid={2}
+            icon="NotificationsActiveOutlinedIcon"
+            page="dashboard"
+          />
+          <StatCard
+            title="Active Gateways"
+            main={data.activeGateway}
+            grid={3}
+            icon="SettingsInputAntennaOutlinedIcon"
+            page="dashboard"
+          />
+          <StatCard
+            title="Alerting Gateways"
+            main={data.alertGateway}
+            grid={4}
+            icon="NotificationsActiveOutlinedIcon"
+            page="dashboard"
+          />
+        </div>
+      </div>
       {pageLoading ? (
         <div className="panel-body terminology d-flex justify-content-center align-items-center">
           <img className="pb-5 mb-5" src={loadingGif} alt="loader gif" />
         </div>
       ) : (
-        <div>
-          <div className="dashboard__statsGrid">
-            <StatCard
-              title="Active Sensors"
-              main={data.activeSensor}
-              grid={1}
-              icon="SignalCellularAltOutlinedIcon"
-              page="dashboard"
-            />
-            <StatCard
-              title="Alerting Sensors"
-              main={data.alertSensor}
-              grid={2}
-              icon="NotificationsActiveOutlinedIcon"
-              page="dashboard"
-            />
-            <StatCard
-              title="Active Gateways"
-              main={data.activeGateway}
-              grid={3}
-              icon="SettingsInputAntennaOutlinedIcon"
-              page="dashboard"
-            />
-            <StatCard
-              title="Alerting Gateways"
-              main={data.alertGateway}
-              grid={4}
-              icon="NotificationsActiveOutlinedIcon"
-              page="dashboard"
-            />
-          </div>
-          <SensorsTable sensors={data.sensors} />
-        </div>
+        <SensorsTable sensors={data.sensors} />
       )}
     </div>
   );
