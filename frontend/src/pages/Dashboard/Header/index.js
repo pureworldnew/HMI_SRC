@@ -7,7 +7,6 @@ import DrawerForm from '../../Sensors/DrawerForm';
 import TeamsCreateModal from '../../Admin/Modal/CompaniesTeamsModal/CreateModal/index';
 import UserCreateModal from '../../Admin/Modal/UsersModal/Create/';
 import CompanyService from '../../../services/CompanyService';
-import RevenueService from '../../../services/RevenueService';
 import signalImg from '../../../assets/img/signal.png';
 import actionImg from '../../../assets/svg/action.svg';
 import { withRouter } from 'react-router-dom';
@@ -122,27 +121,6 @@ const Header = (props) => {
           companyArray.push(element);
         });
         setCompanyOptions(companyArray);
-      })
-      .catch((err) => {
-        console.log('Error:', err);
-      });
-    RevenueService.getRevenueCompanies()
-      .then((res) => {
-        // console.log('state changeaaa:', res.data);
-        var array = [
-          {
-            value: null,
-            label: 'All'
-          }
-        ];
-        res.data.map((company) => {
-          let element = {
-            value: company.title,
-            label: company.title
-          };
-          array.push(element);
-        });
-        setRevenueCompanies(array);
       })
       .catch((err) => {
         console.log('Error:', err);
