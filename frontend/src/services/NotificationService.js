@@ -7,7 +7,7 @@ class NotificationService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .post(`${api}/notifications`, body, {
+      .post(`${api}/main/notifications/notificationList/`, body, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => res.data)
@@ -17,7 +17,7 @@ class NotificationService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .get(`${api}/notifications`, {
+      .get(`${api}/main/notifications/notificationList/`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => res.data)

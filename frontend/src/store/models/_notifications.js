@@ -27,10 +27,13 @@ export const notifications = {
     // This work
     async getAllNotifications() {
       try {
-        const data = await fetch(`${api}/notifications`, {
-          method: 'GET',
-          headers: { Authorization: `Bearer ${token}` }
-        }).then((res) => res.json());
+        const data = await fetch(
+          `${api}/main/notifications/notificationList/`,
+          {
+            method: 'GET',
+            headers: { Authorization: `Bearer ${token}` }
+          }
+        ).then((res) => res.json());
 
         this.updateNotifications(data.data);
         this.updateState(data.data, 'notificationData');
@@ -41,14 +44,17 @@ export const notifications = {
     async createNotification(formData) {
       try {
         console.log('createNotification log is here');
-        const data = await fetch(`${api}/notifications`, {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        }).then((res) => res.json());
+        const data = await fetch(
+          `${api}/main/notifications/notificationList/`,
+          {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          }
+        ).then((res) => res.json());
 
         this.updateState(data.data, 'createNotification');
       } catch (e) {
