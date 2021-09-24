@@ -1,7 +1,6 @@
 import React from 'react';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
-import Pagination from '@material-ui/lab/Pagination';
 import { ReactComponent as PresentationViewSvg } from '../../assets/svg/presentation-view.svg';
 import { usePagination } from '@material-ui/lab/Pagination';
 

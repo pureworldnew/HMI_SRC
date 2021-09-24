@@ -87,7 +87,6 @@ const Dashboard = () => {
               icon="NotificationsActiveOutlinedIcon"
             />
           </div>
-          {/* <SimpleTable /> */}
           <SensorsTable sensors={data.sensors} />
         </div>
       )}
