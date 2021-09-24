@@ -27,17 +27,18 @@ app.use(function (req, res, next) {
   next();
 });
 
-require("./routes").authRoute(app); // auth - signin, signup
-require("./routes").adminRoute(app); // admin
-require("./routes").adminUserRoute(app);
-require("./routes").adminSensorRoute(app);
-require("./routes").adminSettingRoute(app);
-require("./routes").dashboardRoute(app);
-require("./routes").revenueRoute(app);
-require("./routes").presentationRoute(app);
-require("./routes").alertsRoute(app);
-require("./routes").accountManagersRoute(app);
-require("./routes").notificationRoute(app);
+require("./routes")(app);
+// require("./routes").authRoute(app); // auth - signin, signup
+// require("./routes").adminRoute(app); // admin
+// require("./routes").adminUserRoute(app);
+// require("./routes").adminSensorRoute(app);
+// require("./routes").adminSettingRoute(app);
+// require("./routes").dashboardRoute(app);
+// require("./routes").revenueRoute(app);
+// require("./routes").presentationRoute(app);
+// require("./routes").alertsRoute(app);
+// require("./routes").accountManagersRoute(app);
+// require("./routes").notificationRoute(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

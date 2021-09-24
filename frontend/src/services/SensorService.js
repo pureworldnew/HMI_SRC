@@ -8,7 +8,7 @@ class SensorService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .get(`${api}/admin/sensors/getSensorList`, {
+      .get(`${api}/main/sensors/sensorsList`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => res.data)

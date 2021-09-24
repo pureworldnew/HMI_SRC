@@ -8,7 +8,7 @@ class DashboardService {
     const api = getInsightBackendAPI();
     const token = window.localStorage.getItem('access_token');
     return axios
-      .get(`${api}/dashboard/getActiveSensors`, {
+      .get(`${api}/main/dashboard/activeSensors/`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((res) => res.data)
