@@ -3,6 +3,12 @@ import { getInsightBackendAPI } from '../utils/Http';
 import { handleErrorResponseObject } from '../utils/Utils';
 
 class AuthService {
+  testProxy = () => {
+    return axios
+      .get(`/main/auth/textproxy`)
+      .then((res) => res.data)
+      .catch((error) => handleErrorResponseObject(error));
+  };
   signIn = (data) => {
     const api = getInsightBackendAPI();
     return axios
