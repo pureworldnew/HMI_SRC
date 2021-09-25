@@ -47,6 +47,7 @@ const MainRouter = (props) => {
       // valid token format
     } catch (error) {
       AuthService.logout();
+      props.history.push('/login');
       // invalid token format
     }
   }, [mainRef, location, props.history]);
