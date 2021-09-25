@@ -6,7 +6,7 @@ class AuthService {
   signIn = (data) => {
     const api = getInsightBackendAPI();
     return axios
-      .post(`${api}/main/auth/signin/`, data)
+      .post(`/main/auth/signin/`, data)
       .then((res) => res.data)
       .catch((error) => handleErrorResponseObject(error));
   };
