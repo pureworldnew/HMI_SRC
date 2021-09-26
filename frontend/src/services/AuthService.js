@@ -5,14 +5,14 @@ import { handleErrorResponseObject } from '../utils/Utils';
 class AuthService {
   testProxy = () => {
     return axios
-      .get(`/main/auth/textproxy`)
+      .get(`/api/main/auth/textproxy`)
       .then((res) => res.data)
       .catch((error) => handleErrorResponseObject(error));
   };
   signIn = (data) => {
     const api = getInsightBackendAPI();
     return axios
-      .post(`/main/auth/signin/`, data)
+      .post(`/api/main/auth/signin/`, data)
       .then((res) => res.data)
       .catch((error) => handleErrorResponseObject(error));
   };
