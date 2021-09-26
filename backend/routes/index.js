@@ -2,7 +2,7 @@
  * routes/index.js
  */
 module.exports = function (app) {
-  app.use("/main", require("./main"));
-  app.use("/backoffice", require("./backoffice"));
-  app.use("/api", require("./api"));
+  app.use("/api/main", require("./main"));
+  app.use("/api/backoffice", require("./backoffice"));
+  app.use("/api/api", require("./api"));
 };
