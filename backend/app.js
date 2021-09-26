@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
-app.get("/main/auth/textproxy", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "API is working on..." });
 });
 

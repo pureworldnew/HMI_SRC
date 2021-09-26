@@ -11,9 +11,6 @@ const LoginForm = (props) => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const onLogin = () => {
-    AuthService.testProxy().then((result) => {
-      console.log('result', result);
-    });
     if (!!email && !!password) {
       AuthService.signIn({ email, password })
         .then((user) => {
