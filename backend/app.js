@@ -42,63 +42,63 @@ app.post("/main/auth/postRequest", (req, res) => {
   res.send("main/auth/postRequest is working");
 });
 
-app.post("/main/auth/signin/", (req, res) => {
-  console.log("req", req.body);
-  User.findOne({
-    where: { emailAddress: req.body.email },
-    include: [
-      {
-        model: Role,
-        as: "role",
-      },
-    ],
-  })
-    .then((user) => {
-      if (!user) {
-        return res.status(500).send({ message: "User Not found." });
-      }
+// app.post("/main/auth/signin/", (req, res) => {
+//   console.log("req", req.body);
+//   User.findOne({
+//     where: { emailAddress: req.body.email },
+//     include: [
+//       {
+//         model: Role,
+//         as: "role",
+//       },
+//     ],
+//   })
+//     .then((user) => {
+//       if (!user) {
+//         return res.status(404).send({ message: "User Not found." });
+//       }
 
-      var passwordIsValid = bcrypt.compareSync(
-        req.body.password,
-        user.password
-      );
+//       var passwordIsValid = bcrypt.compareSync(
+//         req.body.password,
+//         user.password
+//       );
 
-      if (!passwordIsValid) {
-        return res.status(401).send({
-          accessToken: null,
-          message: "Invalid Password!",
-        });
-      }
+//       if (!passwordIsValid) {
+//         return res.status(401).send({
+//           accessToken: null,
+//           message: "Invalid Password!",
+//         });
+//       }
 
-      var token = jwt.sign(
-        { id: user.id, roleId: user.roleId },
-        config.secret,
-        {
-          expiresIn: 86400, // 24 hours
-        }
-      );
+//       var token = jwt.sign(
+//         { id: user.id, roleId: user.roleId },
+//         config.secret,
+//         {
+//           expiresIn: 86400, // 24 hours
+//         }
+//       );
 
-      // update last login timestamp
-      var dateTime = new Date();
-      dateTime = moment(dateTime).format("YYYY-MM-DD HH:mm:ss");
-      user
-        .update({
-          lastLogin: dateTime,
-        })
-        .then(() => console.log("Successfully updated login time", dateTime))
-        .catch((error) => console.log("Error updated login time", error));
+//       // update last login timestamp
+//       var dateTime = new Date();
+//       dateTime = moment(dateTime).format("YYYY-MM-DD HH:mm:ss");
+//       user
+//         .update({
+//           lastLogin: dateTime,
+//         })
+//         .then(() => console.log("Successfully updated login time", dateTime))
+//         .catch((error) => console.log("Error updated login time", error));
 
-      res.status(200).send({
-        data: user,
-        accessToken: token,
-      });
-    })
-    .catch((err) => {
-      res.status(500).send({ message: err.message });
-    });
-});
+//       res.status(200).send({
+//         data: user,
+//         accessToken: token,
+//       });
+//     })
+//     .catch((err) => {
+//       res.status(500).send({ message: err.message });
+//     });
+// });
 
-// require("./routes")(app);
+require("./routes")(app);
 
 // catch 404 and forward to error handler
 // app.use(function (req, res, next) {
