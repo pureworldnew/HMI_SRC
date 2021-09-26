@@ -25,9 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
-app.get("/main/auth/textproxy", (req, res) => {
-  res.json({ message: "API is working on..." });
-});
+// app.get("/main/auth/textproxy", (req, res) => {
+//   res.json({ message: "API is working on..." });
+// });
 
 app.use(function (req, res, next) {
   res.header(
@@ -37,10 +37,10 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.post("/main/auth/postRequest", (req, res) => {
-  console.log("main/auth/postRequest", req.body);
-  res.send("main/auth/postRequest is working");
-});
+// app.post("/main/auth/postRequest", (req, res) => {
+//   console.log("main/auth/postRequest", req.body);
+//   res.send("main/auth/postRequest is working");
+// });
 
 // app.post("/main/auth/signin/", (req, res) => {
 //   console.log("req", req.body);
@@ -101,18 +101,18 @@ app.post("/main/auth/postRequest", (req, res) => {
 require("./routes")(app);
 
 // catch 404 and forward to error handler
-// app.use(function (req, res, next) {
-//   next(createError(404));
-// });
+app.use(function (req, res, next) {
+  next(createError(404));
+});
 
-// // error handler
-// app.use(function (err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get("env") === "development" ? err : {};
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.send("error");
-// });
+// error handler
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+  // render the error page
+  res.status(err.status || 500);
+  res.send("error");
+});
 
 module.exports = app;
