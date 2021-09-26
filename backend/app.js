@@ -27,6 +27,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.post("/main/auth/postRequest", (req, res) => {
+  console.log("main/auth/postRequest", req.body);
+  res.send("main/auth/postRequest is working");
+});
+
 require("./routes")(app);
 
 // catch 404 and forward to error handler

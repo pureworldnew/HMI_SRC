@@ -10,6 +10,13 @@ class AuthService {
       .then((res) => res.data)
       .catch((error) => handleErrorResponseObject(error));
   };
+  testPostProxy = (data) => {
+    const api = getInsightBackendAPI();
+    return axios
+      .post(`${api}/main/auth/postRequest/`, data)
+      .then((res) => res.data)
+      .catch((error) => handleErrorResponseObject(error));
+  };
   signIn = (data) => {
     const api = getInsightBackendAPI();
     return axios

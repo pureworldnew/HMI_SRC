@@ -14,6 +14,11 @@ const LoginForm = (props) => {
     AuthService.testProxy().then((result) => {
       console.log('result', result);
     });
+    AuthService.testPostProxy({ userId: 1234, fullName: 'BoxSu' }).then(
+      (result) => {
+        console.log('result of test post Proxy', result);
+      }
+    );
     if (!!email && !!password) {
       AuthService.signIn({ email, password })
         .then((user) => {
