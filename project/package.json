@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "dev": "nodemon --watch .env --watch app.js --watch bin ./bin/www --watch controller --watch db --watch routes --watch core --watch config",
+    "client": "cd frontend && npm start",
+    "server": "nodemon ./bin/www",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server:dev": "nodemon --watch .env --watch app.js --watch bin ./bin/www --watch controller --watch db --watch routes --watch core --watch config",
     "db": "sequelize init",
     "db:migrate": "sequelize db:migrate",
     "db:seed": "npx sequelize-cli db:seed:all",
