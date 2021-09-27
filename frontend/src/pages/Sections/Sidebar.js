@@ -153,7 +153,7 @@ const Sidebar = ({ showMenu, setShowMenu, roleId }) => {
               </NavLink>
             </UnAvailableToolTip>
           </li>
-          {roleId < 4 ? (
+          {roleId < 2 ? (
             <li>
               <NavLink to="/admin" activeClassName="active">
                 <svg
