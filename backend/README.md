@@ -70,3 +70,7 @@ npx sequelize-cli db:seed:all
 ## Migrate specific file
 
 npm run db:migrate --name 20200423094018-create-segment.js
+
+## MySQL setting on server
+
+mysql> SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));

@@ -91,7 +91,7 @@ module.exports = {
       });
   },
 
-  getCompanyList(req, res) {
+  getSensorList(req, res) {
     return db.sequelize
       .query(
         `SELECT a.*, 
@@ -105,7 +105,7 @@ module.exports = {
         FROM sensorlogs a
         INNER JOIN (
         SELECT MAX(id) AS id, deviceName, MAX(includeDateTime) AS max_time
-        FROM sensorLogs
+        FROM sensorlogs
         GROUP BY deviceName ) b
         ON a.id = b.id AND a.includeDatetime = b.max_time
         ORDER BY a.includeDateTime`,

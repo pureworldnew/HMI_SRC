@@ -4,4 +4,4 @@
  */
 const sensorController = require("../../../controllers/main").sensors;
 
-module.exports = sensorController.getCompanyList;
+module.exports = sensorController.getSensorList;
