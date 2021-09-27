@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "Settings",
+      "settings",
       [
         {
           lowLimitVol: "1.5",
@@ -33,6 +33,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("Settings", null, {});
+    await queryInterface.bulkDelete("settings", null, {});
   },
 };
