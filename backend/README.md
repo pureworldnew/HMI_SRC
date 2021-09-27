@@ -49,7 +49,7 @@ this command will create the model file with migration file at `db` folder.those
 
 sequelize model:create --name notification --attributes trigger_temperature:string,trigger_temperature_condition:string,trigger_temperature_unit:string,settings_subject:string,settings_message:string,settings_user_id:INTEGER,extra_acknowledgeMode:string,extra_smsMessage:string,extra_snoozeMode:string,extra_snoozePeriod:string,extra_voiceText:string,action_name:string,sensor_id:INTEGER
 
-sequelize model:create --name sensorLog --attributes includeDate:DATEONLY,includeTime:time,deviceName:string,macAddress:string,temp1:string,temp2:string,voltage:double, includeDateTime:date
+sequelize model:create --name sensorlog --attributes includeDate:DATEONLY,includeTime:time,deviceName:string,macAddress:string,temp1:string,temp2:string,voltage:double, includeDateTime:date
 
 sequelize model:create --name user --attributes userId:string,fullName:string,emailAddress:string,password:string,roleId:integer,lastLogin:string,avatarUrl:string
 

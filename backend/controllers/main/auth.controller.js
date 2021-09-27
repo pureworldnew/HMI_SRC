@@ -39,7 +39,7 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
   console.log("signin function is here");
-  console.log("user model", user);
+  // console.log("user model", user);
   user
     .findOne({
       where: { emailAddress: req.body.email },

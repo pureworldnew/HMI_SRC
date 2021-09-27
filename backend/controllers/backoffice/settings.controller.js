@@ -1,5 +1,5 @@
 const settingModel = require("../../db/models").setting;
-const sensorLogModel = require("../../db/models").sensorLog;
+const sensorLogModel = require("../../db/models").sensorlog;
 const role = require("../../db/models").role;
 
 const moment = require("moment");
