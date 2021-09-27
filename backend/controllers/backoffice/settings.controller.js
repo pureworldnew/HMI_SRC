@@ -163,7 +163,7 @@ module.exports = {
           if (!error && response.statusCode == 200) {
             var txt = body;
             var line = txt.split("\n");
-
+            console.log("logData parsing start!");
             var logData = [];
             for (let i = 0; i < line.length; i++) {
               if (line[i].includes("Total") || i >= line.length - 2) continue;
@@ -181,7 +181,31 @@ module.exports = {
                 logData.push(item);
               }
             }
-            console.log("logData is ", logData);
+            console.log("logData parsing completed!");
+            console.log(logData[2]);
+            logData = [
+              {
+                includeDate: "2021-02-11",
+                includeTime: "08:10:22",
+                deviceName: "Device06",
+                macAddress: "00:13:a2:00:41:bb:d0:ab",
+                temp1: "12.4",
+                temp2: "19",
+                voltage: "2.94\r",
+                includeDateTime: "2021-02-11 08:10:22",
+              },
+              {
+                includeDate: "2021-02-11",
+                includeTime: "08:10:22",
+                deviceName: "Device07",
+                macAddress: "00:13:a2:00:41:bb:d0:ab",
+                temp1: "12.4",
+                temp2: "19",
+                voltage: "2.94\r",
+                includeDateTime: "2021-02-11 08:10:22",
+              },
+            ];
+
             await sensorLogModel
               .bulkCreate(logData, { returning: true })
               .then(async () => {
@@ -197,6 +221,7 @@ module.exports = {
         }
       );
     } catch (error) {
+      console.log(error);
       res.status(500).send(error);
     }
   },

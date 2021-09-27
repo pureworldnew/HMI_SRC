@@ -1,7 +1,7 @@
 import Config from 'config';
 
 // const insightBackendAPI = axios.create({
-//     baseURL: (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") ? `http://localhost:8000` : `${Config.API_URL}`,
+//     baseURL: (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") ? `http://localhost:5000` : `${Config.API_URL}`,
 //     headers: {
 //       // 'x-access-token': `${window.localStorage.getItem('access_token')}`
 //       'Authorization': `Bearer ${window.localStorage.getItem('access_token')}`
