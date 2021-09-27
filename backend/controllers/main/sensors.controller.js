@@ -102,10 +102,10 @@ module.exports = {
             WHEN a.voltage >= 2.0 THEN "green"
             ELSE "green" 
           END) AS battery_status
-        FROM sensorlogs a
+        FROM sensorLogs a
         INNER JOIN (
         SELECT MAX(id) AS id, deviceName, MAX(includeDateTime) AS max_time
-        FROM sensorlogs
+        FROM sensorLogs
         GROUP BY deviceName ) b
         ON a.id = b.id AND a.includeDatetime = b.max_time
         ORDER BY a.includeDateTime`,

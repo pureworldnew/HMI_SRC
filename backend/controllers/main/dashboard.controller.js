@@ -5,7 +5,7 @@ module.exports = {
   getActiveSensors(req, res) {
     return db.sequelize
       .query(
-        "SELECT macAddress, temp1, temp2, voltage, MAX(includeDateTime) AS includeDateTime, deviceName FROM sensorlogs GROUP BY deviceName ORDER BY MAX(includeDateTime)",
+        "SELECT macAddress, temp1, temp2, voltage, MAX(includeDateTime) AS includeDateTime, deviceName FROM sensorLogs GROUP BY deviceName ORDER BY MAX(includeDateTime)",
         {
           type: db.sequelize.QueryTypes.SELECT,
         }
