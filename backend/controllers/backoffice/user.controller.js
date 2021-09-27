@@ -1,5 +1,5 @@
-const userModel = require("../../db/models").User;
-const role = require("../../db/models").Role;
+const userModel = require("../../db/models").user;
+const role = require("../../db/models").role;
 
 var bcrypt = require("bcryptjs");
 const ResponseFormat = require("../../core").ResponseFormat;

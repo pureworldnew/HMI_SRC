@@ -1,6 +1,6 @@
-const settingModel = require("../../db/models").Setting;
-const sensorLogModel = require("../../db/models").SensorLog;
-const role = require("../../db/models").Role;
+const settingModel = require("../../db/models").setting;
+const sensorLogModel = require("../../db/models").sensorLog;
+const role = require("../../db/models").role;
 
 const moment = require("moment");
 var bcrypt = require("bcryptjs");

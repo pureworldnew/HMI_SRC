@@ -47,27 +47,17 @@ this command will create the model file with migration file at `db` folder.those
 
 ## Sequelize Command for development
 
-sequelize model:create --name Notification --attributes trigger_temperature:string,trigger_temperature_condition:string,trigger_temperature_unit:string,settings_subject:string,settings_message:string,settings_user_id:INTEGER,extra_acknowledgeMode:string,extra_smsMessage:string,extra_snoozeMode:string,extra_snoozePeriod:string,extra_voiceText:string,action_name:string,sensor_id:INTEGER
+sequelize model:create --name notification --attributes trigger_temperature:string,trigger_temperature_condition:string,trigger_temperature_unit:string,settings_subject:string,settings_message:string,settings_user_id:INTEGER,extra_acknowledgeMode:string,extra_smsMessage:string,extra_snoozeMode:string,extra_snoozePeriod:string,extra_voiceText:string,action_name:string,sensor_id:INTEGER
 
-sequelize model:create --name SensorLog --attributes includeDate:DATEONLY,includeTime:time,deviceName:string,macAddress:string,temp1:string,temp2:string,voltage:double, includeDateTime:date
+sequelize model:create --name sensorLog --attributes includeDate:DATEONLY,includeTime:time,deviceName:string,macAddress:string,temp1:string,temp2:string,voltage:double, includeDateTime:date
 
-sequelize model:create --name User --attributes userId:string,fullName:string,emailAddress:string,password:string,roleId:integer,lastLogin:string,avatarUrl:string
+sequelize model:create --name user --attributes userId:string,fullName:string,emailAddress:string,password:string,roleId:integer,lastLogin:string,avatarUrl:string
 
-sequelize model:create --name Role --attributes roleName:string
+sequelize model:create --name role --attributes roleName:string
 
-sequelize model:create --name Setting --attributes lowLimitVol:double,cautionLimitVol:double,logUrl:string
+sequelize model:create --name setting --attributes lowLimitVol:double,cautionLimitVol:double,logUrl:string
 
-sequelize model:generate --name UserRole --attributes userId:INTEGER,roleId:INTEGER
-
-sequelize model:create --name Company --attributes companyName:string,googleApi:string,googleSheet:string
-
-sequelize model:create --name Segment --attributes SegmentID:string,SegmentName:string,LowValue:string,HighValue:string,MonthlyLowValue:string,MonthlyHighValue:string,company_Id:INTEGER
-
-sequelize model:create --name Contract --attributes Company:string,EventsCompanyName:string,CompanyID:string,ContractCompanyName:string,ContractAddress:string,ContractID:string,Active:string,ContractDate:date,ContractType:string,TheirExecutor:string,TheirExecutorTitle:string,OurExecutor:string,GoLiveDate:date,ContractStartDate:date,ContractEndDate:date,ContractEndTerminationDate:date,ContractMonths:string,DaysUntilRenewal:string,BillingStartDate:date,BillingFrequency:string,ContractTerm:string,TermMetric:string,AnnualContractValue:string,TotalContractValue:string,CurrentARR:string,SegmentID:string,SegmentName:string,ProductsPurchased:string,Product:string,Discounts:string,TerminationRights:string,NoticetoTerminate:string,NoticetoTerminateUnits:string,AccountExecutiveID:string,AccountExecutive:string,AccountManagerID:string,AccountManager:string,TerminationDate:date,TerminationReasonID:string,TerminationReason:string,TerminationNotes:string,PlanName:string,PlanName2:string,AutoRenew:string,Invoicing:string,InvoiceAmount:string,PricePerUser:string,LicensesPurchased:string,ContractExternalURL:string,ContractInternalURL:string,Delivery:string,company_Id:INTEGER
-
-sequelize model:create --name Contracts_waterfall --attributes Company:string,ContractID:string,AccountManager:string,AnnualContractValue:string,StartDate:date,EndDate:date,Months:string,StartMonth:string,StartYear:string,MonthlyValue:string,SegmentID:string,Segment:string,TerminationReasonID:string,Jan2019:string,Feb2019:string,Mar2019:string,Apr2019:string,May2019:string,Jun2019:string,Jul2019:string,Aug2019:string,Sep2019:string,Oct2019:string,Nov2019:string,Dec2019:string,Jan2020:string,Feb2020:string,Mar2020:string,Apr2020:string,May2020:string,Jun2020:string,Jul2020:string,Aug2020:string,Sep2020:string,Oct2020:string,Nov2020:string,Dec2020:string,Jan2021:string,Feb2021:string,Mar2021:string,Apr2021:string,May2021:string,Jun2021:string,Jul2021:string,Aug2021:string,Sep2021:string,Oct2021:string,Nov2021:string,Dec2021:string,company_Id:INTEGER
-
-sequelize model:create --name Contract --attributes Date:date,Company:string,CompanyID:string,ContractID:string,Active:string,ContractDate:date,GoLiveDate:date,ContractStartDate:date,ContractEndDate:date,ContractEndTerminationDate:date,ContractMonths:string,DaysUntilRenewal:string,BillingStartDate:string,BillingFrequency:string,ContractTerm:string,TermMetric:string,AnnualContractValue:string,CurrentARR:string,SegmentID:string,SegmentName:string,ProductsPurchased:string,Product:string,TerminationRights:string,AccountExecutiveID:string,AccountExecutive:string,AccountManagerID:string,AccountManager:string,TerminationDate:date,TerminationReasonID:string,TerminationReason:string,TerminationNotes:string,PlanName:string,PlanName2:string,AutoRenew:string,PricePerUser:string,LicensesPurchased:string,ContractExternalURL:string,ContractInternalURL:string,company_Id:INTEGER
+sequelize model:generate --name userrole --attributes userId:INTEGER,roleId:INTEGER
 
 ## Sequelize Seed creation for development
 

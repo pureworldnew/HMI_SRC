@@ -1,4 +1,3 @@
-const sensorLog = require("../../db/models").SensorLog;
 const db = require("../../db/models");
 const ResponseFormat = require("../../core").ResponseFormat;
 

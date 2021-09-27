@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Notification extends Model {
+  class notification extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  Notification.init({
+  notification.init({
     trigger_temperature: DataTypes.STRING,
     trigger_temperature_condition: DataTypes.STRING,
     trigger_temperature_unit: DataTypes.STRING,
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     sensor_id: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Notification',
+    modelName: 'notification',
   });
-  return Notification;
+  return notification;
 };

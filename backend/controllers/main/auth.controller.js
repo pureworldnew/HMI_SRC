@@ -1,8 +1,8 @@
 const db = require("../../db/models");
 var moment = require("moment");
 const config = require("../../config/auth.config");
-const User = db.User;
-const Role = db.Role;
+const user = db.user;
+const role = db.role;
 const ResponseFormat = require("../../core").ResponseFormat;
 
 var jwt = require("jsonwebtoken");
@@ -38,16 +38,20 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
-  User.findOne({
-    where: { emailAddress: req.body.email },
-    include: [
-      {
-        model: Role,
-        as: "role",
-      },
-    ],
-  })
+  console.log("signin function is here");
+  console.log("user model", user);
+  user
+    .findOne({
+      where: { emailAddress: req.body.email },
+      include: [
+        {
+          model: role,
+          as: "role",
+        },
+      ],
+    })
     .then((user) => {
+      console.log("sdfsdfsdf", user);
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
       }

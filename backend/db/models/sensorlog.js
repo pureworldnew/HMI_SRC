@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class SensorLog extends Model {
+  class sensorLog extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  SensorLog.init({
+  sensorLog.init({
     includeDate: DataTypes.DATEONLY,
     includeTime: DataTypes.TIME,
     deviceName: DataTypes.STRING,
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     includeDateTime: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'SensorLog',
+    modelName: 'sensorLog',
   });
-  return SensorLog;
+  return sensorLog;
 };

@@ -1,9 +1,6 @@
-const userModel = require("../../db/models").User;
-const role = require("../../db/models").Role;
-const company = require("../../db/models").Company;
+const userModel = require("../../db/models").user;
+const role = require("../../db/models").role;
 const db = require("../../db/models");
-const moment = require("moment");
-var bcrypt = require("bcryptjs");
 const ResponseFormat = require("../../core").ResponseFormat;
 
 module.exports = {
