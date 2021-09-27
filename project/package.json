@@ -6,6 +6,7 @@
     "client": "cd frontend && npm start",
     "server": "nodemon ./bin/www",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client:build": "cd frontend && npm run build",
     "server:dev": "nodemon --watch .env --watch app.js --watch bin ./bin/www --watch controller --watch db --watch routes --watch core --watch config",
     "db": "sequelize init",
     "db:migrate": "sequelize db:migrate",
